@@ -762,43 +762,314 @@ window.SECTIONS = [
   <span class="s-label-num">10 — Technical</span>
   <span class="s-label-line"></span>
 </div>
-<h2 class="s-title" data-reveal>India's payment <em>rails &amp; APIs</em></h2>
+<h2 class="s-title" data-reveal>Payment APIs — <em>PayIn, PayOut &amp; the full stack</em></h2>
 <p class="s-desc" data-reveal>
-  <span class="en">Four core settlement rails power every rupee transaction in India. Know which one to use — based on speed, availability, and ticket size.</span>
-  <span class="ta">இந்தியாவில் ஒவ்வொரு ரூபாய் பரிவர்த்தனையையும் நான்கு core settlement rails இயக்குகின்றன.</span>
+  <span class="en">Every rupee flowing through a fintech product touches at least one of these API layers — collection, disbursement, verification, tokenisation, or settlement. This section explains each one with the actual mechanics behind it.</span>
+  <span class="ta">ஒவ்வொரு fintech product-இலும் பாயும் ஒவ்வொரு ரூபாயும் collection, disbursement, verification, tokenization, அல்லது settlement — இவற்றில் ஒன்றையாவது தொடுகிறது.</span>
 </p>
 
+<!-- ── GLOSSARY ─────────────────────────────────────────────── -->
+<h3 class="s-sub-title" data-reveal>📖 <span class="en">Key terms — what they actually mean</span><span class="ta">முக்கிய சொற்கள்</span></h3>
+<div class="pterm-grid" data-stagger>
+  <div class="pterm-card">
+    <div class="pterm-name">PayIn / Collection</div>
+    <p class="pterm-def"><span class="en">Money flowing <strong>into</strong> your platform from a customer. Customer pays ₹500 for a product → that ₹500 lands in your nodal account first, then gets settled to your bank. Also called "charge", "capture", or "collection".</span><span class="ta">Customer → உங்கள் platform-க்கு பணம் வருவது. ₹500 payment → முதலில் nodal account → பிறகு உங்கள் bank account.</span></p>
+    <span class="pterm-tag tag-ok">Inbound</span>
+  </div>
+  <div class="pterm-card">
+    <div class="pterm-name">PayOut / Disbursement</div>
+    <p class="pterm-def"><span class="en">Money flowing <strong>out</strong> of your platform to a beneficiary. You pay a vendor, contractor, or refund a customer → ₹500 leaves your payout wallet via IMPS/NEFT/UPI. Also called "transfer", "remittance", or "settlement" (confusingly).</span><span class="ta">உங்கள் platform-இல் இருந்து beneficiary-க்கு பணம் செல்வது. Vendor, contractor, refund → IMPS/NEFT/UPI வழியாக.</span></p>
+    <span class="pterm-tag tag-cost">Outbound</span>
+  </div>
+  <div class="pterm-card">
+    <div class="pterm-name">Settlement</div>
+    <p class="pterm-def"><span class="en">When the payment gateway transfers your <em>collected</em> money into your registered current account. Usually T+1 or T+2. Settlement = netted amount after MDR deduction. The gateway holds your money in a nodal/escrow account during this window.</span><span class="ta">Payment gateway-க்கு வந்த பணம் உங்கள் current account-க்கு மாற்றப்படுவது. T+1/T+2. MDR கழித்து net amount.</span></p>
+    <span class="pterm-tag tag-time">T+1 / T+2</span>
+  </div>
+  <div class="pterm-card">
+    <div class="pterm-name">MDR</div>
+    <p class="pterm-def"><span class="en">Merchant Discount Rate — the fee a merchant pays for accepting a card or digital payment. Expressed as % of transaction. MDR is <em>not charged per API call</em> — it's deducted from your settlement. Customer never sees it. Ranges: 0% (UPI P2M) to ~3% (international cards).</span><span class="ta">Merchant Discount Rate — card அல்லது digital payment ஏற்க merchant செலுத்தும் கட்டணம். Settlement-ல் இருந்து கழிக்கப்படுகிறது.</span></p>
+    <span class="pterm-tag tag-warn">Settlement deduction</span>
+  </div>
+  <div class="pterm-card">
+    <div class="pterm-name">Webhook</div>
+    <p class="pterm-def"><span class="en">A POST request that the payment gateway sends to <em>your server</em> when a payment event happens (captured, failed, refunded). You don't poll for status — the gateway notifies you. Must verify HMAC-SHA256 signature to prevent fake webhooks from attackers.</span><span class="ta">Payment event நடக்கும்போது gateway உங்கள் server-க்கு POST request அனுப்புகிறது. Status poll செய்வதில்லை — gateway notify செய்கிறது.</span></p>
+    <span class="pterm-tag tag-req">Server-side only</span>
+  </div>
+  <div class="pterm-card">
+    <div class="pterm-name">Idempotency Key</div>
+    <p class="pterm-def"><span class="en">A unique string sent with every API request so that if the same request is retried (network timeout, server crash), the gateway doesn't create a duplicate payment. You generate it (e.g., UUID), the gateway deduplicates on its side. Critical for payout APIs.</span><span class="ta">Retry-யில் duplicate payment உருவாகாமல் தடுக்க ஒவ்வொரு API request-உடனும் அனுப்பப்படும் unique string. UUID பயன்படுத்துங்கள்.</span></p>
+    <span class="pterm-tag tag-ok">Prevents duplicates</span>
+  </div>
+  <div class="pterm-card">
+    <div class="pterm-name">Refund vs Chargeback</div>
+    <p class="pterm-def"><span class="en"><strong>Refund</strong>: you initiate it. Customer complains → you call Refunds API → money back in 5–7 days. Cost: gateway may charge ₹5–₹50 processing fee.<br><strong>Chargeback</strong>: customer initiates via their bank. Bank forces reversal. You must respond with evidence within 45 days. Chargeback ratio above 1% = account review.</span><span class="ta">Refund: நீங்கள் தொடங்குவது. Chargeback: customer bank தொடங்குவது. 1%-க்கு மேல் → account review.</span></p>
+    <span class="pterm-tag tag-warn">Chargeback = costly</span>
+  </div>
+  <div class="pterm-card">
+    <div class="pterm-name">Penny Drop</div>
+    <p class="pterm-def"><span class="en">A bank account verification method: send ₹1 to an account and check if the bank confirms the account holder's name. Used to verify payout beneficiary accounts before disbursement. ₹1 may or may not be returned — varies by provider. Prevents sending money to wrong accounts.</span><span class="ta">Bank account verification: ₹1 அனுப்பி account holder பெயர் confirm செய்யும் முறை. Payout beneficiary accounts verify செய்ய பயன்படுகிறது.</span></p>
+    <span class="pterm-tag tag-ok">KYC at scale</span>
+  </div>
+  <div class="pterm-card">
+    <div class="pterm-name">Tokenization (CoFT)</div>
+    <p class="pterm-def"><span class="en">Card-on-File Tokenization — RBI mandated since Oct 2022. Merchants can no longer store raw card numbers (PAN). Instead, the card network (Visa/MC/RuPay) issues a unique 16-digit <em>token</em> for each card+merchant combination. Token is useless if stolen — can only be charged by the specific merchant it was issued for.</span><span class="ta">Card-on-File Tokenization — RBI Oct 2022 கட்டாயம். Raw card number store செய்ய தடை. Card network unique 16-digit token வழங்குகிறது.</span></p>
+    <span class="pterm-tag tag-req">RBI mandated</span>
+  </div>
+  <div class="pterm-card">
+    <div class="pterm-name">VPA</div>
+    <p class="pterm-def"><span class="en">Virtual Payment Address — a UPI handle like <code>name@bankname</code>. Replaces the need to share account number + IFSC. VPAs are resolved to real bank accounts by the UPI system in real-time. Your payment gateway can create VPAs programmatically for dynamic payment collection.</span><span class="ta">Virtual Payment Address — <code>name@bankname</code> போன்ற UPI handle. Account number + IFSC-க்கு பதிலாக பயன்படுகிறது.</span></p>
+    <span class="pterm-tag tag-ok">Zero friction</span>
+  </div>
+  <div class="pterm-card">
+    <div class="pterm-name">BIN</div>
+    <p class="pterm-def"><span class="en">Bank Identification Number — the first 6–8 digits of a card number. Identifies the issuing bank, card type (credit/debit), card scheme (Visa/MC/RuPay), and geography. Payment gateways use BIN lookups to route transactions and calculate MDR instantly at checkout.</span><span class="ta">Bank Identification Number — card number-ன் முதல் 6–8 digits. Issuing bank, card type, scheme identify செய்கிறது. Gateway transactions route செய்ய பயன்படுகிறது.</span></p>
+    <span class="pterm-tag tag-cost">Routing basis</span>
+  </div>
+  <div class="pterm-card">
+    <div class="pterm-name">Acquiring vs Issuing</div>
+    <p class="pterm-def"><span class="en"><strong>Issuing bank</strong>: issued the card to the customer (HDFC, SBI). Decides to approve or decline. Earns interchange fee.<br><strong>Acquiring bank</strong>: onboarded the merchant (ICICI merchant services). Receives transaction and routes to scheme. Earns acquirer fee. You as a merchant work with the acquirer.</span><span class="ta">Issuing bank: customer-க்கு card வழங்கியது. Acquiring bank: merchant-ஐ onboard செய்தது. Merchant ஆக நீங்கள் acquirer-உடன் வேலை செய்கிறீர்கள்.</span></p>
+    <span class="pterm-tag tag-req">Core distinction</span>
+  </div>
+</div>
+
+<!-- ── PAYIN ANIMATED FLOW ──────────────────────────────────── -->
+<h3 class="s-sub-title" data-reveal>💳 <span class="en">PayIn flow — how money comes in</span><span class="ta">PayIn flow — பணம் எவ்வாறு வருகிறது</span></h3>
+<div class="api-flow-wrap" data-reveal>
+  <div class="afw-label">Customer pays ₹500 on your app</div>
+  <div class="api-flow">
+    <div class="afl-node"><div class="afn-icon">👤</div><div class="afn-label">Customer</div><div class="afn-sub">Enters card / UPI</div></div>
+    <div class="afl-arrow"><span class="afl-line"></span><span class="afl-dot"></span><div class="afl-lbl">POST /orders</div></div>
+    <div class="afl-node"><div class="afn-icon">🛒</div><div class="afn-label">Your App</div><div class="afn-sub">Creates order_id</div></div>
+    <div class="afl-arrow"><span class="afl-line"></span><span class="afl-dot"></span><div class="afl-lbl">Redirect / SDK</div></div>
+    <div class="afl-node"><div class="afn-icon">⚙️</div><div class="afn-label">Payment Gateway</div><div class="afn-sub">Razorpay / Cashfree</div></div>
+    <div class="afl-arrow"><span class="afl-line"></span><span class="afl-dot"></span><div class="afl-lbl">ISO 8583 / UPI</div></div>
+    <div class="afl-node"><div class="afn-icon">🌐</div><div class="afn-label">Bank / Network</div><div class="afn-sub">Authorizes</div></div>
+  </div>
+  <div class="api-flow-return">
+    <div class="afr-arrow">↩ Auth response → Gateway captures → Webhook fires to your server → You show success</div>
+  </div>
+  <div class="api-flow-steps">
+    <div class="afs-item"><span class="afs-step">1</span><span>Customer hits Pay → your backend calls <code>POST /v1/orders</code> with amount, currency, receipt</span></div>
+    <div class="afs-item"><span class="afs-step">2</span><span>Gateway returns <code>order_id</code> — embed in checkout SDK or redirect to hosted page</span></div>
+    <div class="afs-item"><span class="afs-step">3</span><span>Customer selects payment method → gateway routes to bank/UPI/card network</span></div>
+    <div class="afs-item"><span class="afs-step">4</span><span>Bank authorizes → gateway captures the payment (auto-capture or manual)</span></div>
+    <div class="afs-item"><span class="afs-step afs-ok">5</span><span>Gateway sends <code>payment.captured</code> webhook to your <code>/callback</code> URL → verify signature → mark order paid</span></div>
+    <div class="afs-item"><span class="afs-step">6</span><span>Money sits in gateway nodal account → settled to your bank at T+1 or T+2 (net of MDR)</span></div>
+  </div>
+  <div class="api-code-block">
+    <div class="acb-label">Sample PayIn webhook payload</div>
+    <pre class="acb-code">{
+  "event": "payment.captured",
+  "payload": {
+    "payment": {
+      "entity": {
+        "id": "pay_ABC123",
+        "order_id": "order_XYZ456",
+        "amount": 50000,
+        "currency": "INR",
+        "status": "captured",
+        "method": "upi",
+        "vpa": "customer@upi",
+        "created_at": 1716449400
+      }
+    }
+  }
+}</pre>
+  </div>
+</div>
+
+<!-- ── PAYOUT ANIMATED FLOW ─────────────────────────────────── -->
+<h3 class="s-sub-title" data-reveal>💸 <span class="en">PayOut flow — how money goes out</span><span class="ta">PayOut flow — பணம் எவ்வாறு போகிறது</span></h3>
+<div class="api-flow-wrap api-flow-wrap--payout" data-reveal>
+  <div class="afw-label">You pay ₹10,000 to a vendor</div>
+  <div class="api-flow">
+    <div class="afl-node"><div class="afn-icon">🏢</div><div class="afn-label">Your System</div><div class="afn-sub">Triggers payout job</div></div>
+    <div class="afl-arrow"><span class="afl-line"></span><span class="afl-dot afl-dot--payout"></span><div class="afl-lbl">POST /payouts</div></div>
+    <div class="afl-node"><div class="afn-icon">⚙️</div><div class="afn-label">Payout API</div><div class="afn-sub">RazorpayX / Cashfree</div></div>
+    <div class="afl-arrow"><span class="afl-line"></span><span class="afl-dot afl-dot--payout"></span><div class="afl-lbl">IMPS / NEFT / UPI</div></div>
+    <div class="afl-node"><div class="afn-icon">🏦</div><div class="afn-label">Beneficiary Bank</div><div class="afn-sub">Credits account</div></div>
+    <div class="afl-arrow"><span class="afl-line"></span><span class="afl-dot afl-dot--payout"></span><div class="afl-lbl">Webhook</div></div>
+    <div class="afl-node"><div class="afn-icon">✅</div><div class="afn-label">Your System</div><div class="afn-sub">Marks disbursed</div></div>
+  </div>
+  <div class="api-flow-return">
+    <div class="afr-arrow afr-arrow--payout">Rail choice: IMPS (instant, ≤₹5L) · UPI (instant, ≤₹5L) · NEFT (30min batch) · RTGS (instant, ≥₹2L)</div>
+  </div>
+  <div class="payout-rail-compare" data-reveal>
+    <div class="prc-head"><span>Rail</span><span>Speed</span><span>Limit</span><span>24×7</span><span>Best for</span></div>
+    <div class="prc-row prc-imps"><span>⚡ IMPS</span><span>~1–5 sec</span><span>₹5L/txn</span><span class="tag tag-ok">✓</span><span>Gig payouts, urgent B2B</span></div>
+    <div class="prc-row prc-upi"><span>📱 UPI</span><span>&lt;10 sec</span><span>₹5L/txn</span><span class="tag tag-ok">✓</span><span>Consumer refunds, P2P</span></div>
+    <div class="prc-row prc-neft"><span>🏦 NEFT</span><span>~30 min</span><span>No limit</span><span class="tag tag-ok">✓</span><span>Payroll, bulk vendor</span></div>
+    <div class="prc-row prc-rtgs"><span>🚀 RTGS</span><span>~30 sec</span><span>Min ₹2L</span><span class="tag tag-ok">✓</span><span>High-value B2B, property</span></div>
+  </div>
+  <div class="api-code-block">
+    <div class="acb-label">Sample PayOut API call (RazorpayX)</div>
+    <pre class="acb-code">POST /v1/payouts
+X-Payout-Idempotency: &lt;uuid&gt;
+
+{
+  "account_number": "XXXX1234567890",
+  "fund_account_id": "fa_BENEFICIARY_ID",
+  "amount": 1000000,
+  "currency": "INR",
+  "mode": "IMPS",
+  "purpose": "vendor_payment",
+  "queue_if_low_balance": true,
+  "narration": "Invoice #INV-2026-001"
+}</pre>
+  </div>
+</div>
+
+<!-- ── PENNY DROP ────────────────────────────────────────────── -->
+<h3 class="s-sub-title" data-reveal>🔍 <span class="en">Penny drop — bank account verification</span><span class="ta">Penny Drop — bank account சரிபார்ப்பு</span></h3>
+<div class="pennydrop-wrap" data-reveal>
+  <div class="pd-steps">
+    <div class="pd-step"><div class="pd-num">1</div><div class="pd-body"><strong>You collect</strong> account number + IFSC from the user (merchant onboarding / payout beneficiary form)</div></div>
+    <div class="pd-arrow">↓</div>
+    <div class="pd-step"><div class="pd-num">2</div><div class="pd-body"><strong>POST to Penny Drop API</strong> — providers: <a href="https://razorpay.com/docs/payments/route/penny-drop/" target="_blank" rel="noopener" class="ext-link">Razorpay</a>, <a href="https://docs.cashfree.com/docs/penny-drop" target="_blank" rel="noopener" class="ext-link">Cashfree</a>, <a href="https://setu.co/data/account-aggregator" target="_blank" rel="noopener" class="ext-link">Setu</a>, Signzy, Perfios</div></div>
+    <div class="pd-arrow">↓</div>
+    <div class="pd-step"><div class="pd-num">3</div><div class="pd-body"><strong>₹1 sent via IMPS</strong> to the account — bank processes the credit and returns the beneficiary name in the IMPS acknowledgement</div></div>
+    <div class="pd-arrow">↓</div>
+    <div class="pd-step pd-step--ok"><div class="pd-num pd-num--ok">4</div><div class="pd-body"><strong>Name match returned</strong> — compare with user-submitted name. API returns: <code>{ "account_holder": "Ramesh Kumar", "verified": true }</code>. ₹1 may be returned or kept (₹0.50–₹2 cost).</div></div>
+  </div>
+  <div class="pd-usecases">
+    <div class="pd-uc-title">Where it's used</div>
+    <div class="pd-uc-grid">
+      <div class="pd-uc-item"><span>🏪</span><span>Merchant onboarding — verify settlement account before going live</span></div>
+      <div class="pd-uc-item"><span>👷</span><span>Gig worker / contractor payout setup — verify before first disbursement</span></div>
+      <div class="pd-uc-item"><span>🏢</span><span>B2B vendor registration — finance team validates before adding to payroll</span></div>
+      <div class="pd-uc-item"><span>🏦</span><span>Lending disbursal — verify borrower account before releasing loan amount</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ── TOKENIZATION ──────────────────────────────────────────── -->
+<h3 class="s-sub-title" data-reveal>🔐 <span class="en">Card tokenization — RBI mandate Oct 2022</span><span class="ta">Card Tokenization — RBI Oct 2022 கட்டாயம்</span></h3>
+<div class="token-compare" data-reveal>
+  <div class="tc-old">
+    <div class="tc-label tc-label--bad">❌ Before Oct 2022 (banned)</div>
+    <div class="tc-flow">
+      <div class="tc-node">Customer pays with card</div>
+      <div class="tc-arr">→</div>
+      <div class="tc-node">Merchant stores raw PAN<br><code>4111 1111 1111 1111</code></div>
+      <div class="tc-arr">→</div>
+      <div class="tc-node tc-node--bad">Data breach = all cards compromised</div>
+    </div>
+  </div>
+  <div class="tc-new">
+    <div class="tc-label tc-label--ok">✅ After Oct 2022 (mandatory)</div>
+    <div class="tc-flow">
+      <div class="tc-node">Customer pays → TSP tokenises</div>
+      <div class="tc-arr">→</div>
+      <div class="tc-node tc-node--ok">Merchant stores token only<br><code>9876 5432 xxxx xxxx</code></div>
+      <div class="tc-arr">→</div>
+      <div class="tc-node">Token useless outside this merchant</div>
+    </div>
+  </div>
+</div>
+<div class="token-who" data-reveal>
+  <div class="tw-title">Who issues tokens (TSP — Token Service Provider)</div>
+  <div class="tw-grid">
+    <div class="tw-item"><span class="tw-icon">🌐</span><span class="tw-name">Visa Token Service</span><span class="tw-note">For Visa cards — tokens via Visa Direct API</span></div>
+    <div class="tw-item"><span class="tw-icon">🌐</span><span class="tw-name">Mastercard MDES</span><span class="tw-note">Mastercard Digital Enablement Service</span></div>
+    <div class="tw-item"><span class="tw-icon">🇮🇳</span><span class="tw-name">NPCI (RuPay)</span><span class="tw-note">RuPay token service for domestic cards</span></div>
+    <div class="tw-item"><span class="tw-icon">📱</span><span class="tw-name">Bank apps</span><span class="tw-note">HDFC, ICICI, Axis — issue tokens via their mobile SDK</span></div>
+  </div>
+</div>
+
+<!-- ── UPI COLLECTION ────────────────────────────────────────── -->
+<h3 class="s-sub-title" data-reveal>📱 <span class="en">UPI collection API — two flows</span><span class="ta">UPI Collection API — இரண்டு flows</span></h3>
+<div class="upi-flows" data-reveal>
+  <div class="upi-flow-card">
+    <div class="ufc-title">⚡ Intent / QR Flow (Checkout)</div>
+    <div class="ufc-steps">
+      <div class="ufc-step"><span class="ufc-n">1</span>Your backend calls <code>POST /upi/qr</code> → receives dynamic QR code + amount</div>
+      <div class="ufc-step"><span class="ufc-n">2</span>Show QR on screen (or deeplink <code>upi://pay?pa=merchant@bank&am=500</code>)</div>
+      <div class="ufc-step"><span class="ufc-n">3</span>Customer scans QR in any UPI app (PhonePe, GPay, Paytm, BHIM)</div>
+      <div class="ufc-step"><span class="ufc-n">4</span>Customer approves with UPI PIN → NPCI routes to PSP bank</div>
+      <div class="ufc-step ufc-step--ok"><span class="ufc-n ufc-n--ok">5</span>Webhook <code>payment.captured</code> fires to your server within 10 seconds</div>
+    </div>
+    <div class="ufc-note">Best for: e-commerce checkout, POS billing, PoS-less merchants (show QR on phone)</div>
+  </div>
+  <div class="upi-flow-card">
+    <div class="ufc-title">📨 Collect Request Flow (B2B / known VPA)</div>
+    <div class="ufc-steps">
+      <div class="ufc-step"><span class="ufc-n">1</span>You know the payer's VPA (e.g., <code>vendor@icici</code>)</div>
+      <div class="ufc-step"><span class="ufc-n">2</span>Call <code>POST /upi/collect</code> with payer VPA, amount, message, expiry (max 30 min)</div>
+      <div class="ufc-step"><span class="ufc-n">3</span>Payer gets a notification in their UPI app → sees your collect request</div>
+      <div class="ufc-step"><span class="ufc-n">4</span>Payer approves → payment settles instantly via IMPS</div>
+      <div class="ufc-step ufc-step--ok"><span class="ufc-n ufc-n--ok">5</span>Webhook confirms capture → mark invoice paid</div>
+    </div>
+    <div class="ufc-note">Best for: rent collection, subscription billing, B2B invoice collection where you know VPA</div>
+  </div>
+</div>
+
+<!-- ── WEBHOOK PATTERN ───────────────────────────────────────── -->
+<h3 class="s-sub-title" data-reveal>🔔 <span class="en">Webhook pattern — the right way to implement</span><span class="ta">Webhook pattern — சரியான implementation</span></h3>
+<div class="webhook-wrap" data-reveal>
+  <div class="wh-flow">
+    <div class="wh-node"><div class="whn-icon">⚙️</div><div class="whn-label">Gateway</div><div class="whn-sub">Payment event fires</div></div>
+    <div class="wh-arrow"><span class="wha-line"></span><span class="wha-dot"></span><div class="wha-lbl">HTTPS POST<br>HMAC-SHA256</div></div>
+    <div class="wh-node"><div class="whn-icon">🖥️</div><div class="whn-label">Your Server</div><div class="whn-sub">/webhook endpoint</div></div>
+    <div class="wh-arrow"><span class="wha-line"></span><span class="wha-dot"></span><div class="wha-lbl">200 OK<br>within 5s</div></div>
+    <div class="wh-node whn-ok"><div class="whn-icon">✅</div><div class="whn-label">Process</div><div class="whn-sub">Update order + DB</div></div>
+  </div>
+  <div class="wh-rules">
+    <div class="whr-item whr-critical"><span class="whr-icon">🔐</span><div><strong>Verify HMAC-SHA256 signature</strong> — every incoming webhook must be verified against the secret key from your gateway dashboard. Never trust the payload without signature check. Forged webhooks can mark orders paid without real payment.</div></div>
+    <div class="whr-item"><span class="whr-icon">⚡</span><div><strong>Respond 200 OK within 5 seconds</strong> — do heavy processing asynchronously (queue job). If you take too long, the gateway retries and you process the same event twice.</div></div>
+    <div class="whr-item"><span class="whr-icon">🔄</span><div><strong>Make handlers idempotent</strong> — the gateway retries failed webhooks (3× over 24h). Your code must check if the payment was already processed before acting. Use the payment ID as a deduplication key in DB.</div></div>
+    <div class="whr-item"><span class="whr-icon">📋</span><div><strong>Log everything</strong> — store raw webhook payload + timestamp + signature status in DB. Essential for dispute resolution, audit trails, and debugging reconciliation issues.</div></div>
+  </div>
+  <div class="api-code-block">
+    <div class="acb-label">Signature verification (Node.js)</div>
+    <pre class="acb-code">const crypto = require('crypto');
+const signature = req.headers['x-razorpay-signature'];
+const body = JSON.stringify(req.body);
+const expectedSig = crypto
+  .createHmac('sha256', process.env.WEBHOOK_SECRET)
+  .update(body)
+  .digest('hex');
+if (expectedSig !== signature) {
+  return res.status(401).send('Invalid signature');
+}
+// Safe to process
+const { event, payload } = req.body;</pre>
+  </div>
+</div>
+
+<!-- ── SETTLEMENT RAILS GRID ─────────────────────────────────── -->
+<h3 class="s-sub-title" data-reveal>🛤️ <span class="en">Settlement rails — choose by need</span><span class="ta">Settlement rails — தேவைக்கேற்ப தேர்வு</span></h3>
 <div class="api-grid" data-stagger>
   <div class="api-card">
     <div class="api-icon">⚡</div>
     <div class="api-name">IMPS</div>
-    <p class="api-desc"><span class="en">Immediate Payment Service — NPCI's real-time gross settlement rail. 24×7×365, bank holidays included. Limit: ₹5L per transaction. Ideal for P2P, gig worker payouts, and urgent B2B.</span><span class="ta">உடனடி செலுத்துதல் சேவை — NPCI-ன் real-time gross settlement rail. 24×7×365, வங்கி விடுமுறைகள் உட்பட. வரம்பு: ₹5L/பரிவர்த்தனை.</span></p>
-    <div class="vt-meta"><span class="tag tag-ok">24×7 real-time</span><span class="tag tag-cost">₹5L limit</span></div>
+    <p class="api-desc"><span class="en">Immediate Payment Service — NPCI's real-time gross settlement rail. 24×7×365, bank holidays included. Limit: ₹5L per transaction. Ideal for P2P, gig worker payouts, and urgent B2B. Both PayIn (UPI over IMPS) and PayOut supported.</span><span class="ta">Immediate Payment Service — NPCI-ன் real-time settlement. 24×7. ₹5L/txn. P2P, gig payouts, urgent B2B.</span></p>
+    <div class="vt-meta"><span class="tag tag-ok">24×7 instant</span><span class="tag tag-cost">₹5L limit</span></div>
   </div>
   <div class="api-card">
     <div class="api-icon">📱</div>
     <div class="api-name">UPI</div>
-    <p class="api-desc"><span class="en">Unified Payments Interface — NPCI's VPA-based overlay on IMPS. P2P limit ₹1L; P2M up to ₹5L (RBI circular, 2023). Zero MDR for P2M UPI. 24×7, sub-10-second settlement. Dominant rail for consumer fintech.</span><span class="ta">Unified Payments Interface — NPCI-ன் VPA-based overlay. P2P வரம்பு ₹1L; P2M ₹5L வரை. Consumer fintech-க்கான ஆதிக்க rail.</span></p>
+    <p class="api-desc"><span class="en">Unified Payments Interface — NPCI's VPA-based overlay on IMPS. P2P limit ₹1L; P2M up to ₹5L. Zero MDR for P2M UPI (RBI mandate). Sub-10-second settlement. Dominant rail for consumer fintech. Over 14 billion transactions/month in India (2026).</span><span class="ta">UPI — NPCI-ன் VPA-based overlay. P2M ₹5L. Zero MDR. Consumer fintech-க்கான #1 rail. 14B+ txn/month.</span></p>
     <div class="vt-meta"><span class="tag tag-ok">Zero MDR (P2M)</span><span class="tag tag-cost">₹5L max</span></div>
   </div>
   <div class="api-card">
     <div class="api-icon">🏦</div>
     <div class="api-name">NEFT</div>
-    <p class="api-desc"><span class="en">National Electronic Funds Transfer — RBI-operated, 30-minute batches, 24×7. No upper limit per transaction (unlike IMPS). Used for payroll, vendor disbursements, and high-value periodic payouts. Transactions older than T+2 auto-return.</span><span class="ta">National Electronic Funds Transfer — RBI-operated, 30 நிமிட தொகுதிகள், 24×7. பரிவர்த்தனைக்கு மேல் வரம்பு இல்லை.</span></p>
+    <p class="api-desc"><span class="en">National Electronic Funds Transfer — RBI-operated, 30-minute batches, 24×7. No upper limit per transaction. Used for payroll, vendor disbursements, and high-value periodic payouts. Transactions older than T+2 auto-return. Cheapest for bulk payouts above ₹5L.</span><span class="ta">NEFT — 30 நிமிட batches. No limit. Payroll, bulk payouts. ₹5L+ PayOut-க்கு cheapest.</span></p>
     <div class="vt-meta"><span class="tag tag-ok">No upper limit</span><span class="tag tag-time">30-min batches</span></div>
   </div>
   <div class="api-card">
     <div class="api-icon">🚀</div>
     <div class="api-name">RTGS</div>
-    <p class="api-desc"><span class="en">Real-Time Gross Settlement — RBI-operated, instant final settlement for high-value transactions. Minimum ₹2L, no maximum. 24×7 since Dec 2020. Each transaction settles individually (gross), not in batches. Used for property deals, business acquisitions, large B2B.</span><span class="ta">Real-Time Gross Settlement — ₹2L குறைந்தபட்சம். நொடிகளில் இறுதி தீர்வு. சொத்து ஒப்பந்தங்கள், B2B-க்கு பயன்படுத்தப்படுகிறது.</span></p>
+    <p class="api-desc"><span class="en">Real-Time Gross Settlement — RBI-operated, instant final settlement for high-value transactions. Minimum ₹2L, no maximum. 24×7 since Dec 2020. Each transaction settles individually (gross), not in batches. Used for property deals, acquisitions, large B2B. Finality — cannot be reversed once settled.</span><span class="ta">RTGS — ₹2L minimum. Instant final settlement. 24×7. Property, acquisitions, large B2B. Irreversible.</span></p>
     <div class="vt-meta"><span class="tag tag-ok">24×7 instant final</span><span class="tag tag-cost">₹2L minimum</span></div>
   </div>
 </div>
 
 <div class="callout" data-reveal style="margin-top:2.5rem">
-  <strong><span class="en">Choosing the right rail</span><span class="ta">சரியான rail தேர்வு</span></strong>
-  <span class="en"> — Use UPI for ≤ ₹1L consumer transactions (zero MDR, fastest UX). Use IMPS for ₹1L–₹5L payouts needing instant settlement. Use NEFT for payroll and large-batch disbursements. Use RTGS only for ≥ ₹2L single-leg settlements where finality matters most.</span>
-  <span class="ta"> — ₹1L வரையான consumer பரிவர்த்தனைகளுக்கு UPI பயன்படுத்தவும். ₹1L–₹5L payouts-க்கு IMPS. Payroll-க்கு NEFT. ₹2L+ single-leg settlements-க்கு RTGS.</span>
+  <strong><span class="en">Quick decision guide</span><span class="ta">விரைவு முடிவு வழிகாட்டி</span></strong>
+  <span class="en"> — PayIn from customers? Use UPI intent/QR (zero MDR, instant). Paying out freelancers? Use IMPS or UPI (instant, ≤₹5L). Monthly payroll? NEFT batch. Large B2B settlement ≥₹2L? RTGS. Verifying a new bank account? Penny drop first.</span>
+  <span class="ta"> — Customer-இடமிருந்து PayIn? UPI QR. Freelancer payout? IMPS/UPI. Monthly payroll? NEFT. ₹2L+ B2B? RTGS. New account verify? Penny drop.</span>
 </div>`
 },
 
