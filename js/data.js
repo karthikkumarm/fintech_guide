@@ -748,7 +748,23 @@ window.SECTIONS = [
     <div class="vt-card">
       <div class="vt-h">🔐 DSC — Digital Signature Certificate</div>
       <p class="vt-p"><span class="en">Each proposed director needs a Class-3 DSC. Apply via MCA-empanelled agencies: <a href="https://www.emudhra.com" target="_blank" rel="noopener" class="ext-link">eMudhra</a>, <a href="https://www.sifast.com" target="_blank" rel="noopener" class="ext-link">Sify</a>, or <a href="https://www.nsdl.co.in" target="_blank" rel="noopener" class="ext-link">NSDL e-Gov</a>. Requires Aadhaar OTP + PAN + video verification. 2-year validity.</span><span class="ta">ஒவ்வொரு இயக்குனருக்கும் Class-3 DSC தேவை. <a href="https://www.emudhra.com" target="_blank" rel="noopener" class="ext-link">eMudhra</a>, <a href="https://www.sifast.com" target="_blank" rel="noopener" class="ext-link">Sify</a>, அல்லது <a href="https://www.nsdl.co.in" target="_blank" rel="noopener" class="ext-link">NSDL</a> மூலம் விண்ணப்பிக்கவும்.</span></p>
-      <div class="vt-meta"><span class="tag tag-cost">₹2,500 – ₹4,000</span><span class="tag tag-time">1 – 2 days</span></div>
+      <div class="vt-meta"><span class="tag tag-cost">₹2,500 – ₹4,000 per director</span><span class="tag tag-time">1 – 2 days</span></div>
+      <div class="reg-flow-wrap">
+        <div class="reg-flow-label">📋 How to get a DSC — step by step</div>
+        <div class="reg-flow">
+          <div class="reg-step"><div class="reg-step-icon">🌐</div><div class="reg-step-label"><span class="reg-step-n">Step 1</span>Open eMudhra / Sify / NSDL portal</div></div>
+          <span class="reg-step-arr">›</span>
+          <div class="reg-step"><div class="reg-step-icon">📝</div><div class="reg-step-label"><span class="reg-step-n">Step 2</span>Fill form: name, Aadhaar, PAN, email</div></div>
+          <span class="reg-step-arr">›</span>
+          <div class="reg-step"><div class="reg-step-icon">📎</div><div class="reg-step-label"><span class="reg-step-n">Step 3</span>Upload PAN + Aadhaar scan</div></div>
+          <span class="reg-step-arr">›</span>
+          <div class="reg-step"><div class="reg-step-icon">📹</div><div class="reg-step-label"><span class="reg-step-n">Step 4</span>Live video verification (face + doc)</div></div>
+          <span class="reg-step-arr">›</span>
+          <div class="reg-step"><div class="reg-step-icon">📱</div><div class="reg-step-label"><span class="reg-step-n">Step 5</span>Aadhaar OTP on linked mobile</div></div>
+          <span class="reg-step-arr">›</span>
+          <div class="reg-step"><div class="reg-step-icon">💾</div><div class="reg-step-label"><span class="reg-step-n">Step 6</span>Receive USB token or .pfx download link</div></div>
+        </div>
+      </div>
     </div>
   </li>
   <li class="vt-item">
@@ -757,6 +773,20 @@ window.SECTIONS = [
       <div class="vt-h">🪪 DIN — Director Identification Number</div>
       <p class="vt-p"><span class="en">Apply for DIN via <a href="https://www.mca.gov.in/MinistryV2/din.html" target="_blank" rel="noopener" class="ext-link">MCA SPICe+ form</a> (automatically allotted on incorporation) or standalone DIR-3 on <a href="https://www.mca.gov.in" target="_blank" rel="noopener" class="ext-link">mca.gov.in</a>. DIN is lifelong — one per person. Foreign nationals need apostilled documents.</span><span class="ta"><a href="https://www.mca.gov.in" target="_blank" rel="noopener" class="ext-link">MCA SPICe+</a> படிவம் வழியாக DIN-க்கு விண்ணப்பிக்கவும். DIN வாழ்நாள் முழுவதும் செல்லுபடியாகும்.</span></p>
       <div class="vt-meta"><span class="tag tag-cost">₹500 gov fee</span><span class="tag tag-time">Same day if SPICe+</span></div>
+      <div class="reg-flow-wrap">
+        <div class="reg-flow-label">📋 How to obtain a DIN — step by step</div>
+        <div class="reg-flow">
+          <div class="reg-step"><div class="reg-step-icon">🌐</div><div class="reg-step-label"><span class="reg-step-n">Step 1</span>Log in to mca.gov.in</div></div>
+          <span class="reg-step-arr">›</span>
+          <div class="reg-step"><div class="reg-step-icon">📝</div><div class="reg-step-label"><span class="reg-step-n">Step 2</span>Open DIR-3 form (or skip — SPICe+ auto-allots)</div></div>
+          <span class="reg-step-arr">›</span>
+          <div class="reg-step"><div class="reg-step-icon">✍️</div><div class="reg-step-label"><span class="reg-step-n">Step 3</span>E-sign with your DSC</div></div>
+          <span class="reg-step-arr">›</span>
+          <div class="reg-step"><div class="reg-step-icon">💳</div><div class="reg-step-label"><span class="reg-step-n">Step 4</span>Pay ₹500 online (debit / UPI)</div></div>
+          <span class="reg-step-arr">›</span>
+          <div class="reg-step"><div class="reg-step-icon">🏷️</div><div class="reg-step-label"><span class="reg-step-n">Step 5</span>DIN allotted — note it (lifelong, non-transferable)</div></div>
+        </div>
+      </div>
     </div>
   </li>
   <li class="vt-item">
@@ -765,6 +795,20 @@ window.SECTIONS = [
       <div class="vt-h">🏷️ Name Reservation — RUN / SPICe+</div>
       <p class="vt-p"><span class="en">Reserve up to 2 names via <a href="https://www.mca.gov.in/MinistryV2/runform.html" target="_blank" rel="noopener" class="ext-link">MCA RUN</a> (Reserve Unique Name) or within SPICe+. Check name availability on <a href="https://www.mca.gov.in/MinistryV2/companyname.html" target="_blank" rel="noopener" class="ext-link">MCA Company Search</a>. Avoid "Bank", "Insurance", "Pay" without RBI/IRDAI clearance. Check trademarks on <a href="https://ipindiaonline.gov.in" target="_blank" rel="noopener" class="ext-link">IP India</a>.</span><span class="ta"><a href="https://www.mca.gov.in/MinistryV2/runform.html" target="_blank" rel="noopener" class="ext-link">MCA RUN</a> சேவை வழியாக 2 பெயர்கள் வரை ஒதுக்கவும். <a href="https://ipindiaonline.gov.in" target="_blank" rel="noopener" class="ext-link">IP India</a>-ல் trademark சரிபார்க்கவும்.</span></p>
       <div class="vt-meta"><span class="tag tag-cost">₹1,000 gov fee</span><span class="tag tag-time">1 – 3 days</span><span class="tag tag-warn">Avoid "Pay" without RBI NOC</span></div>
+      <div class="reg-flow-wrap">
+        <div class="reg-flow-label">📋 How to reserve your company name — step by step</div>
+        <div class="reg-flow">
+          <div class="reg-step"><div class="reg-step-icon">🔍</div><div class="reg-step-label"><span class="reg-step-n">Step 1</span>Search existing names on MCA Company Search</div></div>
+          <span class="reg-step-arr">›</span>
+          <div class="reg-step"><div class="reg-step-icon">™️</div><div class="reg-step-label"><span class="reg-step-n">Step 2</span>Check trademarks on ipindiaonline.gov.in</div></div>
+          <span class="reg-step-arr">›</span>
+          <div class="reg-step"><div class="reg-step-icon">📝</div><div class="reg-step-label"><span class="reg-step-n">Step 3</span>Submit 2 name choices in MCA RUN form</div></div>
+          <span class="reg-step-arr">›</span>
+          <div class="reg-step"><div class="reg-step-icon">⏳</div><div class="reg-step-label"><span class="reg-step-n">Step 4</span>Wait 1–3 days for Registrar review</div></div>
+          <span class="reg-step-arr">›</span>
+          <div class="reg-step"><div class="reg-step-icon">✅</div><div class="reg-step-label"><span class="reg-step-n">Step 5</span>SRN + approval email received</div></div>
+        </div>
+      </div>
     </div>
   </li>
   <li class="vt-item">
@@ -773,6 +817,20 @@ window.SECTIONS = [
       <div class="vt-h">📄 Draft MoA &amp; AoA</div>
       <p class="vt-p"><span class="en">Memorandum of Association defines objects clause — must explicitly include "payment processing", "financial technology services", and "software development". AoA governs internal management. Hire a <a href="https://www.icsi.edu/membership/find-a-member/" target="_blank" rel="noopener" class="ext-link">Company Secretary (ICSI)</a> or <a href="https://www.icai.org/find-a-ca.html" target="_blank" rel="noopener" class="ext-link">CA (ICAI)</a> for fintech-specific clauses.</span><span class="ta">MoA இன் objects clause — "payment processing", "financial technology services"-ஐ வெளிப்படையாக சேர்க்க வேண்டும். <a href="https://www.icsi.edu" target="_blank" rel="noopener" class="ext-link">ICSI</a> அல்லது <a href="https://www.icai.org" target="_blank" rel="noopener" class="ext-link">ICAI</a> நிபுணரின் உதவி பெறவும்.</span></p>
       <div class="vt-meta"><span class="tag tag-cost">₹8,000 – ₹15,000 professional fee</span><span class="tag tag-time">2 – 4 days</span></div>
+      <div class="reg-flow-wrap">
+        <div class="reg-flow-label">📋 How to draft MoA &amp; AoA — step by step</div>
+        <div class="reg-flow">
+          <div class="reg-step"><div class="reg-step-icon">👨‍💼</div><div class="reg-step-label"><span class="reg-step-n">Step 1</span>Engage practising CA (ICAI) or CS (ICSI)</div></div>
+          <span class="reg-step-arr">›</span>
+          <div class="reg-step"><div class="reg-step-icon">📝</div><div class="reg-step-label"><span class="reg-step-n">Step 2</span>Draft MoA objects clause — include "payment processing" + "fintech"</div></div>
+          <span class="reg-step-arr">›</span>
+          <div class="reg-step"><div class="reg-step-icon">📋</div><div class="reg-step-label"><span class="reg-step-n">Step 3</span>Define share structure + voting rights in AoA</div></div>
+          <span class="reg-step-arr">›</span>
+          <div class="reg-step"><div class="reg-step-icon">💬</div><div class="reg-step-label"><span class="reg-step-n">Step 4</span>Directors review draft + add comments</div></div>
+          <span class="reg-step-arr">›</span>
+          <div class="reg-step"><div class="reg-step-icon">📄</div><div class="reg-step-label"><span class="reg-step-n">Step 5</span>Final signed draft ready for SPICe+ attachment</div></div>
+        </div>
+      </div>
     </div>
   </li>
   <li class="vt-item">
@@ -781,6 +839,22 @@ window.SECTIONS = [
       <div class="vt-h">📝 SPICe+ e-Form (MCA)</div>
       <p class="vt-p"><span class="en">File the integrated incorporation form on <a href="https://www.mca.gov.in/MinistryV2/spicemoa.html" target="_blank" rel="noopener" class="ext-link">MCA SPICe+</a> covering DIN allotment, name approval, PAN, TAN, EPFO, ESIC, and GST registration in one submission. Requires DSCs of all directors + subscriber sheet. Government fee based on authorised capital: up to ₹1L capital = ₹2,000; above ₹5L = scales up.</span><span class="ta"><a href="https://www.mca.gov.in/MinistryV2/spicemoa.html" target="_blank" rel="noopener" class="ext-link">MCA SPICe+</a>-ல் ஒரே சமர்ப்பிப்பில் DIN, பெயர் அனுமதி, PAN, TAN, EPFO, ESIC, மற்றும் GST பதிவை உள்ளடக்கிய ஒருங்கிணைந்த படிவம்.</span></p>
       <div class="vt-meta"><span class="tag tag-cost">₹2,000 – ₹12,000 gov fee (capital-based)</span><span class="tag tag-time">3 – 7 days</span></div>
+      <div class="reg-flow-wrap">
+        <div class="reg-flow-label">📋 How to file SPICe+ — step by step</div>
+        <div class="reg-flow">
+          <div class="reg-step"><div class="reg-step-icon">🖥️</div><div class="reg-step-label"><span class="reg-step-n">Step 1</span>Log in to mca.gov.in → SPICe+ link</div></div>
+          <span class="reg-step-arr">›</span>
+          <div class="reg-step"><div class="reg-step-icon">📋</div><div class="reg-step-label"><span class="reg-step-n">Step 2</span>Part A: directors, name, DIN</div></div>
+          <span class="reg-step-arr">›</span>
+          <div class="reg-step"><div class="reg-step-icon">📋</div><div class="reg-step-label"><span class="reg-step-n">Step 3</span>Part B: address, capital, PAN/TAN/GST</div></div>
+          <span class="reg-step-arr">›</span>
+          <div class="reg-step"><div class="reg-step-icon">📎</div><div class="reg-step-label"><span class="reg-step-n">Step 4</span>Attach: MoA, AoA, consents, proof of address</div></div>
+          <span class="reg-step-arr">›</span>
+          <div class="reg-step"><div class="reg-step-icon">✍️</div><div class="reg-step-label"><span class="reg-step-n">Step 5</span>All directors e-sign using DSC</div></div>
+          <span class="reg-step-arr">›</span>
+          <div class="reg-step"><div class="reg-step-icon">💳</div><div class="reg-step-label"><span class="reg-step-n">Step 6</span>Pay govt fee online → Submit → note SRN</div></div>
+        </div>
+      </div>
     </div>
   </li>
   <li class="vt-item">
@@ -789,6 +863,20 @@ window.SECTIONS = [
       <div class="vt-h">🏛️ Certificate of Incorporation (CoI)</div>
       <p class="vt-p"><span class="en">ROC (Registrar of Companies) issues CoI with CIN via <a href="https://www.mca.gov.in" target="_blank" rel="noopener" class="ext-link">MCA portal</a>. Download digitally from your MCA account — this is your company's birth certificate. CIN format: U[NIC Code][State][Year][PVT][6-digit Number]. Keep certified copies for every licence application. Verify on <a href="https://www.mca.gov.in/MinistryV2/companysearch.html" target="_blank" rel="noopener" class="ext-link">MCA company search</a>.</span><span class="ta"><a href="https://www.mca.gov.in" target="_blank" rel="noopener" class="ext-link">MCA portal</a> வழியாக ROC CoI-ஐ CIN உடன் வழங்குகிறது. ஒவ்வொரு உரிமம் விண்ணப்பத்திற்கும் இது தேவை.</span></p>
       <div class="vt-meta"><span class="tag tag-ok">Issued within SPICe+ timeline</span></div>
+      <div class="reg-flow-wrap">
+        <div class="reg-flow-label">📋 How to receive your CoI — step by step</div>
+        <div class="reg-flow">
+          <div class="reg-step"><div class="reg-step-icon">⏳</div><div class="reg-step-label"><span class="reg-step-n">Step 1</span>ROC processes SPICe+ (3–7 working days)</div></div>
+          <span class="reg-step-arr">›</span>
+          <div class="reg-step"><div class="reg-step-icon">📧</div><div class="reg-step-label"><span class="reg-step-n">Step 2</span>Email + SMS from ROC with CIN</div></div>
+          <span class="reg-step-arr">›</span>
+          <div class="reg-step"><div class="reg-step-icon">💻</div><div class="reg-step-label"><span class="reg-step-n">Step 3</span>Download CoI from MCA dashboard (PDF)</div></div>
+          <span class="reg-step-arr">›</span>
+          <div class="reg-step"><div class="reg-step-icon">📝</div><div class="reg-step-label"><span class="reg-step-n">Step 4</span>Note CIN, PAN, TAN, GSTIN (auto allotted)</div></div>
+          <span class="reg-step-arr">›</span>
+          <div class="reg-step"><div class="reg-step-icon">🖨️</div><div class="reg-step-label"><span class="reg-step-n">Step 5</span>Get certified copies from ROC or CA for licence applications</div></div>
+        </div>
+      </div>
     </div>
   </li>
   <li class="vt-item">
@@ -797,6 +885,22 @@ window.SECTIONS = [
       <div class="vt-h">🏦 Current Account Opening</div>
       <p class="vt-p"><span class="en">Open a current account in the company name. For fintech, prefer banks with strong API banking: <a href="https://www.icicibank.com/business/current-account" target="_blank" rel="noopener" class="ext-link">ICICI Business</a>, <a href="https://www.yesbank.in/business-banking" target="_blank" rel="noopener" class="ext-link">Yes Bank</a>, <a href="https://www.kotak.com/en/business-banking/current-account.html" target="_blank" rel="noopener" class="ext-link">Kotak</a>, or <a href="https://www.axisbank.com/business-banking" target="_blank" rel="noopener" class="ext-link">Axis Bank</a> for future nodal/escrow setup. Requires CoI, MoA/AoA, PAN, address proof.</span><span class="ta">நிறுவன பெயரில் நடப்பு கணக்கை திறக்கவும். <a href="https://www.icicibank.com" target="_blank" rel="noopener" class="ext-link">ICICI</a>, <a href="https://www.yesbank.in" target="_blank" rel="noopener" class="ext-link">Yes Bank</a>, <a href="https://www.kotak.com" target="_blank" rel="noopener" class="ext-link">Kotak</a>, <a href="https://www.axisbank.com" target="_blank" rel="noopener" class="ext-link">Axis</a> போன்ற API வங்கிகளை விரும்புங்கள்.</span></p>
       <div class="vt-meta"><span class="tag tag-time">3 – 7 days</span><span class="tag tag-cost">₹10,000 – ₹25,000 min balance</span></div>
+      <div class="reg-flow-wrap">
+        <div class="reg-flow-label">📋 How to open a current account — step by step</div>
+        <div class="reg-flow">
+          <div class="reg-step"><div class="reg-step-icon">🏛️</div><div class="reg-step-label"><span class="reg-step-n">Step 1</span>Choose API-friendly bank (ICICI / Yes / Kotak / Axis)</div></div>
+          <span class="reg-step-arr">›</span>
+          <div class="reg-step"><div class="reg-step-icon">📁</div><div class="reg-step-label"><span class="reg-step-n">Step 2</span>Gather: CoI, MoA/AoA, PAN, Aadhaar, board resolution</div></div>
+          <span class="reg-step-arr">›</span>
+          <div class="reg-step"><div class="reg-step-icon">🏦</div><div class="reg-step-label"><span class="reg-step-n">Step 3</span>Visit branch or apply via bank's online CA portal</div></div>
+          <span class="reg-step-arr">›</span>
+          <div class="reg-step"><div class="reg-step-icon">📋</div><div class="reg-step-label"><span class="reg-step-n">Step 4</span>Complete KYC + FATCA + signatory declaration</div></div>
+          <span class="reg-step-arr">›</span>
+          <div class="reg-step"><div class="reg-step-icon">💰</div><div class="reg-step-label"><span class="reg-step-n">Step 5</span>Deposit MAB (₹10k–₹25k)</div></div>
+          <span class="reg-step-arr">›</span>
+          <div class="reg-step"><div class="reg-step-icon">✅</div><div class="reg-step-label"><span class="reg-step-n">Step 6</span>Account + chequebook + net banking issued</div></div>
+        </div>
+      </div>
     </div>
   </li>
   <li class="vt-item">
@@ -805,6 +909,22 @@ window.SECTIONS = [
       <div class="vt-h">🧾 GST Registration</div>
       <p class="vt-p"><span class="en">GST is mandatory for fintech services before first invoice. Apply on <a href="https://www.gst.gov.in/registration/new-registration" target="_blank" rel="noopener" class="ext-link">GST Portal</a> with CIN, PAN, bank statement, and director Aadhaar. ARN issued within 3 working days; GSTIN within 7. 18% GST applies to payment processing fees. File GSTR-1 and GSTR-3B monthly. Fintech TDS compliance: <a href="https://www.incometax.gov.in" target="_blank" rel="noopener" class="ext-link">incometax.gov.in</a> for TDS on commissions (section 194H).</span><span class="ta">முதல் invoice-க்கு முன் fintech சேவைகளுக்கு GST கட்டாயம். <a href="https://www.gst.gov.in" target="_blank" rel="noopener" class="ext-link">GST Portal</a>-ல் விண்ணப்பிக்கவும்.</span></p>
       <div class="vt-meta"><span class="tag tag-cost">No fee</span><span class="tag tag-time">5 – 10 days</span><span class="tag tag-ok">Auto-filed via SPICe+ often</span></div>
+      <div class="reg-flow-wrap">
+        <div class="reg-flow-label">📋 How to register for GST — step by step</div>
+        <div class="reg-flow">
+          <div class="reg-step"><div class="reg-step-icon">🌐</div><div class="reg-step-label"><span class="reg-step-n">Step 1</span>Go to gst.gov.in → New Registration</div></div>
+          <span class="reg-step-arr">›</span>
+          <div class="reg-step"><div class="reg-step-icon">📝</div><div class="reg-step-label"><span class="reg-step-n">Step 2</span>Fill Form REG-01: PAN, state, business type</div></div>
+          <span class="reg-step-arr">›</span>
+          <div class="reg-step"><div class="reg-step-icon">📎</div><div class="reg-step-label"><span class="reg-step-n">Step 3</span>Upload: CoI, PAN, bank statement, Aadhaar, address proof</div></div>
+          <span class="reg-step-arr">›</span>
+          <div class="reg-step"><div class="reg-step-icon">📱</div><div class="reg-step-label"><span class="reg-step-n">Step 4</span>Aadhaar OTP verification of authorised signatory</div></div>
+          <span class="reg-step-arr">›</span>
+          <div class="reg-step"><div class="reg-step-icon">📧</div><div class="reg-step-label"><span class="reg-step-n">Step 5</span>ARN issued within 3 working days</div></div>
+          <span class="reg-step-arr">›</span>
+          <div class="reg-step"><div class="reg-step-icon">✅</div><div class="reg-step-label"><span class="reg-step-n">Step 6</span>GSTIN issued in 7 days — file GSTR-1 &amp; GSTR-3B monthly</div></div>
+        </div>
+      </div>
     </div>
   </li>
 </ol>`
