@@ -1302,3 +1302,166 @@ details[open] .mt-steps-toggle { color: rgba(226,232,240,0.8); }
   .ctype-grid   { grid-template-columns: 1fr; }
   .mdr-who-grid { grid-template-columns: 1fr; }
 }
+
+/* ═══════════════════════════════════════════════════
+   CROSS-SECTION FLOW ADDITIONS
+═══════════════════════════════════════════════════ */
+
+/* ── PG vs PA Money-Path Flow (distinction) ── */
+.money-path-wrap {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+  margin: 2rem 0;
+}
+.mp-lane {
+  border-radius: 16px;
+  padding: 1.5rem 1.25rem 1.25rem;
+  border: 1px solid var(--border);
+  position: relative;
+  overflow: hidden;
+}
+.mp-lane--pg { background: linear-gradient(160deg,#f0f4ff,#e8eefc); border-top: 3px solid #1c4d8a; }
+.mp-lane--pa { background: linear-gradient(160deg,#fff4f0,#fce8e2); border-top: 3px solid var(--accent); }
+.mp-lane-title { font-size: 0.67rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 1.25rem; }
+.mp-lane--pg .mp-lane-title { color: #1c4d8a; }
+.mp-lane--pa .mp-lane-title { color: var(--accent); }
+.mp-nodes { display: flex; flex-direction: column; gap: 0; }
+.mp-node { display: flex; align-items: center; gap: 10px; }
+.mp-box {
+  display: flex; align-items: center; gap: 8px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 8px 12px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--ink);
+  flex: 1;
+  min-height: 44px;
+  position: relative;
+}
+.mp-box-icon { font-size: 1rem; flex-shrink: 0; }
+.mp-box-text { line-height: 1.3; }
+.mp-box-sub { font-size: 0.65rem; font-weight: 400; color: var(--ink3); display: block; }
+.mp-box--nodal { border-color: rgba(200,90,42,0.35); background: rgba(200,90,42,0.05); }
+.mp-box--nodal .mp-box-sub { color: var(--accent); }
+.mp-connector { display: flex; flex-direction: column; align-items: center; height: 32px; position: relative; }
+.mp-vline { width: 2px; flex: 1; position: relative; overflow: hidden; }
+.mp-vline--pg  { background: rgba(28,77,138,0.2); }
+.mp-vline--pa  { background: rgba(200,90,42,0.2); }
+.mp-vdot { position: absolute; top: -5px; left: -4px; width: 10px; height: 10px; border-radius: 50%; animation: mpDot 2s ease-in-out infinite; }
+.mp-vdot--pg   { background: #1c4d8a; }
+.mp-vdot--pa   { background: var(--accent); }
+@keyframes mpDot { 0%{top:-5px;opacity:0} 20%{opacity:1} 80%{opacity:1} 100%{top:calc(100% - 5px);opacity:0} }
+.mp-tag { font-size: 0.58rem; font-weight: 700; padding: 2px 7px; border-radius: 10px; text-transform: uppercase; letter-spacing: 0.05em; white-space: nowrap; }
+.mp-tag--blue  { background: rgba(28,77,138,0.12); color: #1c4d8a; }
+.mp-tag--red   { background: rgba(200,90,42,0.12); color: var(--accent); }
+.mp-tag--green { background: rgba(26,107,74,0.12); color: #1a6b4a; }
+.mp-tag--grey  { background: rgba(0,0,0,0.06); color: var(--ink3); }
+.mp-footnote { font-size: 0.72rem; color: var(--ink3); margin-top: 0.9rem; line-height: 1.5; border-top: 1px solid var(--border); padding-top: 0.75rem; }
+.mp-footnote strong { color: var(--ink); }
+
+/* ── Licence Timeline Bar (license) ── */
+.lic-timeline-wrap {
+  background: linear-gradient(135deg,#f7f6f2,#edeae3);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 2rem;
+  margin: 2rem 0;
+}
+.lt-title { font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink3); margin-bottom: 1.5rem; }
+.lt-bar-wrap { position: relative; margin-bottom: 1rem; }
+.lt-months { display: flex; justify-content: space-between; font-size: 0.6rem; color: var(--ink3); font-family: var(--f-mono); margin-bottom: 6px; }
+.lt-track { height: 10px; background: rgba(0,0,0,0.06); border-radius: 99px; position: relative; overflow: visible; }
+.lt-stage { position: absolute; height: 100%; border-radius: 99px; top: 0; }
+.lt-stage--a { background: #3b82f6; left: 0%; width: 13%; }
+.lt-stage--b { background: #8b5cf6; left: 10%; width: 10%; }
+.lt-stage--c { background: #f97316; left: 16%; width: 12%; }
+.lt-stage--d { background: #ef4444; left: 20%; width: 47%; }
+.lt-stage--e { background: #22c55e; left: 60%; width: 40%; }
+.lt-labels { display: flex; flex-direction: column; gap: 7px; margin-top: 1.25rem; }
+.lt-label { display: flex; align-items: center; gap: 10px; font-size: 0.78rem; color: var(--ink2); }
+.lt-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+.lt-dot--a { background: #3b82f6; }
+.lt-dot--b { background: #8b5cf6; }
+.lt-dot--c { background: #f97316; }
+.lt-dot--d { background: #ef4444; }
+.lt-dot--e { background: #22c55e; }
+.lt-label span { font-family: var(--f-mono); font-size: 0.68rem; color: var(--ink3); margin-left: auto; white-space: nowrap; }
+.lt-total { margin-top: 1.25rem; padding: 0.9rem 1rem; background: rgba(0,0,0,0.04); border-radius: 10px; font-size: 0.8rem; color: var(--ink2); line-height: 1.6; }
+.lt-total strong { color: var(--ink); }
+
+/* ── RBI Enforcement Flow (shadow) ── */
+.enf-flow-wrap {
+  background: var(--dark2);
+  border-radius: 16px;
+  padding: 2rem;
+  margin: 2rem 0;
+  position: relative;
+  overflow: hidden;
+}
+.enf-flow-wrap::before {
+  content: ''; position: absolute; top: -80px; right: -80px;
+  width: 250px; height: 250px; border-radius: 50%;
+  background: radial-gradient(circle,rgba(239,68,68,0.12) 0%,transparent 70%);
+}
+.enf-title { font-size: 0.67rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--d-ink2); margin-bottom: 1.75rem; position: relative; z-index: 1; }
+.enf-track { display: flex; align-items: flex-start; gap: 0; overflow-x: auto; padding-bottom: 0.5rem; position: relative; z-index: 1; }
+.enf-node { display: flex; flex-direction: column; align-items: center; text-align: center; min-width: 88px; }
+.enf-box { width: 52px; height: 52px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.25rem; border: 1px solid var(--d-bdr); background: rgba(255,255,255,0.04); }
+.enf-box--safe    { border-color: rgba(34,197,94,0.4); background: rgba(34,197,94,0.07); }
+.enf-box--warn    { border-color: rgba(251,191,36,0.4); background: rgba(251,191,36,0.07); }
+.enf-box--alert   { border-color: rgba(249,115,22,0.4); background: rgba(249,115,22,0.07); }
+.enf-box--danger  { border-color: rgba(239,68,68,0.5); background: rgba(239,68,68,0.1); }
+.enf-lbl { font-size: 0.68rem; font-weight: 700; color: var(--d-ink); margin-top: 6px; line-height: 1.3; }
+.enf-sub { font-size: 0.58rem; color: var(--d-ink2); margin-top: 2px; line-height: 1.3; }
+.enf-arr { display: flex; flex-direction: column; align-items: center; justify-content: center; min-width: 40px; padding-bottom: 28px; }
+.enf-line { width: 32px; height: 2px; background: rgba(239,68,68,0.35); position: relative; overflow: hidden; }
+.enf-dot  { position: absolute; top: -4px; left: -5px; width: 10px; height: 10px; border-radius: 50%; background: #ef4444; animation: enfDot 1.8s ease-in-out infinite; }
+@keyframes enfDot { 0%{left:-5px;opacity:0} 15%{opacity:1} 85%{opacity:1} 100%{left:30px;opacity:0} }
+.enf-trigger-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 0.75rem; margin-top: 1.5rem; position: relative; z-index: 1; }
+.enf-trigger { background: rgba(239,68,68,0.06); border: 1px solid rgba(239,68,68,0.18); border-radius: 10px; padding: 0.9rem 1rem; }
+.enf-trigger-n { font-family: var(--f-mono); font-size: 0.6rem; color: rgba(239,68,68,0.6); margin-bottom: 4px; }
+.enf-trigger-h { font-size: 0.8rem; font-weight: 700; color: var(--d-ink); margin-bottom: 4px; }
+.enf-trigger-p { font-size: 0.74rem; color: var(--d-ink2); line-height: 1.55; }
+.enf-trigger-p code { font-family: var(--f-mono); font-size: 0.68rem; background: rgba(255,255,255,0.07); padding: 1px 5px; border-radius: 4px; color: rgba(255,255,255,0.65); }
+
+/* ── ₹1 Settlement Journey (payout) ── */
+.settle-flow-wrap {
+  background: linear-gradient(135deg,#f5f4f0,#ede9e2);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 2rem;
+  margin: 2rem 0;
+}
+.sf-title { font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink3); margin-bottom: 1.5rem; }
+.sf-track { display: flex; align-items: stretch; overflow-x: auto; padding-bottom: 0.5rem; }
+.sf-node { display: flex; flex-direction: column; align-items: center; text-align: center; min-width: 105px; }
+.sf-box { width: 56px; height: 56px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 1.35rem; border: 1px solid var(--border); background: var(--surface); box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+.sf-box--pay     { border-color: rgba(28,77,138,0.35); background: #e8f0fb; }
+.sf-box--nodal   { border-color: rgba(200,90,42,0.35); background: #fef0e8; }
+.sf-box--hold    { border-color: rgba(251,191,36,0.4); background: #fffbeb; }
+.sf-box--settle  { border-color: rgba(26,107,74,0.35); background: #e8f7f0; }
+.sf-lbl { font-size: 0.72rem; font-weight: 700; color: var(--ink); margin-top: 7px; }
+.sf-sub { font-size: 0.61rem; color: var(--ink3); margin-top: 2px; line-height: 1.35; }
+.sf-arr { display: flex; flex-direction: column; align-items: center; justify-content: center; min-width: 48px; padding-bottom: 28px; gap: 4px; }
+.sf-line { width: 38px; height: 2px; background: linear-gradient(90deg,rgba(26,107,74,0.2),rgba(26,107,74,0.6)); position: relative; overflow: hidden; }
+.sf-dot  { position: absolute; top: -4px; left: -5px; width: 10px; height: 10px; border-radius: 50%; background: #1a6b4a; animation: sfDot 2.2s ease-in-out infinite; }
+@keyframes sfDot { 0%{left:-5px;opacity:0} 20%{opacity:1} 80%{opacity:1} 100%{left:36px;opacity:0} }
+.sf-arr-lbl { font-size: 0.57rem; color: var(--ink3); text-align: center; line-height: 1.3; }
+.sf-rails { display: grid; grid-template-columns: repeat(3,1fr); gap: 0.75rem; margin-top: 1.5rem; }
+.sf-rail { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 0.9rem 1rem; border-left: 3px solid var(--border); }
+.sf-rail--upi  { border-left-color: #22c55e; }
+.sf-rail--card { border-left-color: #3b82f6; }
+.sf-rail--neft { border-left-color: #f97316; }
+.sf-rail-name { font-size: 0.78rem; font-weight: 700; color: var(--ink); margin-bottom: 4px; }
+.sf-rail-t { font-family: var(--f-mono); font-size: 0.82rem; font-weight: 700; color: var(--accent); margin-bottom: 4px; }
+.sf-rail-p { font-size: 0.74rem; color: var(--ink2); line-height: 1.55; }
+
+/* ── Responsive tweaks for new flows ── */
+@media (max-width: 768px) {
+  .money-path-wrap    { grid-template-columns: 1fr; }
+  .enf-trigger-grid   { grid-template-columns: 1fr; }
+  .sf-rails           { grid-template-columns: 1fr; }
+}

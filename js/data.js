@@ -59,6 +59,90 @@ window.SECTIONS = [
   <div class="pe-label">💡 In plain English</div>
   <span class="en">A <strong>Payment Gateway (PG)</strong> is like an electricity cable — it moves money from A to B but never stores it. A <strong>Payment Aggregator (PA)</strong> is like the electricity board — it actually receives money from many people, holds it in a regulated account, and distributes it to recipients. The cable needs no licence. The electricity board does. If you want to move money without touching it → PG. If you're going to hold it even briefly → you are a PA and need a licence.</span>
   <span class="ta">PG என்பது ஒரு மின்கம்பம் போன்றது — பணத்தை A-லிருந்து B-க்கு நகர்த்துகிறது, சேமிப்பதில்லை. PA என்பது மின்சாரம் வாரியம் போன்றது — பணத்தை சேகரித்து, வைத்திருந்து, விநியோகிக்கிறது. கம்பத்திற்கு உரிமம் தேவையில்லை; வாரியத்திற்கு தேவை.</span>
+</div>
+
+<h3 class="s-title" style="font-size:1.5rem; margin: 2.5rem 0 1rem;" data-reveal>
+  <span class="en">Where does ₹1 actually travel?</span>
+  <span class="ta">₹1 உண்மையில் எங்கு பயணிக்கிறது?</span>
+</h3>
+<div class="money-path-wrap" data-stagger>
+
+  <div class="mp-lane mp-lane--pg">
+    <div class="mp-lane-title">📦 <span class="en">PG Model — money never stops here</span><span class="ta">PG மாதிரி — பணம் நிறுத்தாமல் செல்கிறது</span></div>
+    <div class="mp-nodes">
+      <div class="mp-node">
+        <div class="mp-box">
+          <span class="mp-box-icon">👤</span>
+          <div class="mp-box-text"><span class="en">Customer's bank</span><span class="ta">வாடிக்கையாளரின் வங்கி</span><span class="mp-box-sub"><span class="en">SBI / HDFC — funds debit here</span><span class="ta">இங்கே debit ஆகிறது</span></span></div>
+          <span class="mp-tag mp-tag--blue" style="margin-left:auto">T+0</span>
+        </div>
+      </div>
+      <div class="mp-connector"><div class="mp-vline mp-vline--pg"><div class="mp-vdot mp-vdot--pg"></div></div></div>
+      <div class="mp-node">
+        <div class="mp-box">
+          <span class="mp-box-icon">⚙️</span>
+          <div class="mp-box-text"><span class="en">PG routes the message</span><span class="ta">PG message route செய்கிறது</span><span class="mp-box-sub"><span class="en">ISO 8583 auth, BIN lookup — no funds held</span><span class="ta">பணம் வைத்திருப்பதில்லை</span></span></div>
+          <span class="mp-tag mp-tag--grey" style="margin-left:auto"><span class="en">No hold</span><span class="ta">Hold இல்லை</span></span>
+        </div>
+      </div>
+      <div class="mp-connector"><div class="mp-vline mp-vline--pg"><div class="mp-vdot mp-vdot--pg"></div></div></div>
+      <div class="mp-node">
+        <div class="mp-box">
+          <span class="mp-box-icon">🏦</span>
+          <div class="mp-box-text"><span class="en">Licensed PA (nodal a/c)</span><span class="ta">உரிமம் பெற்ற PA (nodal a/c)</span><span class="mp-box-sub"><span class="en">PG operates under a PA — PA holds and settles</span><span class="ta">PA கீழ் PG செயல்படுகிறது; PA தீர்க்கிறது</span></span></div>
+          <span class="mp-tag mp-tag--blue" style="margin-left:auto">T+1–2</span>
+        </div>
+      </div>
+      <div class="mp-connector"><div class="mp-vline mp-vline--pg"><div class="mp-vdot mp-vdot--pg"></div></div></div>
+      <div class="mp-node">
+        <div class="mp-box">
+          <span class="mp-box-icon">🏪</span>
+          <div class="mp-box-text"><span class="en">Merchant's bank account</span><span class="ta">வணிகரின் வங்கி கணக்கு</span><span class="mp-box-sub"><span class="en">Net of MDR credited by PA</span><span class="ta">MDR கழித்து PA credit செய்கிறது</span></span></div>
+          <span class="mp-tag mp-tag--green" style="margin-left:auto"><span class="en">Settled</span><span class="ta">தீர்க்கப்பட்டது</span></span>
+        </div>
+      </div>
+    </div>
+    <div class="mp-footnote"><strong><span class="en">Key point:</span><span class="ta">முக்கிய புள்ளி:</span></strong> <span class="en">The PG (Juspay, Stripe) never touches funds. It routes auth messages and integrates with a licensed PA above it. A standalone PG without a PA licence cannot legally settle money to merchants.</span><span class="ta">PG (Juspay, Stripe) நிதியை தொடுவதில்லை. Auth messages route செய்கிறது. PA இல்லாமல் PG-ஆல் பணம் settle செய்ய முடியாது.</span></div>
+  </div>
+
+  <div class="mp-lane mp-lane--pa">
+    <div class="mp-lane-title">🏦 <span class="en">PA Model — funds pool, then settle</span><span class="ta">PA மாதிரி — நிதி சேகரிக்கப்பட்டு, பிறகு தீர்க்கப்படுகிறது</span></div>
+    <div class="mp-nodes">
+      <div class="mp-node">
+        <div class="mp-box">
+          <span class="mp-box-icon">👤</span>
+          <div class="mp-box-text"><span class="en">Customer pays ₹1,000</span><span class="ta">வாடிக்கையாளர் ₹1,000 செலுத்துகிறார்</span><span class="mp-box-sub"><span class="en">UPI / Card / Net banking</span><span class="ta">UPI / Card / Net banking</span></span></div>
+          <span class="mp-tag mp-tag--red" style="margin-left:auto">T+0</span>
+        </div>
+      </div>
+      <div class="mp-connector"><div class="mp-vline mp-vline--pa"><div class="mp-vdot mp-vdot--pa"></div></div></div>
+      <div class="mp-node">
+        <div class="mp-box mp-box--nodal">
+          <span class="mp-box-icon">🔒</span>
+          <div class="mp-box-text"><span class="en">PA Nodal Account</span><span class="ta">PA Nodal கணக்கு</span><span class="mp-box-sub"><span class="en">RBI-mandated at a scheduled bank. ₹1,000 is received and held here. RBI audits balance monthly.</span><span class="ta">RBI-கட்டாயம். ₹1,000 இங்கே வந்து வைக்கப்படுகிறது.</span></span></div>
+          <span class="mp-tag mp-tag--red" style="margin-left:auto"><span class="en">Held</span><span class="ta">வைத்திருக்கப்படுகிறது</span></span>
+        </div>
+      </div>
+      <div class="mp-connector"><div class="mp-vline mp-vline--pa"><div class="mp-vdot mp-vdot--pa"></div></div></div>
+      <div class="mp-node">
+        <div class="mp-box">
+          <span class="mp-box-icon">📋</span>
+          <div class="mp-box-text"><span class="en">PA reconciles + sweeps</span><span class="ta">PA reconcile + sweep செய்கிறது</span><span class="mp-box-sub"><span class="en">EOD batch: match payments → deduct MDR → prepare settlement file</span><span class="ta">EOD batch: payments match → MDR கழிக்கவும்</span></span></div>
+          <span class="mp-tag mp-tag--red" style="margin-left:auto">T+1/T+2</span>
+        </div>
+      </div>
+      <div class="mp-connector"><div class="mp-vline mp-vline--pa"><div class="mp-vdot mp-vdot--pa"></div></div></div>
+      <div class="mp-node">
+        <div class="mp-box">
+          <span class="mp-box-icon">🏪</span>
+          <div class="mp-box-text"><span class="en">Merchant receives ₹982</span><span class="ta">வணிகர் ₹982 பெறுகிறார்</span><span class="mp-box-sub"><span class="en">₹1,000 minus ₹18 MDR (1.8%). Via NEFT/IMPS to merchant's bank.</span><span class="ta">₹1,000 - ₹18 MDR. NEFT/IMPS மூலம்.</span></span></div>
+          <span class="mp-tag mp-tag--green" style="margin-left:auto"><span class="en">Settled</span><span class="ta">தீர்க்கப்பட்டது</span></span>
+        </div>
+      </div>
+    </div>
+    <div class="mp-footnote"><strong><span class="en">Key point:</span><span class="ta">முக்கிய புள்ளி:</span></strong> <span class="en">The PA (Razorpay, PayU) actually receives ₹1,000 in a regulated nodal account and holds it before settling ₹982 to the merchant. This holding — even for one day — is exactly why the ₹25 Cr net worth and RBI licence are non-negotiable.</span><span class="ta">PA (Razorpay, PayU) உண்மையில் ₹1,000 nodal account-ல் பெற்று வைத்திருக்கிறது. ஒரு நாள் கூட வைத்திருப்பது — இதுவே ₹25 கோடி நிகர மதிப்பும் RBI உரிமும் கட்டாயமாகிறது.</span></div>
+  </div>
+
 </div>`
 },
 
@@ -419,6 +503,74 @@ window.SECTIONS = [
   <strong>🕵️ <span class="en">Real cases</span><span class="ta">உண்மையான வழக்குகள்</span></strong>
   <span class="en"> RBI shut down several unlicensed payment operators between 2020–2024. Several fintech founders in Bengaluru, Hyderabad, and Chennai were served show-cause notices. The trigger is almost always a bank SAR (Suspicious Activity Report) — usually filed when NEFT settlement batches pattern-match against AML rules. Directors faced personal passport impound orders in at least 3 documented cases.</span>
   <span class="ta"> RBI 2020–2024-க்கு இடையே பல உரிமம் இல்லாத payment ஆபரேட்டர்களை மூடியது. பெங்களூரு, ஹைதராபாத் மற்றும் சென்னையில் பல fintech நிறுவனர்களுக்கு காரண விளக்க அறிவிப்புகள் வழங்கப்பட்டன.</span>
+</div>
+
+<h3 class="s-title" style="font-size:1.5rem; margin: 2.5rem 0 1rem;" data-reveal>
+  <span class="en">How RBI detects and acts — the enforcement chain</span>
+  <span class="ta">RBI எவ்வாறு கண்டறிந்து செயல்படுகிறது — enforcement chain</span>
+</h3>
+<div class="enf-flow-wrap" data-reveal>
+  <div class="enf-title"><span class="en">Enforcement Trigger Flow — from normal ops to prosecution</span><span class="ta">Enforcement Trigger Flow — சாதாரண செயல்பாட்டிலிருந்து வழக்கு வரை</span></div>
+  <div class="enf-track">
+    <div class="enf-node">
+      <div class="enf-box enf-box--safe">⚙️</div>
+      <div class="enf-lbl"><span class="en">Operations</span><span class="ta">செயல்பாடு</span></div>
+      <div class="enf-sub"><span class="en">Merchant settlements via NEFT batches</span><span class="ta">NEFT batch settlements</span></div>
+    </div>
+    <div class="enf-arr"><div class="enf-line"><div class="enf-dot"></div></div></div>
+    <div class="enf-node">
+      <div class="enf-box enf-box--warn">🏦</div>
+      <div class="enf-lbl"><span class="en">Bank Monitors</span><span class="ta">வங்கி கண்காணிக்கிறது</span></div>
+      <div class="enf-sub"><span class="en">AML system flags unusual NEFT patterns</span><span class="ta">AML system அசாதாரண NEFT pattern flag</span></div>
+    </div>
+    <div class="enf-arr"><div class="enf-line"><div class="enf-dot"></div></div></div>
+    <div class="enf-node">
+      <div class="enf-box enf-box--warn">📋</div>
+      <div class="enf-lbl"><span class="en">SAR Filed</span><span class="ta">SAR பதிவு</span></div>
+      <div class="enf-sub"><span class="en">Bank files Suspicious Activity Report to FIU-IND</span><span class="ta">வங்கி FIU-IND-க்கு SAR அனுப்புகிறது</span></div>
+    </div>
+    <div class="enf-arr"><div class="enf-line"><div class="enf-dot"></div></div></div>
+    <div class="enf-node">
+      <div class="enf-box enf-box--alert">🏛️</div>
+      <div class="enf-lbl"><span class="en">FIU → RBI DPSS</span><span class="ta">FIU → RBI DPSS</span></div>
+      <div class="enf-sub"><span class="en">Financial Intelligence Unit alerts RBI's Dept of Payment Systems</span><span class="ta">Financial Intelligence Unit RBI-ஐ alert செய்கிறது</span></div>
+    </div>
+    <div class="enf-arr"><div class="enf-line"><div class="enf-dot"></div></div></div>
+    <div class="enf-node">
+      <div class="enf-box enf-box--danger">⚖️</div>
+      <div class="enf-lbl"><span class="en">Show-Cause Notice</span><span class="ta">காரண விளக்க அறிவிப்பு</span></div>
+      <div class="enf-sub"><span class="en">15–30 days to respond. No response = immediate action.</span><span class="ta">15–30 நாட்கள் பதில் சொல்ல. பதில் இல்லை = உடனடி நடவடிக்கை.</span></div>
+    </div>
+    <div class="enf-arr"><div class="enf-line"><div class="enf-dot"></div></div></div>
+    <div class="enf-node">
+      <div class="enf-box enf-box--danger">🧊</div>
+      <div class="enf-lbl"><span class="en">Account Freeze</span><span class="ta">கணக்கு முடக்கம்</span></div>
+      <div class="enf-sub"><span class="en">All corporate + personal accounts of directors frozen</span><span class="ta">அனைத்து கணக்குகளும் முடக்கப்படுகின்றன</span></div>
+    </div>
+    <div class="enf-arr"><div class="enf-line"><div class="enf-dot"></div></div></div>
+    <div class="enf-node">
+      <div class="enf-box enf-box--danger">🚔</div>
+      <div class="enf-lbl"><span class="en">Prosecution</span><span class="ta">வழக்கு</span></div>
+      <div class="enf-sub"><span class="en">PSS Act S.25 — up to 10 years + ₹10L per violation</span><span class="ta">PSS Act S.25 — 10 ஆண்டுகள் + ₹10L penalty</span></div>
+    </div>
+  </div>
+  <div class="enf-trigger-grid">
+    <div class="enf-trigger">
+      <div class="enf-trigger-n">TRIGGER 01</div>
+      <div class="enf-trigger-h"><span class="en">🔴 NEFT Pattern Match</span><span class="ta">🔴 NEFT Pattern Match</span></div>
+      <div class="enf-trigger-p"><span class="en">Multiple merchants receiving <code>NEFT</code> from a single corporate account in batch. AML systems in HDFC, Axis, and ICICI auto-flag this pattern if transaction count exceeds <code>100/month</code> to different beneficiaries.</span><span class="ta">ஒரு corporate account-ல் இருந்து பல merchants-க்கு NEFT batch. <code>100/மாதம்</code>-க்கு மேல் வேறு beneficiaries-க்கு AML flag ஆகிறது.</span></div>
+    </div>
+    <div class="enf-trigger">
+      <div class="enf-trigger-n">TRIGGER 02</div>
+      <div class="enf-trigger-h"><span class="en">🔴 Consumer Remittances at Scale</span><span class="ta">🔴 பெரிய அளவில் Consumer Remittances</span></div>
+      <div class="enf-trigger-p"><span class="en">UPI credits from hundreds of individual consumers into a non-nodal account. Banks file SARs when inbound retail credits from <code>500+ unique VPAs</code> appear in a current account not registered as a nodal/escrow account.</span><span class="ta">Nodal account இல்லாத current account-ல் <code>500+ unique VPAs</code>-ல் இருந்து UPI credits வரும்போது வங்கி SAR file செய்கிறது.</span></div>
+    </div>
+    <div class="enf-trigger">
+      <div class="enf-trigger-n">TRIGGER 03</div>
+      <div class="enf-trigger-h"><span class="en">🔴 Merchant Complaint to RBI Ombudsman</span><span class="ta">🔴 Merchant RBI Ombudsman-இடம் புகார்</span></div>
+      <div class="enf-trigger-p"><span class="en">A merchant files a complaint that settlement is delayed beyond <code>T+7</code>. RBI Ombudsman investigation reveals no nodal account, no PA licence. This is the most common trigger in documented enforcement cases.</span><span class="ta">ஒரு merchant settlement <code>T+7</code>-க்கு மேல் delay என்று RBI Ombudsman-இடம் புகார் செய்கிறார். Investigation-ல் nodal account இல்லை என்று தெரிகிறது.</span></div>
+    </div>
+  </div>
 </div>`
 },
 
@@ -629,6 +781,33 @@ window.SECTIONS = [
   <div class="pe-label">💡 In plain English</div>
   <span class="en">The RBI is asking: <strong>"Can we trust you with other people's money?"</strong> The ₹25 Cr net worth proves you have skin in the game. The IT audit proves your systems won't be hacked. The CERT-In audit proves your security is real, not on paper. The escrow at a scheduled bank ensures that if your business fails tomorrow, customer funds are protected and accessible. The whole process typically takes <strong>18 – 30 months</strong> from start to certificate in hand.</span>
   <span class="ta">RBI கேட்கிறது: <strong>"மற்றவர்களின் பணத்தை உங்களை நம்பி கொடுக்கலாமா?"</strong> ₹25 கோடி நிகர மதிப்பு நீங்கள் நிதி ரீதியாக நம்பகமானவர் என்று நிரூபிக்கிறது. IT audit உங்கள் system பாதுகாப்பானது என்பதை நிரூபிக்கிறது. Escrow account வாடிக்கையாளர் பணம் என்றும் பாதுகாப்பாக இருக்கும் என்பதை உறுதி செய்கிறது.</span>
+</div>
+
+<div class="lic-timeline-wrap" data-reveal>
+  <div class="lt-title"><span class="en">PA Licence Journey — time on a bar</span><span class="ta">PA உரிமம் பயணம் — நேரம் bar-ல்</span></div>
+  <div class="lt-bar-wrap">
+    <div class="lt-months">
+      <span>0</span><span>3</span><span>6</span><span>9</span><span>12</span><span>15</span><span>18</span><span>21</span><span>24</span><span>27</span><span>30</span>
+    </div>
+    <div class="lt-track">
+      <div class="lt-stage lt-stage--a" title="Stage A: Gap analysis"></div>
+      <div class="lt-stage lt-stage--b" title="Stage B: Net worth docs"></div>
+      <div class="lt-stage lt-stage--c" title="Stage C: PRAVAAH filing"></div>
+      <div class="lt-stage lt-stage--d" title="Stage D: IPA wait (the long one)"></div>
+      <div class="lt-stage lt-stage--e" title="Stage E: IPA conditions + Final cert"></div>
+    </div>
+  </div>
+  <div class="lt-labels">
+    <div class="lt-label"><div class="lt-dot lt-dot--a"></div><span class="en"><strong>A</strong> — Gap analysis &amp; compliance prep</span><span class="ta"><strong>A</strong> — Gap analysis &amp; இணக்க தயாரிப்பு</span><span>M 0–3</span></div>
+    <div class="lt-label"><div class="lt-dot lt-dot--b"></div><span class="en"><strong>B</strong> — Net worth documentation (CA cert)</span><span class="ta"><strong>B</strong> — நிகர மதிப்பு ஆவணங்கள்</span><span>M 2–4</span></div>
+    <div class="lt-label"><div class="lt-dot lt-dot--c"></div><span class="en"><strong>C</strong> — PRAVAAH portal application filing</span><span class="ta"><strong>C</strong> — PRAVAAH portal விண்ணப்பம்</span><span>M 3–5</span></div>
+    <div class="lt-label"><div class="lt-dot lt-dot--d"></div><span class="en"><strong>D</strong> — Waiting for In-Principle Approval (RBI queue)</span><span class="ta"><strong>D</strong> — In-Principle Approval காத்திருப்பு (RBI queue)</span><span>M 5–18 ⚠️</span></div>
+    <div class="lt-label"><div class="lt-dot lt-dot--e"></div><span class="en"><strong>E</strong> — IPA conditions + IT audit + Final certificate</span><span class="ta"><strong>E</strong> — IPA நிபந்தனைகள் + IT audit + இறுதி சான்றிதழ்</span><span>M 18–30</span></div>
+  </div>
+  <div class="lt-total">
+    <span class="en">⏱️ <strong>Typical total: 18–30 months.</strong> The single biggest time sink is Stage D — RBI's IPA queue. As of 2024, RBI has a backlog of 100+ pending PA applications. Stage D alone has taken 12–18 months for most new applicants. Factor this into your fundraising runway and go-live plans.</span>
+    <span class="ta">⏱️ <strong>பொதுவான மொத்தம்: 18–30 மாதங்கள்.</strong> மிகவும் நேரமெடுக்கும் Stage D — RBI-இன் IPA queue. 2024 நிலவரப்படி, 100+ PA விண்ணப்பங்கள் நிலுவையில் உள்ளன. உங்கள் fundraising runway-ல் இதை கணக்கில் எடுங்கள்.</span>
+  </div>
 </div>`
 },
 
@@ -700,6 +879,56 @@ window.SECTIONS = [
       <h4><span class="en">Maintain refund reserves</span><span class="ta">Refund reserves பராமரிக்கவும்</span></h4>
       <p><span class="en">Keep 3–5% of monthly GMV in a liquid reserve for refunds and chargebacks. Failure to honour chargebacks within 30 days triggers your PA to freeze settlement — the single biggest operational risk for new fintech operators.</span><span class="ta">Refunds மற்றும் chargebacks-க்காக மாதாந்திர GMV-ன் 3–5% திரவ இருப்பில் வைக்கவும்.</span></p>
       <div class="vt-meta"><span class="tag tag-warn">Chargeback freeze risk if ignored</span></div>
+    </div>
+  </div>
+</div>
+
+<h3 class="s-title" style="font-size:1.5rem; margin: 2.5rem 0 1rem;" data-reveal>
+  <span class="en">₹1 Settlement Journey — how money moves from customer to you</span>
+  <span class="ta">₹1 Settlement பயணம் — வாடிக்கையாளரிடமிருந்து உங்களுக்கு பணம் எவ்வாறு செல்கிறது</span>
+</h3>
+<div class="settle-flow-wrap" data-reveal>
+  <div class="sf-title"><span class="en">Settlement Flow — T+0 to merchant credit</span><span class="ta">Settlement Flow — T+0 முதல் merchant credit வரை</span></div>
+  <div class="sf-track">
+    <div class="sf-node">
+      <div class="sf-box sf-box--pay">💳</div>
+      <div class="sf-lbl"><span class="en">Customer Pays</span><span class="ta">வாடிக்கையாளர் செலுத்துகிறார்</span></div>
+      <div class="sf-sub"><span class="en">UPI / Card / NB<br>₹1,000 initiated</span><span class="ta">₹1,000 தொடங்கப்பட்டது</span></div>
+    </div>
+    <div class="sf-arr"><div class="sf-line"><div class="sf-dot"></div></div><div class="sf-arr-lbl"><span class="en">realtime<br>debit</span><span class="ta">நிகழ்நேர<br>debit</span></div></div>
+    <div class="sf-node">
+      <div class="sf-box sf-box--nodal">🏦</div>
+      <div class="sf-lbl"><span class="en">PA Nodal A/C</span><span class="ta">PA Nodal கணக்கு</span></div>
+      <div class="sf-sub"><span class="en">₹1,000 lands here<br>RBI-regulated hold</span><span class="ta">₹1,000 இங்கே வருகிறது<br>RBI-கட்டுப்பாட்டு hold</span></div>
+    </div>
+    <div class="sf-arr"><div class="sf-line"><div class="sf-dot"></div></div><div class="sf-arr-lbl"><span class="en">EOD<br>reconcile</span><span class="ta">EOD<br>reconcile</span></div></div>
+    <div class="sf-node">
+      <div class="sf-box sf-box--hold">📋</div>
+      <div class="sf-lbl"><span class="en">PA Reconciles</span><span class="ta">PA Reconcile செய்கிறது</span></div>
+      <div class="sf-sub"><span class="en">Deducts MDR (₹18)<br>Prepares settlement file</span><span class="ta">MDR கழிக்கப்படுகிறது (₹18)<br>Settlement file தயார்</span></div>
+    </div>
+    <div class="sf-arr"><div class="sf-line"><div class="sf-dot"></div></div><div class="sf-arr-lbl"><span class="en">NEFT/IMPS<br>sweep</span><span class="ta">NEFT/IMPS<br>sweep</span></div></div>
+    <div class="sf-node">
+      <div class="sf-box sf-box--settle">🏪</div>
+      <div class="sf-lbl"><span class="en">Your Settlement A/C</span><span class="ta">உங்கள் Settlement கணக்கு</span></div>
+      <div class="sf-sub"><span class="en">₹982 credited<br>(₹1,000 − 1.8% MDR)</span><span class="ta">₹982 credit<br>(₹1,000 − 1.8% MDR)</span></div>
+    </div>
+  </div>
+  <div class="sf-rails">
+    <div class="sf-rail sf-rail--upi">
+      <div class="sf-rail-name">⚡ <span class="en">UPI Collections</span><span class="ta">UPI Collections</span></div>
+      <div class="sf-rail-t">T+1</div>
+      <div class="sf-rail-p"><span class="en">Customer pays via UPI. Funds land in PA nodal same day. PA sweeps to your account next business day. RBI mandates T+1 max for UPI. Razorpay, Cashfree, PayU all honour this.</span><span class="ta">Customer UPI மூலம் செலுத்துகிறார். அதே நாள் PA nodal-ல் வருகிறது. அடுத்த business day கணக்கில் வரவாகிறது.</span></div>
+    </div>
+    <div class="sf-rail sf-rail--card">
+      <div class="sf-rail-name">💳 <span class="en">Card Payments</span><span class="ta">Card Payments</span></div>
+      <div class="sf-rail-t">T+2</div>
+      <div class="sf-rail-p"><span class="en">Card txn clears at T+0 (auth). Issuer bank settles to network at T+1. PA receives from acquirer at T+1/T+2. Your account credited T+2. Higher MDR (1.5–2.5%) reflects longer cycle + interchange.</span><span class="ta">Card txn T+0-ல் auth ஆகிறது. Issuer T+1-ல் network-க்கு settle செய்கிறது. உங்கள் கணக்கு T+2-ல் credit ஆகிறது.</span></div>
+    </div>
+    <div class="sf-rail sf-rail--neft">
+      <div class="sf-rail-name">🏦 <span class="en">Net Banking / NEFT</span><span class="ta">Net Banking / NEFT</span></div>
+      <div class="sf-rail-t">T+2 to T+3</div>
+      <div class="sf-rail-p"><span class="en">Customer's bank sends NEFT to PA nodal. NEFT settles in 30-min batches (8am–7pm). Funds reach PA same day if before 5pm cutoff. PA settles to you at T+2. Slowest rail — avoid for time-sensitive products.</span><span class="ta">Customer-இன் வங்கி PA nodal-க்கு NEFT அனுப்புகிறது. 30-நிமிட batches. PA T+2-ல் settle செய்கிறது.</span></div>
     </div>
   </div>
 </div>`
