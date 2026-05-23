@@ -51,6 +51,12 @@ window.SECTIONS = [
     <span class="en">₹15 Cr minimum net worth at the time of PA licence application. Must increase to ₹25 Cr within 3 years of receiving authorisation. Audited annually. Failure to maintain means licence revocation.</span>
     <span class="ta">PA உரிமம் விண்ணப்பிக்கும் போது குறைந்தபட்சம் ₹15 கோடி நிகர மதிப்பு. அங்கீகாரம் பெற்ற 3 ஆண்டுகளுக்குள் ₹25 கோடியாக அதிகரிக்க வேண்டும்.</span>
   </div>
+</div>
+
+<div class="callout-pe" data-reveal>
+  <div class="pe-label">💡 In plain English</div>
+  <span class="en">A <strong>Payment Gateway (PG)</strong> is like an electricity cable — it moves money from A to B but never stores it. A <strong>Payment Aggregator (PA)</strong> is like the electricity board — it actually receives money from many people, holds it in a regulated account, and distributes it to recipients. The cable needs no licence. The electricity board does. If you want to move money without touching it → PG. If you're going to hold it even briefly → you are a PA and need a licence.</span>
+  <span class="ta">PG என்பது ஒரு மின்கம்பம் போன்றது — பணத்தை A-லிருந்து B-க்கு நகர்த்துகிறது, சேமிப்பதில்லை. PA என்பது மின்சாரம் வாரியம் போன்றது — பணத்தை சேகரித்து, வைத்திருந்து, விநியோகிக்கிறது. கம்பத்திற்கு உரிமம் தேவையில்லை; வாரியத்திற்கு தேவை.</span>
 </div>`
 },
 
@@ -75,6 +81,11 @@ window.SECTIONS = [
     <span class="mt-icon">📦</span>
     <div class="mt-name"><span class="en">Commission Reseller</span><span class="ta">கமிஷன் மறுவிற்பனையாளர்</span></div>
     <p class="mt-desc"><span class="en">Earn per-transaction commission as an authorised distribution agent of a licensed PA or BBPS Operating Unit. Zero own capital at risk beyond brand investment.</span><span class="ta">உரிமம் பெற்ற PA அல்லது BBPS OU-ன் அங்கீகரிக்கப்பட்ட distribution agent ஆக பரிவர்த்தனை கமிஷன் சம்பாதியுங்கள்.</span></p>
+    <div class="mt-revenue">
+      <span class="mtr-label">💰 Revenue model</span>
+      <span class="en">You collect money from retailers <em>upfront</em> (prepaid model — B2B, not B2C). This float sits in your current account. The licensed OU credits commission (typically <strong>₹2–₹15 per transaction</strong>) back to you. The money never pools in your account from end consumers — that's the legal distinction.</span>
+      <span class="ta">நீங்கள் retailers-இடம் முன்கூட்டியே பணம் சேகரிக்கிறீர்கள் (prepaid B2B மாதிரி). உரிமம் பெற்ற OU ஒவ்வொரு பரிவர்த்தனைக்கும் <strong>₹2–₹15</strong> கமிஷன் வரவு வைக்கிறது.</span>
+    </div>
     <div class="mt-pills">
       <span class="mt-pill">₹50K – ₹2L setup</span>
       <span class="mt-pill">1 – 2 months</span>
@@ -100,6 +111,11 @@ window.SECTIONS = [
     <span class="mt-icon">⚪</span>
     <div class="mt-name"><span class="en">Branded Checkout Layer</span><span class="ta">பிராண்டட் Checkout அடுக்கு</span></div>
     <p class="mt-desc"><span class="en">License a PA's technology stack under your own brand. You own the merchant UX; the PA handles nodal accounts, settlement, and RBI compliance entirely.</span><span class="ta">உங்கள் சொந்த பிராண்டில் PA-ன் technology stack-ஐ உரிமம் பெறுங்கள். நீங்கள் merchant UX-ஐ சொந்தமாக்கிக் கொள்கிறீர்கள்.</span></p>
+    <div class="mt-revenue">
+      <span class="mtr-label">💰 Revenue model</span>
+      <span class="en">Charge your merchants <strong>1.5–2.5% MDR</strong>; pay the underlying PA <strong>0.8–1.5% MDR</strong>. Your margin: <strong>0.3–1% per transaction</strong>. At ₹1 Cr/month volume, that's ₹30,000–₹1L/month. Clients sign agreements with you; you sign with the PA. The PA's nodal account holds all funds — never yours.</span>
+      <span class="ta">வணிகர்களிடம் <strong>1.5–2.5% MDR</strong> வசூலிக்கவும்; PA-க்கு <strong>0.8–1.5%</strong> செலுத்தவும். ₹1 கோடி/மாத volume-ல் ₹30,000–₹1L/மாத margin. PA-ன் nodal account-ல் நிதி தங்கும் — உங்களிடம் அல்ல.</span>
+    </div>
     <div class="mt-pills">
       <span class="mt-pill">₹2L – ₹10L setup</span>
       <span class="mt-pill">2 – 4 months</span>
@@ -125,6 +141,11 @@ window.SECTIONS = [
     <span class="mt-icon">🤝</span>
     <div class="mt-name"><span class="en">Merchant Aggregation Agent</span><span class="ta">வணிகர் திரட்டல் முகவர்</span></div>
     <p class="mt-desc"><span class="en">Board merchants under a licensed PA's umbrella. The PA is the principal; you are the agent. Revenue from MDR sharing or flat referral fees.</span><span class="ta">உரிமம் பெற்ற PA-ன் கீழ் வணிகர்களை இணைக்கவும். PA முதன்மை; நீங்கள் முகவர்.</span></p>
+    <div class="mt-revenue">
+      <span class="mtr-label">💰 Settlement flow</span>
+      <span class="en">Customer pays → Licensed PA's <em>nodal account</em> → PA settles to you (T+1 or T+2) → You settle to your merchants (T+2 or T+3). <strong>Your margin is the MDR spread.</strong> Your merchants' KYC is collected by you but verified by the PA — the compliance umbrella is theirs, not yours.</span>
+      <span class="ta">வாடிக்கையாளர் செலுத்துகிறார் → PA-ன் nodal account → PA உங்களுக்கு T+1/T+2-ல் settle → நீங்கள் வணிகர்களுக்கு T+2/T+3-ல் settle. உங்கள் margin = MDR spread. Compliance PA-யால் நிர்வகிக்கப்படுகிறது.</span>
+    </div>
     <div class="mt-pills">
       <span class="mt-pill">₹1L – ₹5L setup</span>
       <span class="mt-pill">1 – 3 months</span>
@@ -150,6 +171,11 @@ window.SECTIONS = [
     <span class="mt-icon">📱</span>
     <div class="mt-name"><span class="en">NPCI Network Operator</span><span class="ta">NPCI நெட்வொர்க் ஆபரேட்டர்</span></div>
     <p class="mt-desc"><span class="en">Operate as a BBPS Agent Institution (bill payment) or AEPS service provider (Aadhaar-enabled cash) via a licensed BBPS Operating Unit. NPCI-regulated, not RBI-PA regulated.</span><span class="ta">உரிமம் பெற்ற BBPS Operating Unit வழியாக BBPS Agent Institution அல்லது AEPS சேவை வழங்குனராக செயல்படுங்கள்.</span></p>
+    <div class="mt-revenue">
+      <span class="mtr-label">💰 Revenue model</span>
+      <span class="en">Load a prepaid float with the BBPS Operating Unit. Your agents' bill payments debit this float. Commission (<strong>₹2–₹15 per transaction</strong> for BBPS; <strong>₹5–₹20 for AEPS</strong>) flows back to your account. Encryption, AML, and transaction monitoring is handled by the OU and NPCI — your only obligation is KYC compliance for your agents.</span>
+      <span class="ta">BBPS OU-உடன் prepaid float ஏற்றவும். பில் பேமென்ட்டுகள் இந்த float-ஐ debit செய்கின்றன. Commission (<strong>₹2–₹15/transaction</strong>) உங்கள் கணக்கிற்கு திரும்பும். Encryption, AML, transaction monitoring OU + NPCI-ஆல் நிர்வகிக்கப்படுகிறது.</span>
+    </div>
     <div class="mt-pills">
       <span class="mt-pill">₹30K – ₹1.5L setup</span>
       <span class="mt-pill">3 – 6 weeks</span>
@@ -252,39 +278,54 @@ window.SECTIONS = [
   <span class="s-label-num">04 — Ecosystem</span>
   <span class="s-label-line"></span>
 </div>
-<h2 class="s-title" data-reveal>The grey zone & <em>shadow risks</em></h2>
+<h2 class="s-title" data-reveal>The grey area & <em>the real risk</em></h2>
 <p class="s-desc" data-reveal>
-  <span class="en">Activities that look legal but trip regulatory wires. These are the exact patterns RBI enforcement actions target.</span>
-  <span class="ta">சட்டபூர்வமாகத் தெரியும் ஆனால் ஒழுங்குமுறை கம்பிகளை தட்டும் செயல்பாடுகள்.</span>
+  <span class="en">An honest assessment. Some smaller operators are in a regulatory grey zone — technically compliant because they don't "hold" funds, but in practice the lines blur. Here's exactly what you need to know.</span>
+  <span class="ta">ஒரு நேர்மையான மதிப்பீடு. சில சிறிய நிறுவனங்கள் ஒழுங்குமுறை சாம்பல் மண்டலத்தில் உள்ளன — தொழில்நுட்ப ரீதியாக இணக்கமாக இருந்தாலும், நடைமுறையில் வரைமுறைகள் மங்கலாகின்றன.</span>
 </p>
 
 <div class="risk-grid" data-stagger>
   <div class="risk-card">
-    <h4>⛔ <span class="en">Unlicensed Fund Collection</span><span class="ta">உரிமம் இல்லாத நிதி சேகரிப்பு</span></h4>
-    <p><span class="en">Collecting merchant funds into your own bank account and re-disbursing — even briefly — constitutes acting as a PA without a licence. RBI imposes penalties up to ₹10 Cr plus criminal prosecution under PMLA.</span><span class="ta">வணிகர் நிதியை உங்கள் சொந்த வங்கி கணக்கில் சேகரித்து மீண்டும் வழங்குவது — PA உரிமம் இல்லாமல் செயல்படுவதற்கு சமம்.</span></p>
+    <h4><span class="en">📋 The Regulatory Framework</span><span class="ta">📋 ஒழுங்குமுறை கட்டமைப்பு</span></h4>
+    <p><span class="en">Under revised RBI directions, payment <strong>gateways</strong> remain outside direct regulatory purview — they don't handle funds; they're purely technology service providers. But payment <strong>aggregators</strong> — which actually hold nodal/escrow accounts and settle funds — are strictly regulated under the PSS Act 2007 and RBI PA Guidelines 2020. This line is everything.</span><span class="ta">RBI-ன் திருத்தப்பட்ட நிர்வாக வழிகாட்டுதல்களின் படி, payment gateways நேரடி கட்டுப்பாட்டிற்கு வெளியே உள்ளன. ஆனால் aggregators PSS Act 2007 மற்றும் RBI PA Guidelines 2020 கீழ் கடுமையாக கட்டுப்படுத்தப்படுகின்றன.</span></p>
   </div>
   <div class="risk-card">
-    <h4>⛔ <span class="en">Unofficial White-Label Deals</span><span class="ta">அரசாங்கமற்ற White-Label ஒப்பந்தங்கள்</span></h4>
-    <p><span class="en">Reselling payment services without a signed Merchant Service Agreement or TSP agreement with the underlying PA. The PA can terminate at zero notice, stranding your merchant base overnight.</span><span class="ta">அடிப்படை PA உடன் கையொப்பமிட்ட ஒப்பந்தம் இல்லாமல் payment சேவைகளை மறுவிற்பனை செய்வது.</span></p>
+    <h4><span class="en">🛡️ The Technical Defence</span><span class="ta">🛡️ தொழில்நுட்ப பாதுகாப்பு</span></h4>
+    <p><span class="en">The legal defence of smaller resellers is: <em>"We don't hold customer money. We collect pre-deposits from our own distributors (B2B), not from end customers (B2C). Actual settlement happens at the licensed OU/PA level above us."</em> This distinction — B2B prepaid float vs customer fund pooling — is what keeps resellers outside PA regulation.</span><span class="ta">சிறிய மறுவிற்பனையாளர்களின் சட்ட நிலைப்பாடு: "நாங்கள் வாடிக்கையாளர் பணத்தை வைத்திருக்கவில்லை. பணம் உரிமம் பெற்ற PA-ல் தங்குகிறது."</span></p>
   </div>
   <div class="risk-card">
-    <h4>⚠️ <span class="en">MDR Pass-Through Abuse</span><span class="ta">MDR Pass-Through துஷ்பிரயோகம்</span></h4>
-    <p><span class="en">Charging merchants fees above the MDR contracted with your upstream PA — or retaining interchange without disclosure — violates RBI's pricing transparency rules and merchant MSA terms.</span><span class="ta">உங்கள் upstream PA உடன் ஒப்பந்தப்படுத்தப்பட்ட MDR-ஐ விட வணிகர்களிடம் அதிக கட்டணம் வசூலிப்பது.</span></p>
+    <h4><span class="en">⚠️ Where the Lines Blur</span><span class="ta">⚠️ வரைமுறைகள் மங்கலாகும் இடம்</span></h4>
+    <p><span class="en">Problems arise when: (1) A reseller collects money from end consumers directly, even temporarily. (2) Settlement delays mean funds "sit" with the reseller beyond T+1/T+2. (3) The reseller operates a "wallet" with consumer balances it manages. These three behaviours are de facto PA functions and trigger enforcement.</span><span class="ta">சிக்கல்கள் எழும்போது: (1) மறுவிற்பனையாளர் நேரடியாக நுகர்வோரிடம் பணம் சேகரிக்கும்போது. (2) தீர்வு T+2-ஐ தாண்டும்போது. (3) நுகர்வோர் இருப்புகள் கொண்ட wallet நடத்தும்போது.</span></p>
   </div>
   <div class="risk-card">
-    <h4>⚠️ <span class="en">Non-compliant BBPS Aggregation</span><span class="ta">இணக்கமற்ற BBPS திரட்டல்</span></h4>
-    <p><span class="en">Offering BBPS bill collection without being registered as an Agent Institution under a certified Operating Unit. NPCI blocks transaction access; recovery of stuck funds can take 6–12 months.</span><span class="ta">சான்றளிக்கப்பட்ட Operating Unit கீழ் Agent Institution ஆக பதிவு செய்யாமல் BBPS பில் சேகரிப்பை வழங்குவது.</span></p>
+    <h4><span class="en">🏛️ RBI's Track Record</span><span class="ta">🏛️ RBI-ன் தடம்</span></h4>
+    <p><span class="en">Several smaller operators have received RBI notices for operating without proper authorization. The RBI has issued multiple "cease and desist" orders against unlicensed entities that were de facto aggregating funds. The regulator's clear stance: if you're <em>functionally</em> a PA — regardless of what you call yourself — you need the license.</span><span class="ta">பல சிறிய நிறுவனங்கள் RBI-ல் இருந்து அனுப்பப்பட்ட notice-ஐ பெற்றுள்ளன. "Cease and desist" ஆணைகள் உரிமம் இல்லாமல் நிதி திரட்டிய நிறுவனங்களுக்கு வழங்கப்பட்டுள்ளன.</span></p>
   </div>
 </div>
 
 <div class="alert-box" data-reveal>
-  <strong>🚨 <span class="en">The enforcement pattern</span><span class="ta">அமல்படுத்தல் முறை</span></strong>
-  <p><span class="en">RBI's 2023–24 enforcement actions shared a common thread: operators who scaled first and sought regulatory clarity second. The typical sequence is:</span><span class="ta">RBI-ன் 2023–24 அமல்படுத்தல் நடவடிக்கைகள் பொதுவான நூலை பகிர்ந்தன.</span></p>
+  <strong>⚠️ <span class="en">The real risk for small players</span><span class="ta">சிறிய நிறுவனங்களுக்கான உண்மையான ஆபத்து</span></strong>
+  <p><span class="en">If the RBI finds a smaller operator is <em>de facto</em> holding or pooling customer funds without a license, they can be shut down immediately. Key risk factors to avoid:</span><span class="ta">RBI-யானது ஒரு சிறிய ஆபரேட்டர் உரிமம் இல்லாமல் வாடிக்கையாளர் நிதியை சேகரிப்பதை கண்டால் அவர்களை உடனடியாக மூடலாம்.</span></p>
   <ul>
-    <li><span class="en">Freeze on nodal / escrow account (immediate stoppage of merchant settlements)</span><span class="ta">Nodal / escrow கணக்கில் முடக்கம் (வணிகர் தீர்வுகள் உடனடியாக நிறுத்தப்படுகின்றன)</span></li>
-    <li><span class="en">Direction to wind-down merchant on-boarding within 30–90 days</span><span class="ta">30–90 நாட்களுக்குள் merchant on-boarding-ஐ நிறுத்துமாறு அறிவுறுத்தல்</span></li>
-    <li><span class="en">Penalty notice + show-cause under PSS Act Section 30</span><span class="ta">PSS Act பிரிவு 30-ன் கீழ் அபராதம் + காரண விளக்க அறிவிப்பு</span></li>
+    <li><span class="en">Collecting money from end consumers (not just your own distributors)</span><span class="ta">உங்கள் விநியோகஸ்தர்களிடம் மட்டும் அல்லாமல் நுகர்வோரிடம் நேரடியாக பணம் சேகரிப்பது</span></li>
+    <li><span class="en">Operating consumer-facing wallets with balances you manage</span><span class="ta">நீங்கள் நிர்வகிக்கும் நுகர்வோர் wallet-கள் இயக்குவது</span></li>
+    <li><span class="en">Settlement cycles longer than T+2 (you're float-funding on customer money)</span><span class="ta">T+2-ஐ விட நீண்ட தீர்வு சுழல்கள் (வாடிக்கையாளர் பணத்தில் float-funding)</span></li>
+    <li><span class="en">No clear contractual link to a licensed PA/OU above you</span><span class="ta">உங்களுக்கு மேலே உரிமம் பெற்ற PA/OU உடன் தெளிவான ஒப்பந்த இணைப்பு இல்லை</span></li>
+    <li><span class="en">Your bank account receiving consumer remittances at scale (flags AML checks)</span><span class="ta">உங்கள் வங்கி கணக்கில் பெரிய அளவில் நுகர்வோர் பரிமாற்றங்கள் வருவது (AML சோதனைகளை தூண்டுகிறது)</span></li>
   </ul>
+  <div style="margin-top:1.25rem;padding:1rem;background:rgba(255,255,255,0.05);border-radius:8px;">
+    <strong style="color:#f0a060;"><span class="en">The safe path:</span><span class="ta">பாதுகாப்பான பாதை:</span></strong>
+    <span style="color:rgba(255,255,255,0.78);font-size:0.88rem;">
+      <span class="en"> Always operate under a formal sub-merchant or agent agreement with a licensed PA/OU. Ensure your agreement explicitly states who holds the nodal account. Never pool end-consumer funds. Keep records of every transaction. Have your structure reviewed by a fintech lawyer before scaling.</span>
+      <span class="ta"> எப்போதும் உரிமம் பெற்ற PA/OU உடன் முறையான ஒப்பந்தத்தின் கீழ் செயல்படுங்கள். nodal account யார் வைத்திருக்கிறார்கள் என்பதை ஒப்பந்தம் தெளிவாக கூறட்டும். நுகர்வோர் நிதிகளை ஒருபோதும் திரட்டாதீர்கள்.</span>
+    </span>
+  </div>
+</div>
+
+<div class="callout" data-reveal style="margin-top:2rem;border-left-color:var(--accent2);">
+  <strong>📌 <span class="en">Bottom line:</span><span class="ta">முடிவு:</span></strong>
+  <span class="en"> Companies like RunPaisa, GetEPay, and RechargeKit operate legally because they are B2B infrastructure layers — distributors and tech providers sitting on top of licensed entities. They don't need a PA license as long as they don't pool end-consumer funds. The moment any of them starts collecting, holding, and settling consumer money — they enter regulated territory and need the license.</span>
+  <span class="ta"> RunPaisa, GetEPay, RechargeKit போன்ற நிறுவனங்கள் சட்டப்பூர்வமாக செயல்படுகின்றன ஏனென்றால் அவை B2B infrastructure layers — உரிமம் பெற்ற நிறுவனங்களுக்கு மேல் உள்ள தொழில்நுட்ப வழங்குநர்கள். நுகர்வோர் நிதிகளை திரட்டாத வரை PA உரிமம் தேவையில்லை.</span>
 </div>`
 },
 
@@ -580,6 +621,12 @@ window.SECTIONS = [
       <div class="vt-meta"><span class="tag tag-time">12 – 24 months after IPA</span><span class="tag tag-ok">Renewable every 5 years</span></div>
     </div>
   </div>
+</div>
+
+<div class="callout-pe" data-reveal>
+  <div class="pe-label">💡 In plain English</div>
+  <span class="en">The RBI is asking: <strong>"Can we trust you with other people's money?"</strong> The ₹25 Cr net worth proves you have skin in the game. The IT audit proves your systems won't be hacked. The CERT-In audit proves your security is real, not on paper. The escrow at a scheduled bank ensures that if your business fails tomorrow, customer funds are protected and accessible. The whole process typically takes <strong>18 – 30 months</strong> from start to certificate in hand.</span>
+  <span class="ta">RBI கேட்கிறது: <strong>"மற்றவர்களின் பணத்தை உங்களை நம்பி கொடுக்கலாமா?"</strong> ₹25 கோடி நிகர மதிப்பு நீங்கள் நிதி ரீதியாக நம்பகமானவர் என்று நிரூபிக்கிறது. IT audit உங்கள் system பாதுகாப்பானது என்பதை நிரூபிக்கிறது. Escrow account வாடிக்கையாளர் பணம் என்றும் பாதுகாப்பாக இருக்கும் என்பதை உறுதி செய்கிறது.</span>
 </div>`
 },
 
@@ -696,6 +743,12 @@ window.SECTIONS = [
 <div class="alert-box" data-reveal>
   <strong>⚠️ <span class="en">KYC tiers matter</span><span class="ta">KYC அடுக்குகள் முக்கியம்</span></strong>
   <p><span class="en">PPI wallets have 3 KYC tiers: <strong>Minimum KYC</strong> (₹10K balance, ₹1L/year spend limit, mobile OTP only) · <strong>Full KYC</strong> (Aadhaar + PAN, unlimited) · <strong>Gift/Closed loop</strong> (no KYC, ₹10K limit, issuer-specific).</span><span class="ta">PPI wallets-ல் 3 KYC அடுக்குகள் உள்ளன.</span></p>
+</div>
+
+<div class="callout-pe" data-reveal>
+  <div class="pe-label">💡 In plain English</div>
+  <span class="en">A <strong>Semi-closed wallet</strong> is like a prepaid debit card you can spend at multiple shops but can't withdraw to your bank. A <strong>Closed wallet</strong> is like a Starbucks gift card — only usable at that one brand. The <strong>nodal account</strong> is a special government-watched bank account where everyone's wallet balance is kept safe — no one (not even the wallet company) can spend it freely. KYC tier = how much the government trusts you based on the ID you provided.</span>
+  <span class="ta">Semi-closed wallet என்பது பலவிடங்களில் செலவழிக்கக்கூடிய prepaid card போன்றது, ஆனால் வங்கியில் திரும்பப் பெற முடியாது. Nodal account என்பது அரசாங்கம் கண்காணிக்கும் சிறப்பு வங்கி கணக்கு — wallet balance அங்கு பாதுகாக்கப்படுகிறது.</span>
 </div>`
 },
 

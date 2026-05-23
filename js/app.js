@@ -229,13 +229,13 @@
 
     function show(x, y) {
       menu.style.display = 'block';
-      menu.style.left = Math.min(x, window.innerWidth  - 180) + 'px';
-      menu.style.top  = Math.min(y, window.innerHeight - 120) + 'px';
+      menu.style.left = Math.min(x, window.innerWidth  - 200) + 'px';
+      menu.style.top  = Math.min(y, window.innerHeight - 130) + 'px';
       menu.innerHTML =
-        '<div class="ctx-item" onclick="document.execCommand(\'copy\')">📋 <span class="en">Copy</span><span class="ta">நகலெடு</span></div>' +
-        '<div class="ctx-item" onclick="window.print()">🖨️ <span class="en">Print / PDF</span><span class="ta">அச்சிடு</span></div>' +
+        '<div class="ctx-brand">© Karthi &nbsp;·&nbsp; Robosynaptix</div>' +
         '<div class="ctx-sep"></div>' +
-        '<div class="ctx-brand">💙 India Fintech Stack · Robosynaptix</div>';
+        '<div class="ctx-item" onclick="document.execCommand(\'copy\')">📋 <span class="en">Copy</span><span class="ta">நகலெடு</span></div>' +
+        '<div class="ctx-item" onclick="window.print()">🖨️ <span class="en">Print / PDF</span><span class="ta">அச்சிடு</span></div>';
       // hide on outside click
       setTimeout(function () {
         document.addEventListener('click', function hide() {
@@ -248,6 +248,15 @@
     document.addEventListener('contextmenu', function (e) {
       e.preventDefault();
       show(e.clientX, e.clientY);
+    });
+
+    // Block View Source and Save shortcuts; allow Copy (Ctrl+C) and Print (Ctrl+P)
+    document.addEventListener('keydown', function (e) {
+      var mod = e.ctrlKey || e.metaKey;
+      if (mod && (e.key === 'u' || e.key === 'U')) { e.preventDefault(); }  // View Source
+      if (mod && (e.key === 's' || e.key === 'S')) { e.preventDefault(); }  // Save Page
+      if (mod && e.shiftKey && (e.key === 'i' || e.key === 'I' || e.key === 'j' || e.key === 'J' || e.key === 'c' || e.key === 'C')) { e.preventDefault(); } // DevTools
+      if (e.key === 'F12') { e.preventDefault(); }  // DevTools
     });
   }
 

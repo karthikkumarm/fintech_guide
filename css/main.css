@@ -335,7 +335,7 @@ strong { font-weight: 600; }
 }
 .pg .cmp-verdict { background: rgba(74,222,128,0.07); border: 1px solid rgba(74,222,128,0.18); color: rgba(226,232,240,0.75); }
 .pa .cmp-verdict { background: rgba(240,160,96,0.07); border: 1px solid rgba(240,160,96,0.2);  color: rgba(226,232,240,0.75); }
-.cmp-eg { margin-top: 1rem; font-size: 0.75rem; color: rgba(226,232,240,0.28); font-style: italic; }
+.cmp-eg { margin-top: 1rem; font-size: 0.75rem; color: rgba(226,232,240,0.55); font-style: italic; }
 
 /* Big stat callout */
 .big-stat {
@@ -380,14 +380,24 @@ strong { font-weight: 600; }
 
 .mt-icon { font-size: 2.75rem; margin-bottom: 1.1rem; display: block; }
 .mt-name { font-family: var(--f-serif); font-size: 1.35rem; color: var(--d-ink); margin-bottom: 0.55rem; line-height: 1.25; }
-.mt-desc { font-size: 0.85rem; color: var(--d-ink2); line-height: 1.68; margin-bottom: 1.25rem; }
+.mt-desc { font-size: 0.85rem; color: var(--d-ink2); line-height: 1.68; margin-bottom: 0.75rem; }
+.mt-revenue {
+  background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+  border-radius: var(--radius-sm); padding: 0.85rem 1rem;
+  font-size: 0.81rem; color: rgba(226,232,240,0.72); line-height: 1.65;
+  margin-bottom: 1rem;
+}
+.mtr-label {
+  display: block; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--accent-lt); margin-bottom: 0.45rem;
+}
 .mt-pills { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 0.9rem; }
 .mt-pill {
   font-family: var(--f-mono); font-size: 0.7rem; font-weight: 500;
   background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.09);
   border-radius: 100px; padding: 3px 10px; color: rgba(226,232,240,0.6);
 }
-.mt-eg { font-size: 0.74rem; color: rgba(226,232,240,0.28); font-style: italic; margin-bottom: 0.6rem; }
+.mt-eg { font-size: 0.74rem; color: rgba(226,232,240,0.52); font-style: italic; margin-bottom: 0.6rem; }
 
 /* Setup steps accordion inside model tile */
 .mt-steps { margin-top: 0.75rem; border-top: 1px solid rgba(255,255,255,0.07); padding-top: 0.75rem; }
@@ -416,6 +426,16 @@ details[open] .mt-steps-toggle { color: rgba(226,232,240,0.8); }
 /* Shadow list (2-col cards in shadow section) */
 .shadow-list { list-style: none; padding: 0; margin: 0.75rem 0 0; display: flex; flex-direction: column; gap: 8px; }
 .shadow-list li { font-size: 0.86rem; color: rgba(226,232,240,0.7); line-height: 1.5; }
+
+/* cmp-card fallback bg for dark sections (when .pg / .pa class absent) */
+.guide-section.dark .cmp-card:not(.pg):not(.pa),
+.guide-section.dark2 .cmp-card:not(.pg):not(.pa) {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.09);
+}
+/* entity compare-grid in light sections: keep card text readable */
+.guide-section:not(.dark):not(.dark2) .cmp-card h3 { color: #e2e8f0; }
+.guide-section:not(.dark):not(.dark2) .cmp-card p  { color: rgba(226,232,240,0.72); }
 
 /* Sub-title in sections */
 .s-sub-title {
@@ -552,7 +572,7 @@ details[open] .mt-steps-toggle { color: rgba(226,232,240,0.8); }
 }
 .alert-box strong { color: var(--accent-lt); }
 .alert-box p  { font-size: 0.85rem; color: var(--d-ink2); line-height: 1.7; margin-top: 0.7rem; }
-.alert-box ul { margin-top: 0.75rem; padding-left: 1.1rem; display: flex; flex-direction: column; gap: 4px; font-size: 0.83rem; color: rgba(226,232,240,0.5); }
+.alert-box ul { margin-top: 0.75rem; padding-left: 1.1rem; display: flex; flex-direction: column; gap: 4px; font-size: 0.83rem; color: rgba(226,232,240,0.75); }
 
 /* ── Flow diagram ──────────────────────────────────────────────── */
 .flow-diag { display: flex; flex-direction: column; align-items: center; gap: 0; }
@@ -574,6 +594,30 @@ details[open] .mt-steps-toggle { color: rgba(226,232,240,0.8); }
   padding: 1.4rem 1.6rem; font-size: 0.88rem; color: var(--ink2); line-height: 1.72;
 }
 .callout strong { color: var(--ink); }
+
+/* Plain-English callout — green accent, for jargon-heavy sections */
+.callout-pe {
+  background: rgba(26,107,74,0.06); border: 1px solid rgba(26,107,74,0.18);
+  border-left: 4px solid var(--accent2);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  padding: 1.25rem 1.6rem; font-size: 0.87rem; color: var(--ink2); line-height: 1.72;
+  margin-top: 2rem;
+}
+.callout-pe .pe-label {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 0.68rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--accent2); margin-bottom: 0.6rem;
+}
+.callout-pe strong { color: var(--ink); }
+/* Dark-section variant */
+.guide-section.dark .callout-pe, .guide-section.dark2 .callout-pe {
+  background: rgba(26,107,74,0.08); border-color: rgba(26,107,74,0.25);
+  color: rgba(226,232,240,0.8);
+}
+.guide-section.dark .callout-pe .pe-label,
+.guide-section.dark2 .callout-pe .pe-label { color: #4ade80; }
+.guide-section.dark .callout-pe strong,
+.guide-section.dark2 .callout-pe strong { color: #e2e8f0; }
 
 /* Payout account cards */
 .payout-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; margin-bottom: 3rem; }
@@ -633,7 +677,8 @@ details[open] .mt-steps-toggle { color: rgba(226,232,240,0.8); }
 .ctx-item { display: flex; align-items: center; gap: 8px; padding: 8px 12px; border-radius: 8px; font-size: 0.85rem; color: var(--ink2); cursor: pointer; transition: background 0.15s; }
 .ctx-item:hover { background: var(--s2); color: var(--ink); }
 .ctx-sep { height: 1px; background: var(--border); margin: 3px 0; }
-.ctx-brand { padding: 5px 12px; font-size: 0.71rem; color: var(--ink3); }
+.ctx-brand { padding: 8px 12px 5px; font-size: 0.72rem; font-weight: 700; color: var(--ink2); letter-spacing: 0.01em; }
+.ctx-brand::before { content: ''; display: block; font-size: 0.65rem; color: var(--ink3); }
 
 /* ── Footer ────────────────────────────────────────────────────── */
 .footer { background: var(--ink); padding: 5rem 2rem; }
