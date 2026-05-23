@@ -8,7 +8,8 @@ window.CHAPTERS = [
   { id:'company',   emoji:'🏛️', label:{en:'Company',    ta:'நிறுவனம்'},       sections:['company','costs'] },
   { id:'licensing', emoji:'📋', label:{en:'Licensing',  ta:'உரிமம்'},         sections:['license','payout'] },
   { id:'technical', emoji:'⚙️', label:{en:'Technical',  ta:'தொழில்நுட்பம்'}, sections:['wallet','bankapi'] },
-  { id:'cardswipe', emoji:'💳', label:{en:'Card Swipe', ta:'கார்டு ஸ்வைப்'},  sections:['cardswipe'] }
+  { id:'cardswipe', emoji:'💳', label:{en:'Card Swipe', ta:'கார்டு ஸ்வைப்'},  sections:['cardswipe'] },
+  { id:'cards',     emoji:'💎', label:{en:'Cards & Payments', ta:'கார்டுகள் & பேமென்ட்'}, sections:['card-types','preauth','card-network','card-advanced'] }
 ];
 
 window.SECTIONS = [
@@ -1574,6 +1575,533 @@ const { event, payload } = req.body;</pre>
   <span class="en">You cannot "build a Visa" overnight — or even in 5 years as a startup. But you don't have to. Paytm built a ₹1.5L Cr GMV payment empire on top of NPCI's rails without owning a single BIN or operating a single authorization switch. The smartest play: build your merchant/consumer network on UPI or PPI, then — once you have scale and regulatory goodwill — approach RBI for an expanded authorization. RuPay's lesson: the network is only as powerful as the government mandate behind it.</span>
   <span class="ta">ஒரு startup-க்கு "Visa கட்டுவது" 5 ஆண்டுகளில் சாத்தியமில்லை. ஆனால் தேவையில்லை. Paytm ஒரே ஒரு BIN அல்லது authorization switch இல்லாமல் ₹1.5L Cr GMV empire கட்டியது — NPCI rails-ல்.</span>
 </div>`
+}
+
+,
+
+/* ── CARD TYPES ────────────────────────────────────────── */
+{
+  id:'card-types', chapter:'cards', theme:'light',
+  nav:{ en:'Card Types', ta:'கார்டு வகைகள்' },
+  html:`
+<div class="s-label" data-reveal>
+  <span class="s-label-num">12 — Cards & Payments</span>
+  <span class="s-label-line"></span>
+</div>
+<h2 class="s-title" data-reveal>Every card type — <em>what it is, how it works, real examples</em></h2>
+<p class="s-desc" data-reveal>
+  <span class="en">India has 6 meaningful card categories. Each has different funding sources, liability structures, spending limits, and regulatory treatment. Know every one before you integrate or build.</span>
+  <span class="ta">இந்தியாவில் 6 முக்கிய கார்டு வகைகள் உள்ளன. ஒவ்வொன்றும் வெவ்வேறு நிதி மூலம், பொறுப்பு அமைப்பு மற்றும் ஒழுங்குமுறை சிகிச்சை கொண்டது.</span>
+</p>
+
+<div class="ctype-grid" data-stagger>
+
+  <div class="ctype-card">
+    <div class="ctype-stripe ctype-stripe--debit"></div>
+    <span class="ctype-icon">💳</span>
+    <div class="ctype-name">Debit Card</div>
+    <div class="ctype-tagline"><span class="en">Your money, spent directly from your bank account</span><span class="ta">உங்கள் பணம், நேரடியாக வங்கி கணக்கிலிருந்து செலவிடப்படுகிறது</span></div>
+    <ul class="ctype-points">
+      <li><span class="en">Linked 1:1 to your savings/current account</span><span class="ta">சேமிப்பு/நடப்பு கணக்துடன் 1:1 இணைக்கப்பட்டது</span></li>
+      <li><span class="en">Debits in real-time — spending limit = your balance</span><span class="ta">நிகழ்நேர டெபிட் — செலவு வரம்பு = உங்கள் இருப்பு</span></li>
+      <li><span class="en">Networks: Visa, Mastercard, RuPay (NPCI)</span><span class="ta">நெட்வொர்க்: Visa, Mastercard, RuPay</span></li>
+      <li><span class="en">No interest — it's not borrowed money</span><span class="ta">வட்டி இல்லை — கடன் பணம் அல்ல</span></li>
+      <li><span class="en">MDR ~0.4–0.9% (RuPay often zero for small txns)</span><span class="ta">MDR ~0.4–0.9% (சிறிய பரிவர்த்தனைக்கு RuPay பெரும்பாலும் zero)</span></li>
+    </ul>
+    <div class="ctype-eg">
+      <strong><span class="en">Real-life example</span><span class="ta">நிஜ உதாரணம்</span></strong>
+      <span class="en">Priya uses her SBI RuPay debit card at a grocery store. ₹850 is instantly debited from her SB account. The merchant's POS routes via RuPay → SBI (issuer). Priya pays zero fee; the merchant pays ₹0–₹3.4 MDR.</span>
+      <span class="ta">Priya ஒரு மளிகை கடையில் SBI RuPay டெபிட் கார்டு பயன்படுத்துகிறார். ₹850 உடனே அவரது SB கணக்கிலிருந்து டெபிட் ஆகிறது.</span>
+    </div>
+  </div>
+
+  <div class="ctype-card">
+    <div class="ctype-stripe ctype-stripe--credit"></div>
+    <span class="ctype-icon">💰</span>
+    <div class="ctype-name">Credit Card</div>
+    <div class="ctype-tagline"><span class="en">Bank's money — borrow now, pay later (with interest)</span><span class="ta">வங்கியின் பணம் — இப்போது கடன் வாங்கு, பிறகு திரும்பச் செலுத்து</span></div>
+    <ul class="ctype-points">
+      <li><span class="en">Bank extends a revolving credit line (e.g. ₹1L limit)</span><span class="ta">வங்கி revolving கடன் வரிசை வழங்குகிறது</span></li>
+      <li><span class="en">30–50 day interest-free period if paid in full</span><span class="ta">முழுதாக செலுத்தினால் 30–50 நாள் வட்டி இல்லாத காலம்</span></li>
+      <li><span class="en">APR = 36–42% p.a. if you carry a balance</span><span class="ta">இருப்பு வைத்திருந்தால் APR = 36–42% p.a.</span></li>
+      <li><span class="en">Rewards: cashback, miles, reward points</span><span class="ta">Rewards: cashback, miles, reward points</span></li>
+      <li><span class="en">Higher MDR ~1–2% vs debit (funds interchange & rewards)</span><span class="ta">டெபிட்டை விட அதிக MDR ~1–2%</span></li>
+    </ul>
+    <div class="ctype-eg">
+      <strong><span class="en">Real-life example</span><span class="ta">நிஜ உதாரணம்</span></strong>
+      <span class="en">Rahul buys a ₹42,000 laptop on Flipkart using HDFC Regalia. HDFC authorises against his ₹1L limit. Flipkart settles T+2. Rahul gets statement on the 5th, due on 25th — 50-day free credit. He earns 2 reward points per ₹150 spend.</span>
+      <span class="ta">Rahul HDFC Regalia கார்டில் Flipkart-ல் ₹42,000 laptop வாங்குகிறார். 50 நாள் வட்டி இல்லாத கடன் கிடைக்கிறது.</span>
+    </div>
+  </div>
+
+  <div class="ctype-card">
+    <div class="ctype-stripe ctype-stripe--prepaid"></div>
+    <span class="ctype-icon">🎫</span>
+    <div class="ctype-name">Prepaid Card</div>
+    <div class="ctype-tagline"><span class="en">Pre-loaded — a ring-fenced spend wallet</span><span class="ta">முன்பே ஏற்றப்பட்ட — ஒரு தனியான செலவு wallet</span></div>
+    <ul class="ctype-points">
+      <li><span class="en">Loaded in advance; no bank account needed</span><span class="ta">முன்கூட்டியே ஏற்றப்பட்டது; வங்கி கணக்கு தேவையில்லை</span></li>
+      <li><span class="en">Semi-closed (specific network) or open-loop (Visa/MC)</span><span class="ta">Semi-closed அல்லது open-loop (Visa/MC)</span></li>
+      <li><span class="en">RBI KYC: min-KYC ≤ ₹10,000; full-KYC ≤ ₹1,00,000</span><span class="ta">RBI KYC: min-KYC ≤ ₹10,000; full-KYC ≤ ₹1,00,000</span></li>
+      <li><span class="en">Corporate gifting, meal allowances (Sodexo), travel</span><span class="ta">Corporate gift, meal allowance, travel</span></li>
+    </ul>
+    <div class="ctype-eg">
+      <strong><span class="en">Real-life example</span><span class="ta">நிஜ உதாரணம்</span></strong>
+      <span class="en">Amazon Pay ICICI co-branded open-loop prepaid card. Load via UPI/Net Banking. Works anywhere Visa is accepted. 2% cashback at Amazon, 1% elsewhere. Balance ≤ ₹1L (full KYC). Flipkart Gift Cards = closed-loop prepaid — only on Flipkart.</span>
+      <span class="ta">Amazon Pay ICICI co-branded prepaid card — Visa எங்கும் பயன்படுத்தலாம். Flipkart Gift Cards = Flipkart மட்டும்.</span>
+    </div>
+  </div>
+
+  <div class="ctype-card">
+    <div class="ctype-stripe ctype-stripe--virtual"></div>
+    <span class="ctype-icon">🌐</span>
+    <div class="ctype-name">Virtual Card</div>
+    <div class="ctype-tagline"><span class="en">Digits only — no plastic, no physical risk</span><span class="ta">எண்கள் மட்டும் — plastic இல்லை, physical ஆபத்து இல்லை</span></div>
+    <ul class="ctype-points">
+      <li><span class="en">16-digit PAN + CVV + expiry — no physical card</span><span class="ta">16-இலக்க PAN + CVV + expiry — physical card இல்லை</span></li>
+      <li><span class="en">Issued instantly by banks or fintechs (Slice, OneCard)</span><span class="ta">வங்கிகள் அல்லது fintechs-ஆல் உடனடியாக வழங்கப்படுகிறது</span></li>
+      <li><span class="en">Single-use or multi-use; freeze/delete after one use</span><span class="ta">ஒருமுறை அல்லது பலமுறை பயன்பாடு; ஒரு முறை பயன்படுத்திய பிறகு நீக்கவும்</span></li>
+      <li><span class="en">B2B vendor payments, subscriptions, corporate payouts</span><span class="ta">B2B vendor payments, subscriptions</span></li>
+    </ul>
+    <div class="ctype-eg">
+      <strong><span class="en">Real-life example</span><span class="ta">நிஜ உதாரணம்</span></strong>
+      <span class="en">Swiggy's finance team uses RazorpayX virtual cards to pay restaurant partners. Each card has a fixed ₹50,000/month limit per vendor. If a vendor number is compromised, the card is deleted instantly — zero physical risk.</span>
+      <span class="ta">Swiggy-யின் finance team RazorpayX virtual cards பயன்படுத்தி restaurant partners-க்கு பணம் செலுத்துகிறது.</span>
+    </div>
+  </div>
+
+  <div class="ctype-card">
+    <div class="ctype-stripe ctype-stripe--corp"></div>
+    <span class="ctype-icon">🏢</span>
+    <div class="ctype-name">Corporate Card</div>
+    <div class="ctype-tagline"><span class="en">Company-issued, employee-used, central billing</span><span class="ta">நிறுவனம் வழங்கியது, ஊழியர் பயன்படுத்துவது, மத்திய billing</span></div>
+    <ul class="ctype-points">
+      <li><span class="en">Issued to employees — billed to the company</span><span class="ta">ஊழியர்களுக்கு வழங்கப்பட்டது — நிறுவனத்திற்கு பில்</span></li>
+      <li><span class="en">Spend controls: category locks, per-day limits</span><span class="ta">Spend controls: category locks, per-day limits</span></li>
+      <li><span class="en">Expense integration (SAP, Zoho Expense)</span><span class="ta">Expense integration (SAP, Zoho Expense)</span></li>
+      <li><span class="en">GST invoice data captured at POS for ITC</span><span class="ta">ITC-க்கு POS-ல் GST invoice data capture</span></li>
+    </ul>
+    <div class="ctype-eg">
+      <strong><span class="en">Real-life example</span><span class="ta">நிஜ உதாரணம்</span></strong>
+      <span class="en">Infosys issues HDFC BizPower Visa cards to 500 employees. Each card: airlines ✅ hotels ✅ groceries ❌. Limit: ₹2L/month per employee. Finance gets consolidated MIS + GST data monthly for input tax credit.</span>
+      <span class="ta">Infosys 500 ஊழியர்களுக்கு HDFC BizPower Visa cards வழங்குகிறது. ஒவ்வொரு கார்டுக்கும் ₹2L/மாத வரம்பு.</span>
+    </div>
+  </div>
+
+  <div class="ctype-card">
+    <div class="ctype-stripe ctype-stripe--charge"></div>
+    <span class="ctype-icon">⚡</span>
+    <div class="ctype-name">Charge Card</div>
+    <div class="ctype-tagline"><span class="en">No preset limit — must pay 100% in full each month</span><span class="ta">முன்னமைவு வரம்பு இல்லை — ஒவ்வொரு மாதமும் 100% செலுத்த வேண்டும்</span></div>
+    <ul class="ctype-points">
+      <li><span class="en">No fixed credit limit — dynamically approved per txn</span><span class="ta">நிலையான கடன் வரம்பு இல்லை — ஒவ்வொரு பரிவர்த்தனைக்கும் மாறும்</span></li>
+      <li><span class="en">Full balance due every month — no revolving credit</span><span class="ta">முழு இருப்பு ஒவ்வொரு மாதமும் செலுத்த வேண்டும்</span></li>
+      <li><span class="en">No interest charges (but late fees: ~3.5% of outstanding)</span><span class="ta">வட்டி இல்லை (ஆனால் late fee: ~3.5%)</span></li>
+      <li><span class="en">Premium: Amex Platinum — rare in India, HNI-focused</span><span class="ta">Premium: Amex Platinum — இந்தியாவில் அரிது, HNI-க்கு</span></li>
+    </ul>
+    <div class="ctype-eg">
+      <strong><span class="en">Real-life example</span><span class="ta">நிஜ உதாரணம்</span></strong>
+      <span class="en">Amex Platinum Charge Card (India) — ₹60,000 annual fee. Raj spent ₹14L on a foreign holiday; Amex approved in real-time based on his spending history. Bill due in full on 21st. Perks: Taj Hotel upgrades, worldwide airport lounge access.</span>
+      <span class="ta">Amex Platinum Charge Card (India) — ₹60,000 annual fee. ₹14L spend-க்கு real-time approval. Taj Hotel upgrades.</span>
+    </div>
+  </div>
+
+</div>
+
+<div class="alert-box" data-reveal style="margin-top:2rem;">
+  <span class="en">🔑 <strong>For payment integration:</strong> All 6 card types route through Visa, Mastercard, or RuPay rails. Your payment gateway (Razorpay, PayU, CCAvenue) handles all — one card integration covers every type. The gateway identifies the card type from the BIN (first 6–8 digits) and routes accordingly.</span>
+  <span class="ta">🔑 <strong>Payment integration-க்கு:</strong> அனைத்து 6 கார்டு வகைகளும் Visa, Mastercard, அல்லது RuPay rails மூலம் route ஆகின்றன. உங்கள் payment gateway ஒரே ஒரு integration-ல் அனைத்தையும் handle செய்கிறது.</span>
+</div>
+`
+},
+
+/* ── PREAUTH ────────────────────────────────────────────── */
+{
+  id:'preauth', chapter:'cards', theme:'light',
+  nav:{ en:'Pre-Auth', ta:'முன் அங்கீகாரம்' },
+  html:`
+<div class="s-label" data-reveal>
+  <span class="s-label-num">13 — Cards & Payments</span>
+  <span class="s-label-line"></span>
+</div>
+<h2 class="s-title" data-reveal>Pre-Authorisation — <em>hold now, charge later</em></h2>
+<p class="s-desc" data-reveal>
+  <span class="en">Pre-auth is a two-step process: first <strong>ring-fence (hold)</strong> a portion of the cardholder's credit limit, then later <strong>capture</strong> the actual amount. Hotels, car rentals, fuel pumps, and OTAs all rely on it.</span>
+  <span class="ta">Pre-auth என்பது இரண்டு-படி செயல்முறை: முதலில் cardholder இன் கடன் வரம்பிலிருந்து ஒரு பகுதியை <strong>பிடி</strong>, பிறகு உண்மையான தொகையை <strong>capture</strong> செய்.</span>
+</p>
+
+<div class="preauth-lifecycle" data-reveal>
+  <div class="pal-title"><span class="en">Pre-Auth Transaction Lifecycle</span><span class="ta">Pre-Auth பரிவர்த்தனை வாழ்க்கை சுழற்சி</span></div>
+  <div class="pal-track">
+    <div class="pal-node">
+      <div class="pal-bubble pal-bubble--auth">🛍️</div>
+      <div class="pal-label"><span class="en">Check-in / Booking</span><span class="ta">Check-in</span></div>
+      <div class="pal-sub"><span class="en">Card presented</span><span class="ta">கார்டு வழங்கப்பட்டது</span></div>
+    </div>
+    <div class="pal-connector"><div class="pal-line"><div class="pal-dot"></div></div><div class="pal-vs">AUTH</div></div>
+    <div class="pal-node">
+      <div class="pal-bubble pal-bubble--hold">🔒</div>
+      <div class="pal-label"><span class="en">Hold Placed</span><span class="ta">Hold வைக்கப்பட்டது</span></div>
+      <div class="pal-sub"><span class="en">Funds reserved on card</span><span class="ta">நிதி reserved</span></div>
+    </div>
+    <div class="pal-connector"><div class="pal-line"><div class="pal-dot"></div></div><div class="pal-vs">SERVICE</div></div>
+    <div class="pal-node">
+      <div class="pal-bubble pal-bubble--auth">🏨</div>
+      <div class="pal-label"><span class="en">Service Delivered</span><span class="ta">சேவை வழங்கப்பட்டது</span></div>
+      <div class="pal-sub"><span class="en">Stay / rental / fuel</span><span class="ta">தங்குதல் / வாடகை / எரிபொருள்</span></div>
+    </div>
+    <div class="pal-connector"><div class="pal-line"><div class="pal-dot"></div></div><div class="pal-vs">FINAL</div></div>
+    <div class="pal-node">
+      <div class="pal-bubble pal-bubble--capture">✅</div>
+      <div class="pal-label"><span class="en">Capture</span><span class="ta">Capture</span></div>
+      <div class="pal-sub"><span class="en">Actual amount charged</span><span class="ta">உண்மையான தொகை வசூலிக்கப்படுகிறது</span></div>
+    </div>
+    <div class="pal-connector"><div class="pal-line"><div class="pal-dot"></div></div><div class="pal-vs">DELTA</div></div>
+    <div class="pal-node">
+      <div class="pal-bubble pal-bubble--release">↩️</div>
+      <div class="pal-label"><span class="en">Release</span><span class="ta">வெளியீடு</span></div>
+      <div class="pal-sub"><span class="en">Unused hold released</span><span class="ta">பயன்படாத hold திரும்பப் பெறப்படுகிறது</span></div>
+    </div>
+  </div>
+  <div class="preauth-compare">
+    <div class="pac-box pac-box--auth">
+      <div class="pac-head"><span class="en">🔒 Authorization (Hold)</span><span class="ta">🔒 அங்கீகாரம் (Hold)</span></div>
+      <div class="pac-body"><span class="en">Issuer temporarily <strong>reserves</strong> the amount. Cardholder sees "Pending ₹X" in their app. No money moves yet. Hold expires in <code>7–30 days</code> (issuer-defined). Auth code returned: <code>Approved — 483920</code>.</span><span class="ta">Issuer தொகையை தற்காலிகமாக <strong>reserve</strong> செய்கிறது. Cardholder app-ல் "Pending ₹X" காண்கிறார். பணம் நகரவில்லை.</span></div>
+    </div>
+    <div class="pac-box pac-box--capture">
+      <div class="pac-head"><span class="en">✅ Capture (Charge)</span><span class="ta">✅ Capture (வசூல்)</span></div>
+      <div class="pac-body"><span class="en">Merchant submits actual bill. Can be <strong>equal to, less than, or slightly more than</strong> the original hold. Final debit posts to cardholder statement. Money reaches merchant at T+1/T+2.</span><span class="ta">Merchant உண்மையான பில் சமர்ப்பிக்கிறது. Original hold-ஐ விட சம, குறைவான, அல்லது சற்று அதிகமான தொகை ஆக இருக்கலாம்.</span></div>
+    </div>
+    <div class="pac-box pac-box--void">
+      <div class="pac-head"><span class="en">↩️ Void / Release</span><span class="ta">↩️ Void / வெளியீடு</span></div>
+      <div class="pac-body"><span class="en">If hold &gt; actual charge: excess released to cardholder (3–5 business days). <strong>Void</strong> = cancel entire auth before capture (e.g. reservation cancelled). Two API calls needed: <code>POST /payments/authorize</code> then <code>POST /payments/capture</code>.</span><span class="ta">Hold &gt; actual charge ஆனால்: மீதி cardholder-க்கு திரும்பப் பெறப்படுகிறது. Void = capture-க்கு முன் auth ரத்து செய்வது.</span></div>
+    </div>
+  </div>
+</div>
+
+<h3 class="s-title" style="font-size:1.5rem; margin: 2.5rem 0 1rem;" data-reveal>
+  <span class="en">Real-life Pre-Auth Scenarios</span>
+  <span class="ta">நிஜ Pre-Auth காட்சிகள்</span>
+</h3>
+<div class="preauth-scenarios" data-stagger>
+
+  <div class="pas-card pas-card--hotel">
+    <div class="pas-title">🏨 <span class="en">Hotel Check-in (Taj Hotels)</span><span class="ta">ஹோட்டல் Check-in</span></div>
+    <div class="pas-sub"><span class="en">Hold placed at arrival; actual bill captured at checkout</span><span class="ta">வருகையில் hold; checkout-ல் capture</span></div>
+    <div class="pas-steps">
+      <div class="pas-step"><div class="pas-num pas-num--hold">1</div><div><span class="en">You swipe Visa card at Taj reception. Hotel pre-auths <span class="pas-amount">₹12,000</span> (room × nights + ₹2,000 incidentals buffer).</span><span class="ta">Taj reception-ல் Visa card swipe செய்கிறீர்கள். Hotel <span class="pas-amount">₹12,000</span> pre-auth செய்கிறது.</span></div></div>
+      <div class="pas-step"><div class="pas-num pas-num--hold">2</div><div><span class="en">Bank app shows <em>"Pending ₹12,000 — Taj Hotels."</em> Your credit limit is reduced by ₹12,000 immediately.</span><span class="ta">Bank app-ல் "Pending ₹12,000 — Taj Hotels" காட்டுகிறது. Credit limit உடனே ₹12,000 குறைகிறது.</span></div></div>
+      <div class="pas-step"><div class="pas-num pas-num--capture">3</div><div><span class="en">3 nights + room service. Actual bill = <span class="pas-amount">₹9,600</span>. Hotel captures ₹9,600.</span><span class="ta">3 இரவு + room service. உண்மையான பில் = <span class="pas-amount">₹9,600</span>. Hotel ₹9,600 capture செய்கிறது.</span></div></div>
+      <div class="pas-step"><div class="pas-num pas-num--release">4</div><div><span class="en">Excess <span class="pas-amount">₹2,400</span> released → credit restored in 1–5 business days.</span><span class="ta">மீதி <span class="pas-amount">₹2,400</span> 1–5 business days-ல் திரும்பப் பெறப்படுகிறது.</span></div></div>
+    </div>
+  </div>
+
+  <div class="pas-card pas-card--rental">
+    <div class="pas-title">🚗 <span class="en">Car Rental (Zoomcar)</span><span class="ta">கார் வாடகை</span></div>
+    <div class="pas-sub"><span class="en">Security deposit held upfront; released on clean return</span><span class="ta">Security deposit முன்கூட்டியே hold; சேதமின்றி திரும்பினால் வெளியீடு</span></div>
+    <div class="pas-steps">
+      <div class="pas-step"><div class="pas-num pas-num--hold">1</div><div><span class="en">Zoomcar holds <span class="pas-amount">₹5,000</span> security deposit on your HDFC Mastercard at pickup.</span><span class="ta">Zoomcar ஒரு <span class="pas-amount">₹5,000</span> security deposit hold செய்கிறது.</span></div></div>
+      <div class="pas-step"><div class="pas-num pas-num--hold">2</div><div><span class="en">You drive 200km. No damage, no toll dues. Return car on time.</span><span class="ta">200km ஓட்டுகிறீர்கள். சேதம் இல்லை. சரியான நேரத்தில் திரும்புகிறீர்கள்.</span></div></div>
+      <div class="pas-step"><div class="pas-num pas-num--capture">3</div><div><span class="en">Rental charge = <span class="pas-amount">₹1,800</span>. Zoomcar captures ₹1,800.</span><span class="ta">வாடகை = <span class="pas-amount">₹1,800</span>. Zoomcar ₹1,800 capture செய்கிறது.</span></div></div>
+      <div class="pas-step"><div class="pas-num pas-num--release">4</div><div><span class="en">Remaining <span class="pas-amount">₹3,200</span> voided. Credit available again in ~3 days.</span><span class="ta">மீதி <span class="pas-amount">₹3,200</span> ~3 days-ல் திரும்புகிறது.</span></div></div>
+    </div>
+  </div>
+
+  <div class="pas-card pas-card--ota">
+    <div class="pas-title">✈️ <span class="en">OTA Flight (MakeMyTrip)</span><span class="ta">OTA Flight</span></div>
+    <div class="pas-sub"><span class="en">Hold during seat confirmation; void if unavailable</span><span class="ta">இருக்கை உறுதிப்படுத்தும் போது hold; இல்லாவிட்டால் void</span></div>
+    <div class="pas-steps">
+      <div class="pas-step"><div class="pas-num pas-num--hold">1</div><div><span class="en">You click Pay on MMT for ₹8,500 DEL–BOM. Gateway pre-auths <span class="pas-amount">₹8,500</span> on your card.</span><span class="ta">MMT-ல் ₹8,500 DEL–BOM-க்கு Pay கிளிக் செய்கிறீர்கள். <span class="pas-amount">₹8,500</span> pre-auth ஆகிறது.</span></div></div>
+      <div class="pas-step"><div class="pas-num pas-num--hold">2</div><div><span class="en">MMT calls airline GDS/API to confirm seat. Takes 10–60 seconds.</span><span class="ta">MMT இருக்கையை உறுதிப்படுத்த airline API-ஐ அழைக்கிறது. 10–60 விநாடிகள் ஆகும்.</span></div></div>
+      <div class="pas-step"><div class="pas-num pas-num--capture">3</div><div><span class="en">Seat confirmed ✅ → <span class="pas-amount">₹8,500</span> captured. PNR issued.</span><span class="ta">இருக்கை உறுதி ✅ → <span class="pas-amount">₹8,500</span> capture. PNR வழங்கப்பட்டது.</span></div></div>
+      <div class="pas-step"><div class="pas-num pas-num--release">4</div><div><span class="en">Seat unavailable ❌ → Auth voided in seconds. Card never charged. No refund wait.</span><span class="ta">இருக்கை இல்லை ❌ → Auth void. கார்டு charge ஆவதில்லை.</span></div></div>
+    </div>
+  </div>
+
+  <div class="pas-card pas-card--fuel">
+    <div class="pas-title">⛽ <span class="en">Fuel Pump (Pay-at-Pump)</span><span class="ta">எரிபொருள் நிரப்புதல்</span></div>
+    <div class="pas-sub"><span class="en">Unknown final amount at swipe — classic pre-auth use case</span><span class="ta">Swipe செய்யும்போது இறுதி தொகை தெரியாது — classic pre-auth</span></div>
+    <div class="pas-steps">
+      <div class="pas-step"><div class="pas-num pas-num--hold">1</div><div><span class="en">Card inserted at automated pump. Terminal pre-auths <span class="pas-amount">₹1</span> (or a ₹5,000 cap) to verify card is valid.</span><span class="ta">Automated pump-ல் card insert. Terminal <span class="pas-amount">₹1</span> pre-auth செய்கிறது.</span></div></div>
+      <div class="pas-step"><div class="pas-num pas-num--hold">2</div><div><span class="en">Pump dispenses fuel. Meter reads ₹2,340 worth of petrol.</span><span class="ta">Pump எரிபொருள் வழங்குகிறது. Meter ₹2,340 காட்டுகிறது.</span></div></div>
+      <div class="pas-step"><div class="pas-num pas-num--capture">3</div><div><span class="en">Terminal captures exactly <span class="pas-amount">₹2,340</span>.</span><span class="ta">Terminal சரியாக <span class="pas-amount">₹2,340</span> capture செய்கிறது.</span></div></div>
+      <div class="pas-step"><div class="pas-num pas-num--release">4</div><div><span class="en">Original ₹1 hold voided. Only ₹2,340 on statement. <strong>Note:</strong> Common in US/UK; growing in India at highway fuel stations.</span><span class="ta">Original ₹1 hold void. Statement-ல் ₹2,340 மட்டும். இந்தியாவில் highway fuel stations-ல் வளர்ந்து வருகிறது.</span></div></div>
+    </div>
+  </div>
+
+</div>
+
+<div class="alert-box" data-reveal>
+  <span class="en">🔑 <strong>Developer note:</strong> Two separate API calls required: <code>POST /payments/authorize</code> (holds funds) and <code>POST /payments/capture</code> (charges actual amount). Razorpay, PayU, and CCAvenue all support pre-auth on their card APIs. Capture must happen within the issuer's hold window — typically <strong>7 days for domestic Visa/MC, up to 30 days for Amex.</strong> After that, auth expires and you must re-authorise.</span>
+  <span class="ta">🔑 <strong>Developer குறிப்பு:</strong> இரண்டு தனி API calls தேவை: <code>POST /payments/authorize</code> (நிதி hold) மற்றும் <code>POST /payments/capture</code> (உண்மையான தொகை). Issuer-இன் hold window-க்குள் capture செய்ய வேண்டும் — domestic Visa/MC-க்கு பொதுவாக <strong>7 நாட்கள்</strong>.</span>
+</div>
+`
+},
+
+/* ── CARD NETWORK ───────────────────────────────────────── */
+{
+  id:'card-network', chapter:'cards', theme:'dark',
+  nav:{ en:'Card Network', ta:'கார்டு நெட்வொர்க்' },
+  html:`
+<div class="s-label" data-reveal>
+  <span class="s-label-num">14 — Cards & Payments</span>
+  <span class="s-label-line"></span>
+</div>
+<h2 class="s-title" data-reveal>How a card transaction works — <em>5 parties, 1.5 seconds</em></h2>
+<p class="s-desc" data-reveal>
+  <span class="en">Every swipe, tap, or online card entry silently coordinates 5 parties within milliseconds. Understanding this plumbing explains MDR, chargebacks, interchange, and why settlement takes T+1/T+2.</span>
+  <span class="ta">ஒவ்வொரு swipe, tap, அல்லது online card entry 5 கட்சிகளை மில்லி-விநாடிகளில் ஒருங்கிணைக்கிறது. இந்த அமைப்பை புரிந்துகொள்வது MDR, chargebacks, interchange மற்றும் settlement delay-ஐ விளக்குகிறது.</span>
+</p>
+
+<div class="cn-flow-wrap" data-reveal>
+  <div class="cn-flow-title"><span class="en">Authorization Flow — 5 Parties, ~1.5 seconds</span><span class="ta">அங்கீகார Flow — 5 கட்சிகள், ~1.5 விநாடிகள்</span></div>
+  <div class="cn-actors">
+    <div class="cn-actor">
+      <div class="cn-actor-box cn-actor-box--customer">👤</div>
+      <div class="cn-actor-name"><span class="en">Cardholder</span><span class="ta">கார்டுதாரர்</span></div>
+      <div class="cn-actor-sub"><span class="en">You (Priya, Rahul…)</span><span class="ta">நீங்கள்</span></div>
+    </div>
+    <div class="cn-connector"><div class="cn-line"><div class="cn-dot"></div></div><div class="cn-lbl"><span class="en">Tap/Swipe<br>PAN+OTP online</span><span class="ta">Tap/Swipe</span></div></div>
+    <div class="cn-actor">
+      <div class="cn-actor-box cn-actor-box--merchant">🏪</div>
+      <div class="cn-actor-name"><span class="en">Merchant</span><span class="ta">வணிகர்</span></div>
+      <div class="cn-actor-sub"><span class="en">Amazon / Swiggy<br>Reliance Mart</span><span class="ta">Amazon / Swiggy</span></div>
+    </div>
+    <div class="cn-connector"><div class="cn-line"><div class="cn-dot"></div></div><div class="cn-lbl"><span class="en">Auth request<br>via POS/gateway</span><span class="ta">Auth request</span></div></div>
+    <div class="cn-actor">
+      <div class="cn-actor-box cn-actor-box--acquirer">🏦</div>
+      <div class="cn-actor-name"><span class="en">Acquirer Bank</span><span class="ta">Acquirer Bank</span></div>
+      <div class="cn-actor-sub"><span class="en">HDFC / Axis<br>(merchant's bank)</span><span class="ta">HDFC / Axis</span></div>
+    </div>
+    <div class="cn-connector"><div class="cn-line"><div class="cn-dot"></div></div><div class="cn-lbl"><span class="en">Route via<br>BIN lookup</span><span class="ta">BIN lookup</span></div></div>
+    <div class="cn-actor">
+      <div class="cn-actor-box cn-actor-box--network">💎</div>
+      <div class="cn-actor-name"><span class="en">Card Network</span><span class="ta">கார்டு நெட்வொர்க்</span></div>
+      <div class="cn-actor-sub"><span class="en">Visa / MC / RuPay</span><span class="ta">Visa / MC / RuPay</span></div>
+    </div>
+    <div class="cn-connector"><div class="cn-line"><div class="cn-dot cn-dot--back"></div></div><div class="cn-lbl"><span class="en">Forward to<br>card issuer</span><span class="ta">Issuer-க்கு</span></div></div>
+    <div class="cn-actor">
+      <div class="cn-actor-box cn-actor-box--issuer">🏛️</div>
+      <div class="cn-actor-name"><span class="en">Issuer Bank</span><span class="ta">Issuer Bank</span></div>
+      <div class="cn-actor-sub"><span class="en">SBI / ICICI<br>(your bank)</span><span class="ta">SBI / ICICI</span></div>
+    </div>
+  </div>
+  <div class="cn-steps-grid">
+    <div class="cn-step-item">
+      <div class="cn-step-n">STEP 01 — INITIATION</div>
+      <div class="cn-step-h"><span class="en">🛒 Customer initiates payment</span><span class="ta">🛒 வாடிக்கையாளர் பணம் செலுத்துகிறார்</span></div>
+      <div class="cn-step-p"><span class="en">Swipes at POS, taps NFC, or enters <code>PAN + CVV + expiry + OTP</code> online. Data encrypted as ISO 8583 message. For 3DS, OTP sent by the issuing bank.</span><span class="ta">POS-ல் swipe, NFC tap, அல்லது online-ல் <code>PAN + CVV + expiry + OTP</code> enter செய்கிறார். ISO 8583 message-ஆக encrypt ஆகிறது.</span></div>
+    </div>
+    <div class="cn-step-item">
+      <div class="cn-step-n">STEP 02 — ROUTING</div>
+      <div class="cn-step-h"><span class="en">🏦 Acquirer routes by BIN</span><span class="ta">🏦 Acquirer BIN மூலம் route செய்கிறது</span></div>
+      <div class="cn-step-p"><span class="en">First 6–8 digits = BIN (Bank Identification Number). Acquirer reads BIN → determines it's a <code>Visa / SBI</code> card → routes auth to Visa's network. Real example: BIN <code>414720</code> = SBI Visa Classic.</span><span class="ta">முதல் 6–8 இலக்கங்கள் = BIN. Acquirer BIN படிக்கிறது → Visa / SBI கார்டு என்று அறிகிறது → Visa நெட்வொர்க்கிற்கு அனுப்புகிறது.</span></div>
+    </div>
+    <div class="cn-step-item">
+      <div class="cn-step-n">STEP 03 — SWITCHING</div>
+      <div class="cn-step-h"><span class="en">💎 Network switches the message</span><span class="ta">💎 Network message-ஐ மாற்றுகிறது</span></div>
+      <div class="cn-step-p"><span class="en">Visa/Mastercard/RuPay is purely a <strong>switching network</strong> — does not hold money. Receives auth request, forwards to SBI (issuer) using the card's BIN. Charges ~0.09–0.14% assessment fee per txn.</span><span class="ta">Visa/MC/RuPay ஒரு <strong>switching network</strong> மட்டும் — பணம் வைத்திருப்பதில்லை. Auth request பெற்று SBI-க்கு forward செய்கிறது.</span></div>
+    </div>
+    <div class="cn-step-item">
+      <div class="cn-step-n">STEP 04 — APPROVAL</div>
+      <div class="cn-step-h"><span class="en">🏛️ Issuer approves or declines</span><span class="ta">🏛️ Issuer அங்கீகரிக்கிறது அல்லது நிராகரிக்கிறது</span></div>
+      <div class="cn-step-p"><span class="en">SBI checks: sufficient limit ✅, card not blocked ✅, fraud score ✅, CVV match ✅. Response: <code>00 = Approved</code>, <code>51 = Insufficient funds</code>, <code>05 = Do not honour</code>. Back in ~400ms total.</span><span class="ta">SBI சரிபார்க்கிறது: போதுமான வரம்பு ✅, கார்டு block இல்லை ✅. Response: <code>00 = Approved</code>, <code>51 = Insufficient funds</code>.</span></div>
+    </div>
+    <div class="cn-step-item">
+      <div class="cn-step-n">STEP 05 — CLEARING</div>
+      <div class="cn-step-h"><span class="en">📋 End-of-day batch clearing</span><span class="ta">📋 நாள்-இறுதி batch clearing</span></div>
+      <div class="cn-step-p"><span class="en">Merchant's POS/gateway batches all approved txns at EOD → acquirer → network → issuer. Interchange fees calculated: acquirer pays issuer ~1–1.8% of txn value. This funds your reward points.</span><span class="ta">Merchant-இன் POS/gateway அனைத்து approved txns-ஐ EOD-ல் batch செய்கிறது. Interchange: acquirer ≈1–1.8% issuer-க்கு செலுத்துகிறது.</span></div>
+    </div>
+    <div class="cn-step-item">
+      <div class="cn-step-n">STEP 06 — SETTLEMENT</div>
+      <div class="cn-step-h"><span class="en">💸 Money moves (T+1 or T+2)</span><span class="ta">💸 பணம் நகர்கிறது (T+1 அல்லது T+2)</span></div>
+      <div class="cn-step-p"><span class="en">Issuer debits cardholder. Network nets out amounts. Acquirer receives funds minus interchange. Acquirer credits merchant minus MDR. Merchant sees money at <code>T+1 or T+2</code> business days.</span><span class="ta">Issuer cardholder-ஐ debit செய்கிறது. Acquirer merchant-க்கு MDR கழித்து credit செய்கிறது. <code>T+1 அல்லது T+2</code> business days.</span></div>
+    </div>
+  </div>
+  <div class="cn-timing-bar">
+    <div class="cn-timing-pill">⚡ <span class="en">Auth: ~1–2 sec</span><span class="ta">Auth: ~1–2 விநா</span></div>
+    <div class="cn-timing-pill">📋 <span class="en">Clearing: EOD batch</span><span class="ta">Clearing: EOD batch</span></div>
+    <div class="cn-timing-pill">💸 <span class="en">Settlement: T+1/T+2</span><span class="ta">Settlement: T+1/T+2</span></div>
+    <div class="cn-timing-pill">🔄 <span class="en">Chargeback window: 120 days</span><span class="ta">Chargeback: 120 நாட்கள்</span></div>
+  </div>
+</div>
+
+<h3 class="s-title" style="font-size:1.5rem; margin: 2.5rem 0 1.25rem;" data-reveal>
+  <span class="en">Who takes a cut? — MDR breakdown on ₹1,000</span>
+  <span class="ta">யார் பங்கு எடுக்கிறார்கள்? — ₹1,000-ல் MDR பகுப்பு</span>
+</h3>
+<div class="mdr-who-grid" data-stagger>
+  <div class="mdr-who-card">
+    <span class="mdr-who-icon">🏛️</span>
+    <div class="mdr-who-name"><span class="en">Issuer (SBI/HDFC)</span><span class="ta">Issuer</span></div>
+    <div class="mdr-who-pct">~₹12–₹14</div>
+    <div class="mdr-who-note"><span class="en">Interchange fee. Funds your reward points, cashback, fraud protection. Largest slice of MDR.</span><span class="ta">Interchange fee. உங்கள் reward points, cashback நிதியளிக்கிறது.</span></div>
+    <div class="rl-example" style="text-align:left;"><span class="rl-icon">💡</span><div><strong><span class="en">Example</span><span class="ta">உதாரணம்</span></strong><span class="en">HDFC earns ~₹9–10 interchange per ₹1,000 txn — this funds the 2 reward points you earn per ₹150 on Regalia card.</span><span class="ta">HDFC-க்கு ₹9–10 interchange கிடைக்கிறது — இது உங்கள் reward points-க்கு நிதியளிக்கிறது.</span></div></div>
+  </div>
+  <div class="mdr-who-card">
+    <span class="mdr-who-icon">💎</span>
+    <div class="mdr-who-name"><span class="en">Network (Visa/MC)</span><span class="ta">Network</span></div>
+    <div class="mdr-who-pct">~₹1.10</div>
+    <div class="mdr-who-note"><span class="en">Assessment fee ~0.11%. Funds switching infra, fraud monitoring, chargeback processing. Invisible to merchant.</span><span class="ta">Assessment fee ~0.11%. Switching infra, fraud monitoring-க்கு.</span></div>
+    <div class="rl-example" style="text-align:left;"><span class="rl-icon">💡</span><div><strong><span class="en">Example</span><span class="ta">உதாரணம்</span></strong><span class="en">Visa earns ₹1.10 on a ₹1,000 txn globally. Invisible to both cardholder and merchant.</span><span class="ta">Visa-க்கு ₹1,000 txn-ல் ₹1.10 கிடைக்கிறது.</span></div></div>
+  </div>
+  <div class="mdr-who-card">
+    <span class="mdr-who-icon">🏦</span>
+    <div class="mdr-who-name"><span class="en">Acquirer (merchant bank)</span><span class="ta">Acquirer</span></div>
+    <div class="mdr-who-pct">~₹2–₹3</div>
+    <div class="mdr-who-note"><span class="en">Processing, risk, POS terminal provision. 0.1–0.3% margin on top of interchange + assessment.</span><span class="ta">Processing, risk, POS terminal. Interchange-க்கு மேல் 0.1–0.3% margin.</span></div>
+    <div class="rl-example" style="text-align:left;"><span class="rl-icon">💡</span><div><strong><span class="en">Example</span><span class="ta">உதாரணம்</span></strong><span class="en">HDFC Merchant Services (acquirer) for a Bangalore restaurant keeps ~₹2–3 on a ₹1,000 txn as service margin.</span><span class="ta">Bangalore restaurant-க்கான HDFC Merchant Services ₹2–3 margin எடுக்கிறது.</span></div></div>
+  </div>
+  <div class="mdr-who-card">
+    <span class="mdr-who-icon">⚙️</span>
+    <div class="mdr-who-name"><span class="en">Payment Gateway</span><span class="ta">Payment Gateway</span></div>
+    <div class="mdr-who-pct">~₹3.50</div>
+    <div class="mdr-who-note"><span class="en">PA/PG margin. Total online MDR typically 1.5–2.5% all-in for credit cards. Gateway keeps the spread.</span><span class="ta">PA/PG margin. Online-ல் total MDR 1.5–2.5%. Gateway spread எடுக்கிறது.</span></div>
+    <div class="rl-example" style="text-align:left;"><span class="rl-icon">💡</span><div><strong><span class="en">Example</span><span class="ta">உதாரணம்</span></strong><span class="en">Razorpay quotes Ola 1.75% MDR on credit cards. Of ₹17.50/₹1,000: ~₹13 interchange, ~₹1 Visa, ~₹3.50 Razorpay+acquirer margin.</span><span class="ta">Razorpay, Ola-க்கு 1.75% MDR quote செய்கிறது. ₹17.50-ல்: ~₹13 interchange, ~₹1 Visa, ~₹3.50 Razorpay.</span></div></div>
+  </div>
+</div>
+`
+},
+
+/* ── CARD ADVANCED ──────────────────────────────────────── */
+{
+  id:'card-advanced', chapter:'cards', theme:'light',
+  nav:{ en:'EMI & 3DS', ta:'EMI & 3DS' },
+  html:`
+<div class="s-label" data-reveal>
+  <span class="s-label-num">15 — Cards & Payments</span>
+  <span class="s-label-line"></span>
+</div>
+<h2 class="s-title" data-reveal>EMI, 3D Secure, Contactless &amp; Chargebacks — <em>the complete picture</em></h2>
+<p class="s-desc" data-reveal>
+  <span class="en">The features that differentiate cards from UPI — and the risks that come with them. Every payment developer must understand these before going live with card payments.</span>
+  <span class="ta">கார்டுகளை UPI இலிருந்து வேறுபடுத்தும் அம்சங்கள் — மற்றும் அவற்றுடன் வரும் அபாயங்கள். Card payments-ல் live ஆவதற்கு முன் ஒவ்வொரு developer-உம் இவற்றை புரிந்துகொள்ள வேண்டும்.</span>
+</p>
+
+<div class="adv-grid" data-stagger>
+
+  <div class="adv-card adv-card--emi">
+    <span class="adv-icon">📆</span>
+    <div class="adv-title"><span class="en">EMI on Credit Cards</span><span class="ta">Credit Card-ல் EMI</span></div>
+    <div class="adv-body"><span class="en">When a merchant offers "No Cost EMI", the full amount is authorised upfront. The issuing bank then converts it into monthly instalments on the cardholder's statement.</span><span class="ta">Merchant "No Cost EMI" offer செய்யும்போது, முழு தொகையும் முன்கூட்டியே auth ஆகிறது. Issuing bank-ஆல் மாதாந்திர instalments-ஆக மாற்றப்படுகிறது.</span></div>
+    <ul class="adv-steps">
+      <li><span class="en">Customer buys ₹30,000 laptop. Selects "HDFC — 6 months No Cost EMI."</span><span class="ta">₹30,000 laptop வாங்குகிறார். "HDFC — 6 months No Cost EMI" தேர்வு செய்கிறார்.</span></li>
+      <li><span class="en">Full ₹30,000 auth hits HDFC. Flipkart settled ₹30,000 minus MDR at T+2.</span><span class="ta">₹30,000 auth HDFC-க்கு போகிறது. Flipkart T+2-ல் MDR கழித்து settle ஆகிறது.</span></li>
+      <li><span class="en">Statement: ₹5,000/month × 6. Zero interest — Flipkart pays HDFC ~1.5–2% subvention to fund it.</span><span class="ta">Statement-ல் ₹5,000/மாதம் × 6. வட்டி இல்லை — Flipkart, HDFC-க்கு ~1.5–2% subvention செலுத்துகிறது.</span></li>
+      <li><span class="en">Default on one EMI → outstanding accrues 3.5%/month interest immediately.</span><span class="ta">ஒரு EMI தவறினால் → outstanding-க்கு 3.5%/மாதம் வட்டி.</span></li>
+    </ul>
+    <div class="rl-example"><span class="rl-icon">🛒</span><div><strong><span class="en">Real-life: Flipkart Big Billion Days</span><span class="ta">நிஜ உதாரணம்: Flipkart Big Billion Days</span></strong><span class="en">₹10,000 phone shown as "No Cost EMI from ₹1,667/month." Flipkart pays SBI Card ~₹200 subvention. You pay zero interest. SBI earns spread from merchant.</span><span class="ta">₹10,000 phone "No Cost EMI from ₹1,667/month" ஆக காட்டப்படுகிறது. Flipkart, SBI Card-க்கு ~₹200 subvention செலுத்துகிறது.</span></div></div>
+  </div>
+
+  <div class="adv-card adv-card--nfc">
+    <span class="adv-icon">📡</span>
+    <div class="adv-title"><span class="en">Contactless &amp; NFC Payments</span><span class="ta">Contactless &amp; NFC Payments</span></div>
+    <div class="adv-body"><span class="en">All new Indian debit/credit cards carry a contactless chip (EMV NFC). Tap within 4cm of a contactless POS terminal — transaction completes in &lt;1 second. No PIN for amounts ≤ ₹5,000 (RBI limit).</span><span class="ta">அனைத்து புதிய Indian debit/credit cards-ல் contactless chip (EMV NFC) உள்ளது. Contactless POS-ல் 4cm-க்குள் tap செய்யவும் — 1 விநாடியில் பரிவர்த்தனை. ₹5,000 வரை PIN தேவையில்லை.</span></div>
+    <ul class="adv-steps">
+      <li><span class="en">Card generates a dynamic cryptogram (one-time code) per tap — PAN never exposed.</span><span class="ta">Card ஒவ்வொரு tap-க்கும் dynamic cryptogram உருவாக்குகிறது — PAN வெளிப்படுவதில்லை.</span></li>
+      <li><span class="en">Amount ≤ ₹5,000: No PIN. Amount > ₹5,000: PIN required.</span><span class="ta">தொகை ≤ ₹5,000: PIN தேவையில்லை. > ₹5,000: PIN தேவை.</span></li>
+      <li><span class="en">Apple Pay / Google Pay / Samsung Pay = same NFC tech, but PAN is tokenized.</span><span class="ta">Apple Pay / Google Pay / Samsung Pay = அதே NFC தொழில்நுட்பம், PAN tokenized.</span></li>
+      <li><span class="en">Same auth/clear/settle flow as chip-and-PIN, just faster (no dip required).</span><span class="ta">அதே auth/clear/settle flow, வேகமானது.</span></li>
+    </ul>
+    <div class="rl-example"><span class="rl-icon">🚇</span><div><strong><span class="en">Real-life: Mumbai Metro</span><span class="ta">நிஜ உதாரணம்: Mumbai Metro</span></strong><span class="en">Tap your Axis Flipkart Credit Card at the gate. No phone needed. ₹30 metro fare deducted in 0.8 seconds. The gate is a contactless POS connected to Visa payWave network.</span><span class="ta">Axis Flipkart Credit Card-ஐ gate-ல் tap செய்யவும். Phone தேவையில்லை. 0.8 விநாடியில் ₹30 metro fare கழிக்கப்படுகிறது.</span></div></div>
+  </div>
+
+</div>
+
+<h3 class="s-title" style="font-size:1.5rem; margin: 2.5rem 0 1rem;" data-reveal>
+  <span class="en">3D Secure (3DS) — The OTP you get before every online card payment</span>
+  <span class="ta">3D Secure (3DS) — Online card payment-க்கு முன் கிடைக்கும் OTP</span>
+</h3>
+<div class="tds-flow" data-reveal>
+  <div class="tds-flow-title"><span class="en">3DS 2.x Transaction Flow — Online Card Payment</span><span class="ta">3DS 2.x பரிவர்த்தனை Flow</span></div>
+  <div class="tds-track">
+    <div class="tds-node"><div class="tds-box">🛒</div><div class="tds-lbl"><span class="en">Checkout</span><span class="ta">Checkout</span></div><div class="tds-sub"><span class="en">PAN + CVV entered</span><span class="ta">PAN + CVV</span></div></div>
+    <div class="tds-arr"><div class="tds-line"><div class="tds-dot"></div></div><div class="tds-lbl-sm"><span class="en">Gateway</span><span class="ta">Gateway</span></div></div>
+    <div class="tds-node"><div class="tds-box">⚙️</div><div class="tds-lbl"><span class="en">3DS Server</span><span class="ta">3DS சேர்வர்</span></div><div class="tds-sub"><span class="en">PA/PG sends<br>auth request</span><span class="ta">Auth request</span></div></div>
+    <div class="tds-arr"><div class="tds-line"><div class="tds-dot"></div></div><div class="tds-lbl-sm"><span class="en">ACS lookup</span><span class="ta">ACS lookup</span></div></div>
+    <div class="tds-node"><div class="tds-box tds-box--otp">🔐</div><div class="tds-lbl"><span class="en">Issuer ACS</span><span class="ta">Issuer ACS</span></div><div class="tds-sub"><span class="en">SBI/HDFC sends<br>OTP to your phone</span><span class="ta">OTP அனுப்புகிறது</span></div></div>
+    <div class="tds-arr"><div class="tds-line"><div class="tds-dot"></div></div><div class="tds-lbl-sm"><span class="en">OTP entered</span><span class="ta">OTP</span></div></div>
+    <div class="tds-node"><div class="tds-box">📱</div><div class="tds-lbl"><span class="en">You</span><span class="ta">நீங்கள்</span></div><div class="tds-sub"><span class="en">Enter 6-digit OTP<br>on redirect page</span><span class="ta">6-இலக்க OTP</span></div></div>
+    <div class="tds-arr"><div class="tds-line"><div class="tds-dot"></div></div><div class="tds-lbl-sm"><span class="en">Verified</span><span class="ta">சரிபார்க்கப்பட்டது</span></div></div>
+    <div class="tds-node"><div class="tds-box tds-box--ok">✅</div><div class="tds-lbl"><span class="en">Auth Approved</span><span class="ta">அங்கீகரிக்கப்பட்டது</span></div><div class="tds-sub"><span class="en">Liability shifts<br>to issuer</span><span class="ta">பொறுப்பு issuer-க்கு</span></div></div>
+  </div>
+  <div class="tds-versions">
+    <div class="tds-ver">
+      <div class="tds-ver-name"><span class="en">3DS 1.0 (legacy)</span><span class="ta">3DS 1.0 (பழையது)</span></div>
+      <div class="tds-ver-body"><span class="en">Always redirects to bank page. Clunky popup/redirect. ~15–20% cart abandonment. Still used by many Indian banks. Called "Verified by Visa" or "Mastercard SecureCode."</span><span class="ta">எப்போதும் bank page-க்கு redirect. ~15–20% cart abandonment. "Verified by Visa" என்று அழைக்கப்படுகிறது.</span></div>
+    </div>
+    <div class="tds-ver">
+      <div class="tds-ver-name"><span class="en">3DS 2.x (RBI mandated)</span><span class="ta">3DS 2.x (RBI கட்டாயம்)</span></div>
+      <div class="tds-ver-body"><span class="en">Risk-based auth. Low-risk txns (known device/browser) pass with frictionless flow — no OTP. High-risk: step-up challenge. Reduces abandonment, improves security. Mandatory in India for txns above ₹2,000.</span><span class="ta">Risk-based auth. குறைந்த-risk பரிவர்த்தனைகளுக்கு OTP இல்லை. அதிக-risk: OTP/biometric. India-ல் ₹2,000-க்கு மேல் கட்டாயம்.</span></div>
+    </div>
+  </div>
+  <div class="tds-note">
+    <strong><span class="en">🔑 Liability shift:</span><span class="ta">🔑 பொறுப்பு மாற்றம்:</span></strong>
+    <span class="en"> With 3DS completed: fraud loss borne by the <strong>issuing bank</strong>, not the merchant. Without 3DS: fraud loss borne by the <strong>merchant</strong> (chargeback). This is why 3DS is mandatory in India for all online card transactions above ₹2,000.</span>
+    <span class="ta"> 3DS முடிந்தால்: fraud loss <strong>issuing bank</strong> ஏற்கிறது. 3DS இல்லாமல்: fraud loss <strong>merchant</strong> ஏற்கிறது (chargeback). இதனால்தான் India-ல் ₹2,000-க்கு மேல் கட்டாயம்.</span>
+  </div>
+</div>
+
+<h3 class="s-title" style="font-size:1.5rem; margin: 2.5rem 0 1rem;" data-reveal>
+  <span class="en">Chargeback — When a cardholder disputes a charge</span>
+  <span class="ta">Chargeback — Cardholder ஒரு வசூலை சவால் செய்யும்போது</span>
+</h3>
+<div class="chbk-flow" data-stagger>
+  <div class="chbk-step">
+    <div class="chbk-num chbk-num--dispute">1</div>
+    <div class="chbk-body">
+      <div class="chbk-h"><span class="en">🙋 Cardholder files dispute with issuer</span><span class="ta">🙋 Cardholder issuer-இடம் dispute பதிவு செய்கிறார்</span></div>
+      <div class="chbk-p"><span class="en">Priya calls HDFC: "I never ordered this ₹4,500 item." HDFC has <code>120 days</code> from transaction date to raise chargeback (Visa rules). Common reasons: fraud, item not received, item not as described, duplicate charge.</span><span class="ta">Priya HDFC-ஐ அழைக்கிறார்: "நான் இந்த ₹4,500 item order செய்யவில்லை." <code>120 நாட்கள்</code> chargeback raise செய்ய இருக்கின்றன.</span></div>
+    </div>
+  </div>
+  <div class="chbk-step">
+    <div class="chbk-num">2</div>
+    <div class="chbk-body">
+      <div class="chbk-h"><span class="en">🏛️ Issuer → Network → Acquirer</span><span class="ta">🏛️ Issuer → Network → Acquirer</span></div>
+      <div class="chbk-p"><span class="en">HDFC (issuer) raises chargeback via Visa network → merchant's acquirer (Axis Bank) → acquirer debits merchant's settlement account and notifies them via PA/gateway.</span><span class="ta">HDFC, Visa network மூலம் chargeback raise செய்கிறது → merchant-இன் acquirer (Axis Bank) → merchant-இன் settlement account debit ஆகிறது.</span></div>
+    </div>
+  </div>
+  <div class="chbk-step">
+    <div class="chbk-num">3</div>
+    <div class="chbk-body">
+      <div class="chbk-h"><span class="en">🏪 Merchant must respond within 10–30 days</span><span class="ta">🏪 Merchant 10–30 நாட்களுக்குள் பதில் சொல்ல வேண்டும்</span></div>
+      <div class="chbk-p"><span class="en">Merchant submits <strong>compelling evidence</strong>: delivery proof + tracking, order details, customer IP address + device fingerprint, 3DS auth record, email confirmation. Rebuttal sent to acquirer within window.</span><span class="ta">Merchant <strong>compelling evidence</strong> சமர்ப்பிக்கிறது: delivery proof, order details, customer IP, 3DS auth record, email confirmation.</span></div>
+    </div>
+  </div>
+  <div class="chbk-step">
+    <div class="chbk-num chbk-num--resolve">4</div>
+    <div class="chbk-body">
+      <div class="chbk-h"><span class="en">⚖️ Network arbitrates — win or lose</span><span class="ta">⚖️ Network நடுவர் — வெற்றி அல்லது தோல்வி</span></div>
+      <div class="chbk-p"><span class="en">Strong evidence → chargeback reversed (merchant wins, ₹4,500 returned). Weak evidence → customer refunded (merchant loses ₹4,500 + ₹500–₹1,500 chargeback fee). High chargeback ratio (&gt;1% of monthly txns) → PA may terminate merchant account.</span><span class="ta">Strong evidence → chargeback reversed (merchant வெற்றி). Weak evidence → merchant ₹4,500 + fee இழக்கிறது. &gt;1% chargeback ratio → PA merchant account terminate செய்யலாம்.</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="chbk-outcome-grid" data-stagger>
+  <div class="chbk-outcome chbk-outcome--win">
+    <h4><span class="en">✅ Merchant wins if:</span><span class="ta">✅ Merchant வெற்றி பெறுவது:</span></h4>
+    <p><span class="en">3DS completed (OTP verified), delivery proof with signature, order placed from cardholder's own device/IP, clear T&amp;C shown at checkout, customer service trail exists.</span><span class="ta">3DS completed, delivery proof, cardholder device/IP-ல் order, T&amp;C checkout-ல் காட்டப்பட்டது.</span></p>
+  </div>
+  <div class="chbk-outcome chbk-outcome--lose">
+    <h4><span class="en">❌ Merchant loses if:</span><span class="ta">❌ Merchant தோற்பது:</span></h4>
+    <p><span class="en">No 3DS, no delivery tracking, CNP (card not present) with no auth record, product genuinely not delivered or misrepresented, no T&amp;C at checkout.</span><span class="ta">3DS இல்லை, delivery tracking இல்லை, auth record இல்லை, product deliver ஆகவில்லை.</span></p>
+  </div>
+</div>
+
+<div class="rl-example" data-reveal style="margin-top:1.5rem;">
+  <span class="rl-icon">💡</span>
+  <div>
+    <strong><span class="en">Real-life: Myntra returns fraud</span><span class="ta">நிஜ உதாரணம்: Myntra returns fraud</span></strong>
+    <span class="en">A fraudster buys ₹8,000 worth of clothes from Myntra. Returns empty boxes. Initiates chargeback claiming "item not received." Myntra submits delivery partner's photo proof of package delivered + customer's confirmed address + Razorpay 3DS auth log. Chargeback rejected. Myntra wins. Fraud pattern flagged in their risk system → customer blacklisted.</span>
+    <span class="ta">ஒரு fraudster Myntra-ல் ₹8,000 clothes வாங்குகிறார். காலி boxes திரும்பி அனுப்புகிறார். "item not received" என்று chargeback initiates செய்கிறார். Myntra delivery partner photo proof + 3DS auth log சமர்ப்பிக்கிறது. Chargeback rejected. Myntra வெற்றி.</span>
+  </div>
+</div>
+
+<div class="alert-box" data-reveal style="margin-top:1.5rem;">
+  <span class="en">🔑 <strong>Refund vs Chargeback:</strong> A <strong>refund</strong> is merchant-initiated, voluntary, costs nothing, takes 1–7 days. A <strong>chargeback</strong> is cardholder-initiated, forced, costs ₹500–₹2,000 in fees, takes 30–90 days. <em>Always encourage customers to request a refund first</em> — a chargeback costs you more in every way.</span>
+  <span class="ta">🔑 <strong>Refund vs Chargeback:</strong> <strong>Refund</strong> = merchant தன்னிச்சையாக, இலவசம், 1–7 நாட்கள். <strong>Chargeback</strong> = cardholder கட்டாயப்படுத்துகிறார், ₹500–₹2,000 fee, 30–90 நாட்கள். வாடிக்கையாளர்களை முதலில் refund கேட்கச் சொல்லுங்கள்.</span>
+</div>
+`
 }
 
 ]; // end window.SECTIONS
