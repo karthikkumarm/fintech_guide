@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>India's Fintech Stack — Builder's Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+
+<div id="progress-bar"></div>
+
+<!-- HERO -->
+<header class="hero" id="hero">
+  <canvas id="hero-canvas" aria-hidden="true"></canvas>
+  <div class="hero-inner">
+    <p class="hero-eyebrow">
+      <span class="dot-pulse"></span>
+      <span class="en">Made with ❤️ · Karthi · Robosynaptix</span>
+      <span class="ta">கார்த்தி · Robosynaptix</span>
+    </p>
+    <h1 class="hero-title">
+      <span class="en">India's Complete<br><em>Fintech Stack</em></span>
+      <span class="ta">இந்தியாவின் முழுமையான<br><em>ஃபின்டெக் அடுக்கு</em></span>
+    </h1>
+    <p class="hero-sub">
+      <span class="en">Company registration · RBI licensing · Reseller models · Bank APIs</span>
+      <span class="ta">நிறுவன பதிவு · RBI உரிமம் · மறுவிற்பனை மாதிரிகள் · வங்கி API</span>
+    </p>
+    <div class="hero-bottom">
+      <div class="lang-toggle" role="group" aria-label="Language">
+        <button class="lang-btn active" onclick="setLang('en')" aria-pressed="true">EN</button>
+        <button class="lang-btn" onclick="setLang('ta')" aria-pressed="false">தமிழ்</button>
+      </div>
+      <div class="scroll-hint" aria-hidden="true">
+        <div class="scroll-mouse"><div class="scroll-dot"></div></div>
+        <span class="en">Scroll to explore</span>
+        <span class="ta">ஆராய உருட்டுங்கள்</span>
+      </div>
+    </div>
+  </div>
+  <!-- floating stat chips -->
+  <div class="hero-chip hero-chip-1" aria-hidden="true">⚖️ PSS Act 2007</div>
+  <div class="hero-chip hero-chip-2" aria-hidden="true">₹15 Cr net worth</div>
+  <div class="hero-chip hero-chip-3" aria-hidden="true">🏦 Nodal Account</div>
+  <div class="hero-chip hero-chip-4" aria-hidden="true">⚡ UPI · IMPS · NEFT</div>
+</header>
+
+<!-- STICKY NAV -->
+<nav id="main-nav" class="main-nav" role="navigation" aria-label="Guide sections">
+  <!-- nav items injected by app.js -->
+</nav>
+
+<!-- CONTENT — sections injected by app.js -->
+<main id="content-root" role="main"></main>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <span class="footer-icon">💙</span>
+      <div>
+        <div class="footer-name">India's Fintech Stack Guide</div>
+        <div class="footer-tagline">
+          <span class="en">Built for founders, operators &amp; curious minds</span>
+          <span class="ta">நிறுவனர்கள், ஆபரேட்டர்கள் &amp; ஆர்வமுள்ள மனங்களுக்காக</span>
+        </div>
+      </div>
+    </div>
+    <p class="footer-legal">
+      <span class="en">Regulatory information based on RBI PSS Act 2007 and PA/PG guidelines 2020. Always consult a licensed CA and legal counsel before proceeding.</span>
+      <span class="ta">RBI PSS சட்டம் 2007 மற்றும் PA/PG வழிகாட்டுதல்கள் 2020 அடிப்படையில். தொடர்வதற்கு முன்பு உரிமம் பெற்ற CA மற்றும் சட்ட ஆலோசகரை அணுகவும்.</span>
+    </p>
+    <div class="footer-copy">© 2024 Karthi · Robosynaptix. Educational reference only.</div>
+  </div>
+</footer>
+
+<button id="btt" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<div id="ctx-menu" role="menu" style="display:none"></div>
+
+<script src="js/data.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
