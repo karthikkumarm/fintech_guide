@@ -918,11 +918,120 @@ window.SECTIONS = [
     <p class="csl-desc"><span class="en">Build card acceptance software on top of a licensed PA (Razorpay, Cashfree). You provide the checkout UX; the PA handles card tokenisation, PCI-DSS, and settlement. This is the white-label model (reseller Model 02). No PA licence required. Revenue: MDR spread.</span><span class="ta">Razorpay, Cashfree போன்ற licensed PA மேல் card acceptance software கட்டுங்கள். PA card tokenization, PCI-DSS, settlement handle செய்கிறது.</span></p>
     <div class="csl-tags"><span class="tag tag-ok">Legal</span><span class="tag tag-cost">₹2L+ build</span><span class="tag tag-req">TSP/PA agreement</span></div>
   </div>
-  <div class="csl-card">
+  <div class="csl-card csl-card--featured">
     <div class="csl-icon">🔌</div>
-    <h4 class="csl-title">Card Network ISA / ISO Program</h4>
-    <p class="csl-desc"><span class="en">Become an Independent Sales Agent (ISA) or Merchant Service Provider (MSP) under Visa/Mastercard's certified acquirer in India. The acquiring bank sponsors you. You onboard and manage merchants, handle first-line support. Requires strong track record + bank sponsorship.</span><span class="ta">Visa/Mastercard-ன் certified acquirer கீழ் ISA/MSP ஆகுங்கள். Bank உங்களை sponsor செய்கிறது. நீங்கள் merchants onboard செய்கிறீர்கள்.</span></p>
-    <div class="csl-tags"><span class="tag tag-ok">Legal</span><span class="tag tag-cost">₹5L+ setup</span><span class="tag tag-warn">Bank sponsorship required</span></div>
+    <h4 class="csl-title">Card Network ISA / ISO / MSP Program</h4>
+    <p class="csl-desc"><span class="en">Become an Independent Sales Agent (ISA), ISO (Independent Sales Organization), or Merchant Service Provider (MSP) under Visa / Mastercard's certified acquirer in India. The acquiring bank sponsors you to the card scheme — you earn residual MDR split on every transaction your merchants process, forever.</span><span class="ta">Visa/Mastercard-ன் certified acquirer கீழ் ISA/MSP ஆகுங்கள். ஒவ்வொரு பரிவர்த்தனையிலும் நிரந்தர MDR பங்கு சம்பாதியுங்கள்.</span></p>
+    <div class="csl-tags"><span class="tag tag-ok">Legal</span><span class="tag tag-cost">₹5L–₹20L setup</span><span class="tag tag-warn">Bank sponsorship required</span><span class="tag tag-req">PCI-DSS required</span></div>
+    <div class="csl-links"><a href="#iso-deep-dive" class="ext-link">↓ Full step-by-step guide below</a></div>
+  </div>
+</div>
+
+<!-- ISA / ISO Deep Dive -->
+<div id="iso-deep-dive" class="iso-deep-wrap" data-reveal>
+  <div class="iso-header">
+    <div class="iso-badge">Deep Dive</div>
+    <h3 class="iso-title">🔌 How to become a Card Network ISA / ISO / MSP in India</h3>
+    <p class="iso-lead"><span class="en">An ISO (Independent Sales Organization) is a company registered with Visa or Mastercard — through a sponsoring acquiring bank — to sell card acceptance services to merchants. You don't hold money, you don't process transactions: you <em>onboard and manage</em> the merchant relationship. But you earn a residual MDR cut on every swipe, every day, for as long as that merchant is live. At scale, this becomes a recurring-revenue machine.</span><span class="ta">ISO என்பது Visa அல்லது Mastercard-உடன் பதிவு செய்யப்பட்ட நிறுவனம். நீங்கள் பணம் வைத்திருக்கவில்லை, பரிவர்த்தனைகளை செயலாக்கவில்லை — வெறும் merchant relationships நிர்வகிக்கிறீர்கள். ஆனால் ஒவ்வொரு swipe-லும் நிரந்தர MDR பங்கு சம்பாதிக்கிறீர்கள்.</span></p>
+  </div>
+
+  <!-- Terminology table -->
+  <div class="iso-terms" data-reveal>
+    <div class="iso-term-row iso-term-head"><span>Title</span><span>What it means</span><span>Who it applies to</span></div>
+    <div class="iso-term-row"><span>ISA</span><span>Independent Sales Agent — individual or small firm; registered agent of an ISO or bank</span><span>Freelancers, small biz</span></div>
+    <div class="iso-term-row"><span>ISO</span><span>Independent Sales Organization — registered with card scheme via bank; onboards merchants</span><span>Companies &lt;₹500Cr volume</span></div>
+    <div class="iso-term-row"><span>MSP</span><span>Merchant Service Provider — larger ISO with full service stack (terminals, helpdesk, disputes)</span><span>Companies with own tech</span></div>
+    <div class="iso-term-row"><span>TPSP</span><span>Third Party Service Provider — handles cardholder data on behalf of a member bank</span><span>Tech/SaaS vendors</span></div>
+    <div class="iso-term-row"><span>Acquirer</span><span>The bank that sponsors you, settles funds, is ultimately liable to card scheme</span><span>HDFC, ICICI, Axis, Worldline India</span></div>
+  </div>
+
+  <!-- Step-by-step -->
+  <h4 class="iso-steps-title" data-reveal>📋 Step-by-step path — from zero to registered ISO</h4>
+  <div class="iso-steps">
+    <div class="iso-step" data-reveal>
+      <div class="iso-step-num">01</div>
+      <div class="iso-step-body">
+        <div class="iso-step-h">Build a legitimate track record as a POS DSA (6–18 months)</div>
+        <p class="iso-step-p"><span class="en">Before any bank will sponsor you to Visa/Mastercard, you need to demonstrate you can onboard and manage merchants responsibly. Start as a DSA for HDFC or ICICI Merchant Services — deploy 50–200 terminals. Track your chargeback ratio (must stay under 1%), merchant activation rate, and dispute resolution. This portfolio is your application evidence.</span><span class="ta">எந்த bank-ம் உங்களை Visa/Mastercard-க்கு sponsor செய்ய, நீங்கள் merchant onboarding திறனை நிரூபிக்க வேண்டும். HDFC அல்லது ICICI Merchant Services-க்காக DSA ஆகி 50–200 terminals deploy செய்யுங்கள்.</span></p>
+        <div class="iso-step-meta"><span class="tag tag-time">6–18 months</span><span class="tag tag-cost">~₹50K investment</span></div>
+      </div>
+    </div>
+    <div class="iso-step" data-reveal>
+      <div class="iso-step-num">02</div>
+      <div class="iso-step-body">
+        <div class="iso-step-h">Incorporate a Pvt Ltd company with the right objects clause</div>
+        <p class="iso-step-p"><span class="en">You must be a registered company — not a proprietorship. Your MoA must include "merchant acquiring services", "payment facilitation", and "POS terminal deployment". Minimum paid-up capital ₹10L recommended (banks look for financial seriousness). Directors should have clean credit history — banks will run background checks.</span><span class="ta">Pvt Ltd நிறுவனமாக பதிவு செய்யுங்கள். MoA-ல் "merchant acquiring services", "payment facilitation" சேர்க்கவும். குறைந்தபட்ச paid-up capital ₹10L.</span></p>
+        <div class="iso-step-meta"><span class="tag tag-time">30–45 days</span><span class="tag tag-cost">₹15K–₹30K (see Company chapter)</span></div>
+      </div>
+    </div>
+    <div class="iso-step" data-reveal>
+      <div class="iso-step-num">03</div>
+      <div class="iso-step-body">
+        <div class="iso-step-h">Achieve PCI-DSS compliance (minimum SAQ-A or SAQ-B+IP)</div>
+        <p class="iso-step-p"><span class="en">The Payment Card Industry Data Security Standard is non-negotiable. As an ISO you handle merchant data — PCI-DSS Level 3 or 4 applies initially (Self-Assessment Questionnaire). Hire a <a href="https://www.pcisecuritystandards.org/assessors_and_solutions/qualified_security_assessors" target="_blank" rel="noopener" class="ext-link">PCI QSA (Qualified Security Assessor)</a> to guide your first assessment. Annual cost: ₹2L–₹8L. Failing to maintain PCI-DSS = immediate de-registration by card scheme.</span><span class="ta"><a href="https://www.pcisecuritystandards.org" target="_blank" rel="noopener" class="ext-link">PCI-DSS</a> இணக்கம் கட்டாயம். SAQ-A அல்லது SAQ-B+IP level தொடங்கவும். ஆண்டு செலவு: ₹2L–₹8L.</span></p>
+        <div class="iso-step-meta"><span class="tag tag-time">3–6 months</span><span class="tag tag-cost">₹2L–₹8L/year</span><span class="tag tag-warn">Mandatory — no exceptions</span></div>
+      </div>
+    </div>
+    <div class="iso-step" data-reveal>
+      <div class="iso-step-num">04</div>
+      <div class="iso-step-body">
+        <div class="iso-step-h">Approach an acquiring bank's ISO/MSP partnership desk</div>
+        <p class="iso-step-p"><span class="en">Contact the merchant acquiring partnerships team directly — not a branch, the head-office BD team. Key banks with active ISO programs in India:</span><span class="ta">Merchant acquiring partnerships team-ஐ நேரடியாக தொடர்பு கொள்ளுங்கள்:</span></p>
+        <div class="iso-bank-links">
+          <a href="https://www.hdfcbank.com/content/bbp/repositories/723fb80a-2dde-42a3-9793-7ae1be57c87f/?folderName=/Merchant+Service+Charges" target="_blank" rel="noopener" class="iso-bank-pill">🏦 HDFC Merchant Acquiring</a>
+          <a href="https://www.icicibank.com/business/merchant-acquiring" target="_blank" rel="noopener" class="iso-bank-pill">🏦 ICICI Merchant Services</a>
+          <a href="https://www.axisbank.com/business-banking/merchant-banking" target="_blank" rel="noopener" class="iso-bank-pill">🏦 Axis Merchant Banking</a>
+          <a href="https://pinelabs.com/partners" target="_blank" rel="noopener" class="iso-bank-pill">⚙️ Pine Labs Partners</a>
+          <a href="https://www.worldline.com/en/home/main-navigation/solutions/merchant-services.html" target="_blank" rel="noopener" class="iso-bank-pill">🌐 Worldline India</a>
+        </div>
+        <p class="iso-step-p" style="margin-top:0.75rem;"><span class="en">Submit: Company documents, Director KYC, PCI-DSS certificate, 6-month DSA performance report, business plan with merchant pipeline.</span><span class="ta">சமர்ப்பிக்கவும்: Company documents, Director KYC, PCI-DSS certificate, 6-month DSA performance report.</span></p>
+        <div class="iso-step-meta"><span class="tag tag-time">1–3 months review</span><span class="tag tag-cost">No direct fee to bank</span></div>
+      </div>
+    </div>
+    <div class="iso-step" data-reveal>
+      <div class="iso-step-num">05</div>
+      <div class="iso-step-body">
+        <div class="iso-step-h">Sign the ISO/MSP Agreement + Merchant Processing Agreement (MPA)</div>
+        <p class="iso-step-p"><span class="en">The ISO Agreement defines: your revenue share (typically 10–25 bps of MDR), residual split, chargeback liability cap, MCC restrictions, and exclusivity/non-compete clauses. The MPA is the template you'll use with every merchant you onboard. Key terms to negotiate: <strong>residual ownership</strong> (do you own your merchant portfolio or the bank does?), <strong>chargeback liability cap</strong>, <strong>non-compete radius</strong>, and <strong>minimum volume commitments</strong>.</span><span class="ta">ISO Agreement: revenue share (10–25 bps), residual split, chargeback liability cap, MCC restrictions. முக்கிய terms: residual ownership, chargeback liability cap.</span></p>
+        <div class="iso-step-meta"><span class="tag tag-req">Legal review strongly advised</span><span class="tag tag-cost">₹50K–₹2L legal fees</span></div>
+      </div>
+    </div>
+    <div class="iso-step" data-reveal>
+      <div class="iso-step-num">06</div>
+      <div class="iso-step-body">
+        <div class="iso-step-h">Card scheme registration — Visa &amp; Mastercard</div>
+        <p class="iso-step-p"><span class="en">Once a bank agrees to sponsor you, they register you with Visa as a "Visa Registered MSP" and with Mastercard as an "MSP". This registration appears in Visa's Global Registry of Service Providers. Registration is done by the bank on your behalf — but you must pass Visa's due diligence form (background check, AML/KYC on directors, technology questionnaire). Mastercard uses the <a href="https://www.mastercard.com/global/en/business/overview/safety-and-security/msp-program.html" target="_blank" rel="noopener" class="ext-link">MSP Program portal</a>. Annual registration fee: ~$5,000–$10,000 per scheme.</span><span class="ta">Bank உங்களை Visa Registered MSP மற்றும் Mastercard MSP ஆக பதிவு செய்யும். Visa due diligence form, directors AML/KYC pass செய்ய வேண்டும். Annual fee: ~$5,000–$10,000.</span></p>
+        <div class="iso-step-meta"><span class="tag tag-cost">$5K–$10K/year per scheme</span><span class="tag tag-time">4–8 weeks from bank submission</span></div>
+      </div>
+    </div>
+    <div class="iso-step" data-reveal>
+      <div class="iso-step-num">07</div>
+      <div class="iso-step-body">
+        <div class="iso-step-h">Build your operations stack</div>
+        <p class="iso-step-p"><span class="en">Once registered, you're a full ISO. Now build the operational machinery:</span><span class="ta">பதிவு செய்த பிறகு, operations stack கட்டுங்கள்:</span></p>
+        <ul class="iso-ops-list">
+          <li><strong>Merchant onboarding portal</strong> — digital KYC, MCC selection, bank account verification (penny drop)</li>
+          <li><strong>Terminal management system (TMS)</strong> — remote key injection, parameter download, software updates</li>
+          <li><strong>Helpdesk</strong> — L1 for terminal issues, chargebacks, settlement queries (SLA: 24h response)</li>
+          <li><strong>Dispute management</strong> — chargeback response to acquirer within 45 days; keep sales slips, delivery proof</li>
+          <li><strong>Reporting dashboard</strong> — real-time transaction volumes, MDR earned, chargeback ratio per merchant</li>
+        </ul>
+        <div class="iso-step-meta"><span class="tag tag-cost">₹10L–₹30L build cost</span><span class="tag tag-time">3–6 months to MVP</span></div>
+      </div>
+    </div>
+    <div class="iso-step" data-reveal>
+      <div class="iso-step-num">08</div>
+      <div class="iso-step-body">
+        <div class="iso-step-h">Revenue model &amp; scale targets</div>
+        <p class="iso-step-p"><span class="en">An ISO earns on the <em>residual spread</em> — the difference between the MDR charged to the merchant and what passes to the acquiring bank. Example: Merchant pays 2.0% MDR → acquirer takes 1.85% → you keep 0.15% = 15 basis points. On ₹1 crore/month of merchant GMV, that's ₹15,000/month passive income per crore of volume. Scale to ₹100 Cr GMV/month → ₹15 Lakh/month residual.</span><span class="ta">ISO residual spread மூலம் சம்பாதிக்கிறது. Merchant ₹2.0% MDR செலுத்துகிறார் → acquirer ₹1.85% எடுக்கிறது → நீங்கள் 0.15% வைத்திருக்கிறீர்கள். ₹100Cr GMV/month → ₹15L/month passive income.</span></p>
+        <div class="iso-rev-grid">
+          <div class="iso-rev-item"><span class="iso-rev-gmv">₹10 Cr/mo</span><span class="iso-rev-earn">~₹1.5L/mo residual</span></div>
+          <div class="iso-rev-item"><span class="iso-rev-gmv">₹50 Cr/mo</span><span class="iso-rev-earn">~₹7.5L/mo residual</span></div>
+          <div class="iso-rev-item iso-rev-item--gold"><span class="iso-rev-gmv">₹500 Cr/mo</span><span class="iso-rev-earn">~₹75L/mo residual</span></div>
+        </div>
+        <div class="iso-step-meta"><span class="tag tag-ok">Recurring passive income</span><span class="tag tag-time">Break-even ~18–24 months</span></div>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -1043,6 +1152,156 @@ window.SECTIONS = [
     <li><span class="en">Customer STR filed by issuing bank's AML system (FIU-IND receives)</span><span class="ta">Issuing bank-ன் AML system-ஆல் STR பதிவு செய்யப்படுகிறது</span></li>
     <li><span class="en">Visa/Mastercard Global Security network alerts acquiring bank directly</span><span class="ta">Visa/Mastercard நேரடியாக acquiring bank-ஐ எச்சரிக்கிறது</span></li>
   </ul>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     BUILD YOUR OWN CARD NETWORK — LIKE VISA / MASTERCARD / RUPAY
+     ═══════════════════════════════════════════════════════════ -->
+<h3 class="s-sub-title" data-reveal style="margin-top:4rem">🏗️ <span class="en">Building a card network — what it actually takes</span><span class="ta">கார்டு நெட்வொர்க் கட்டுதல் — உண்மையில் என்ன தேவை</span></h3>
+<p class="s-desc" data-reveal>
+  <span class="en">Visa, Mastercard, and RuPay are not banks — they are <em>network operators</em>. They own the rules, the messaging infrastructure, and the clearing/settlement rails that sit between issuing banks and acquiring banks. Building one is one of the most capital-intensive and regulation-heavy projects in fintech — but it has been done. RuPay proved it in India. Here's the complete architecture.</span>
+  <span class="ta">Visa, Mastercard, RuPay ஆகியவை banks அல்ல — அவை network operators. அவை rules, messaging infrastructure, clearing/settlement rails ஐ சொந்தமாக வைத்திருக்கின்றன.</span>
+</p>
+
+<!-- What a card network IS -->
+<div class="cnw-what" data-reveal>
+  <h4 class="cnw-title">🧩 What a card network actually is</h4>
+  <div class="cnw-grid">
+    <div class="cnw-item">
+      <div class="cnw-icon">📜</div>
+      <div class="cnw-label">Rules Engine</div>
+      <p class="cnw-text">A legally binding rulebook (Visa International Operating Regulations, Mastercard Rules) governing every participant. Defines interchange rates, dispute timelines, fraud liability, prohibited transactions, certification requirements.</p>
+    </div>
+    <div class="cnw-item">
+      <div class="cnw-icon">⚡</div>
+      <div class="cnw-label">Authorization Switch</div>
+      <p class="cnw-text">A real-time ISO 8583 message router. When a card is tapped anywhere in the world, a 0.2kb authorization request is routed to the issuing bank through this switch in &lt;100ms. Processes millions of transactions/second (VisaNet: 65,000 TPS capacity).</p>
+    </div>
+    <div class="cnw-item">
+      <div class="cnw-icon">📊</div>
+      <div class="cnw-label">Clearing System</div>
+      <p class="cnw-text">At end of each business day, all authorized transactions are submitted to the network for clearing. The network calculates net positions: what each acquiring bank owes to each issuing bank (interchange netting). ISO 20022 file format.</p>
+    </div>
+    <div class="cnw-item">
+      <div class="cnw-icon">💸</div>
+      <div class="cnw-label">Settlement System</div>
+      <p class="cnw-text">After clearing, the network instructs a settlement bank (or central bank RTGS) to move funds between members. In India, RuPay uses RBI's RTGS. Visa uses JP Morgan Chase as primary settlement bank globally.</p>
+    </div>
+    <div class="cnw-item">
+      <div class="cnw-icon">🔐</div>
+      <div class="cnw-label">Key Management (HSM)</div>
+      <p class="cnw-text">All card transactions are encrypted with symmetric keys (3DES/AES-128). The network operates a master key hierarchy — card personalization keys, terminal master keys, session keys. Hardware Security Modules (HSMs) manage this at every node.</p>
+    </div>
+    <div class="cnw-item">
+      <div class="cnw-icon">🛡️</div>
+      <div class="cnw-label">Fraud Intelligence Network</div>
+      <p class="cnw-text">Visa Advanced Authorization (VAA) and Mastercard Safety Net score every transaction in real-time using ML. They aggregate fraud signals across all member banks globally — a capability no single bank can replicate alone.</p>
+    </div>
+  </div>
+</div>
+
+<!-- RuPay case study -->
+<h4 class="s-sub-title" data-reveal style="font-size:1.1rem;margin-top:2.5rem">🇮🇳 <span class="en">RuPay — how India built its own network</span><span class="ta">RuPay — இந்தியா எவ்வாறு தனது சொந்த network கட்டியது</span></h4>
+<div class="rupay-timeline" data-reveal>
+  <div class="rt-item"><span class="rt-year">2008</span><span class="rt-event">RBI mandates creation of a domestic card scheme independent of Visa/Mastercard — NPCI formed as not-for-profit umbrella organization by 10 core banks</span></div>
+  <div class="rt-item"><span class="rt-year">2012</span><span class="rt-event">RuPay launched for domestic debit cards. Lower interchange than Visa/MC to make card acceptance affordable for small merchants across India</span></div>
+  <div class="rt-item"><span class="rt-year">2014</span><span class="rt-event">Jan Dhan Yojana — 400M+ new bank accounts opened with RuPay debit cards. Government subsidy delivery via AEPS on RuPay rails creates national scale overnight</span></div>
+  <div class="rt-item"><span class="rt-year">2017</span><span class="rt-event">RuPay credit cards launched. RuPay On UPI (2022) — credit card linked to UPI VPA — a global first; no other network has P2M credit card on a UPI-like real-time system</span></div>
+  <div class="rt-item"><span class="rt-year">2023</span><span class="rt-event">RuPay accepted in 10+ countries (UAE, Singapore, Bhutan, Nepal, Maldives, UK). Memoranda with JCB (Japan), Discover (US), UnionPay (China) for cross-acceptance</span></div>
+  <div class="rt-item rt-item--now"><span class="rt-year">Today</span><span class="rt-event">RuPay holds ~60% of debit card market share in India. Processing 8B+ transactions/year. Zero MDR on P2M UPI-RuPay transactions — mandated by RBI Dec 2021</span></div>
+</div>
+
+<!-- Regulatory framework -->
+<h4 class="s-sub-title" data-reveal style="font-size:1.1rem;margin-top:2.5rem">⚖️ <span class="en">Regulatory path — what RBI requires</span><span class="ta">ஒழுங்குமுறை பாதை</span></h4>
+<div class="risk-grid" data-stagger>
+  <div class="risk-card">
+    <h4>📋 PSS Act 2007 — Authorization</h4>
+    <p><span class="en">You must apply to RBI under the Payment and Settlement Systems Act 2007, Section 4. Specifically under the category <strong>"Retail Electronic Payment Systems"</strong>. RBI issues a Certificate of Authorization. Currently only NPCI (RuPay/IMPS/UPI), Visa, Mastercard, Amex, and Diners Club hold this authorization for card networks in India. Getting a new authorization requires demonstrating national significance, capital adequacy, and technology readiness.</span><span class="ta">RBI-ல் PSS Act 2007, Section 4 கீழ் விண்ணப்பிக்கவும். தற்போது NPCI, Visa, Mastercard, Amex மட்டுமே இந்த authorization வைத்திருக்கின்றன.</span></p>
+  </div>
+  <div class="risk-card">
+    <h4>💰 Capital Requirement — ₹300 Crore+</h4>
+    <p><span class="en">RBI's proposed framework for Payment System Operators (PSOs) in the "Large" category requires net worth of ₹300 crore. This is the minimum financial commitment. Operational capital (technology, staffing, marketing) typically requires 2–5× that. Total realistic capital: <strong>₹500 Cr – ₹1,500 Cr</strong> to reach operational viability. Compare: NPCI was capitalized by 10 core banks contributing ₹10Cr each at inception.</span><span class="ta">RBI-ன் proposed framework "Large" category PSO-க்கு ₹300 Cr net worth தேவை. மொத்த realistic capital: ₹500Cr – ₹1,500Cr.</span></p>
+  </div>
+</div>
+
+<!-- 5 stages to build -->
+<h4 class="s-sub-title" data-reveal style="font-size:1.1rem;margin-top:2.5rem">🗺️ <span class="en">The 5 stages to build a card network</span><span class="ta">கார்டு network கட்ட 5 நிலைகள்</span></h4>
+<div class="cnw-stages" data-stagger>
+  <div class="cnw-stage">
+    <div class="cnw-stage-num">1</div>
+    <div class="cnw-stage-body">
+      <div class="cnw-stage-h">Regulatory authorization + governance structure</div>
+      <p class="cnw-stage-p"><span class="en">File for PSS Act authorization with RBI. Simultaneously establish governance — a board with RBI nominee, independent directors, and member bank representatives. Model: NPCI's consortium ownership (banks collectively own NPCI) vs Visa/Mastercard's for-profit shareholder model. RBI strongly favors not-for-profit or government-linked structures for new domestic networks.</span><span class="ta">RBI-ல் PSS Act authorization file செய்யுங்கள். Governance structure நிறுவுங்கள் — RBI nominee, independent directors கொண்ட board.</span></p>
+      <div class="cnw-stage-meta"><span class="tag tag-time">2–5 years</span><span class="tag tag-cost">₹300Cr+ capital required</span></div>
+    </div>
+  </div>
+  <div class="cnw-stage">
+    <div class="cnw-stage-num">2</div>
+    <div class="cnw-stage-body">
+      <div class="cnw-stage-h">Build or license the authorization switch (ISO 8583 / EMV)</div>
+      <p class="cnw-stage-p"><span class="en">The core of a card network is the authorization switch. You can build custom or license from vendors: <strong>ACI Worldwide</strong> (BASE24-eps), <strong>FIS</strong> (EFT switching), or open-source EMV kernel libraries. The switch must handle: ISO 8583 message parsing, routing tables for BIN ranges (Bank Identification Numbers), HSM integration for PIN verification (DUKPT key derivation), and real-time fraud scoring hooks. Data centers must be redundant (N+1), geographically separated, with &lt;50ms inter-node latency.</span><span class="ta">ISO 8583 authorization switch கட்டுங்கள் அல்லது ACI Worldwide, FIS-இடம் license பெறுங்கள். BIN routing, HSM integration, real-time fraud scoring தேவை.</span></p>
+      <div class="cnw-stage-meta"><span class="tag tag-time">18–36 months</span><span class="tag tag-cost">₹50Cr–₹200Cr</span></div>
+    </div>
+  </div>
+  <div class="cnw-stage">
+    <div class="cnw-stage-num">3</div>
+    <div class="cnw-stage-body">
+      <div class="cnw-stage-h">Certify member banks — issuers + acquirers</div>
+      <p class="cnw-stage-p"><span class="en">Minimum viable network = at least 5 issuing banks + 5 acquiring banks who agree to your rules and go through your technical certification. Banks must install your keys (BDK — Base Derivation Key) in their HSMs, integrate your ISO 8583 specifications, and pass test suites. RuPay started with SBI, PNB, Canara Bank, BoI, UBI. Larger = better network effect. Target: all PSU banks first (RBI influence helps), then private.</span><span class="ta">குறைந்தபட்சம் 5 issuing + 5 acquiring banks தேவை. Banks உங்கள் BDK keys-ஐ HSM-ல் install செய்து technical certification pass செய்ய வேண்டும்.</span></p>
+      <div class="cnw-stage-meta"><span class="tag tag-time">12–24 months</span><span class="tag tag-cost">₹20Cr–₹50Cr certification ops</span></div>
+    </div>
+  </div>
+  <div class="cnw-stage">
+    <div class="cnw-stage-num">4</div>
+    <div class="cnw-stage-body">
+      <div class="cnw-stage-h">Terminal &amp; ATM ecosystem certification (EMV)</div>
+      <p class="cnw-stage-p"><span class="en">Every POS terminal and ATM that will accept your card must be certified for your EMV kernel. In India, approx 8 million POS terminals and 2.5 lakh ATMs exist. Getting terminal manufacturers (Verifone, Ingenico, PAX, Newland) to certify their hardware for your kernel takes 6–18 months per OEM. RuPay had a significant advantage: RBI mandated that all domestic-certified terminals must accept RuPay. Without regulatory mandate, you must negotiate each OEM separately.</span><span class="ta">ஒவ்வொரு POS terminal-உம் உங்கள் EMV kernel-ஐ certify செய்ய வேண்டும். Verifone, Ingenico, PAX போன்ற OEM-களுடன் 6–18 மாதம் certification process.</span></p>
+      <div class="cnw-stage-meta"><span class="tag tag-time">2–4 years</span><span class="tag tag-cost">₹30Cr–₹80Cr</span></div>
+    </div>
+  </div>
+  <div class="cnw-stage">
+    <div class="cnw-stage-num">5</div>
+    <div class="cnw-stage-body">
+      <div class="cnw-stage-h">Cardholder &amp; merchant scale — the chicken-and-egg problem</div>
+      <p class="cnw-stage-p"><span class="en">The hardest part. Merchants won't accept your card if few cardholders have it. Cardholders won't want your card if few merchants accept it. RuPay's solution: government mandate + Jan Dhan accounts (400M cards instantly). Your solutions without that mandate: (a) deep discounts/cashback to first-mover cardholders, (b) exclusive merchants or vertical focus (e.g., B2B fleet cards), (c) closed-loop ecosystem (issue + acquire within one ecosystem — think Amazon Pay / Jio Cards). Set 10-year break-even expectation.</span><span class="ta">சிக்கனமான cardholders இல்லாமல் merchants ஏற்க மாட்டார்கள். RuPay தீர்வு: government mandate + Jan Dhan accounts. உங்கள் தீர்வு: cashback, closed-loop ecosystem.</span></p>
+      <div class="cnw-stage-meta"><span class="tag tag-time">5–10 years to critical mass</span><span class="tag tag-cost">₹200Cr+ marketing</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- Realistic paths -->
+<h4 class="s-sub-title" data-reveal style="font-size:1.1rem;margin-top:2.5rem">🚀 <span class="en">Realistic paths for a startup today</span><span class="ta">இன்று ஒரு startup-க்கான யதார்த்தமான பாதைகள்</span></h4>
+<div class="cs-legal-grid" data-stagger>
+  <div class="csl-card">
+    <div class="csl-icon">📱</div>
+    <h4 class="csl-title">Path A — Build on UPI (fastest)</h4>
+    <p class="csl-desc"><span class="en">Become a TPAP (Third Party Application Provider) on NPCI's UPI. Launch a UPI app, build your merchant ecosystem, and layer loyalty/rewards on top. Paytm, PhonePe, and Google Pay are all TPAPs. No card network needed — UPI <em>is</em> the network. Apply via <a href="https://www.npci.org.in/what-we-do/upi/how-to-join" target="_blank" rel="noopener" class="ext-link">NPCI UPI joining process</a>. Need: PSP bank partner + NPCI TPAP agreement.</span><span class="ta">NPCI-ன் UPI TPAP ஆகுங்கள். Merchant ecosystem, loyalty layers. NPCI-யில் <a href="https://www.npci.org.in/what-we-do/upi/how-to-join" target="_blank" rel="noopener" class="ext-link">விண்ணப்பிக்கவும்</a>.</span></p>
+    <div class="csl-tags"><span class="tag tag-ok">Fastest to market</span><span class="tag tag-cost">₹2Cr–₹10Cr</span><span class="tag tag-time">6–18 months</span></div>
+  </div>
+  <div class="csl-card">
+    <div class="csl-icon">💳</div>
+    <h4 class="csl-title">Path B — Closed-loop prepaid card</h4>
+    <p class="csl-desc"><span class="en">Issue a closed-loop or semi-closed prepaid instrument (PPI) under RBI PPI licence. Works like a gift card or corporate expense card within your ecosystem. Issue cards under your brand on RuPay/Visa/Mastercard BIN, powered by a bank partner. Examples: Navi, Slice, Uni Cards — all issue cards under a bank's licence but with their own UX. Need: PPI Category II/III licence from RBI (₹25Cr net worth, ₹5Cr capital).</span><span class="ta">RBI PPI licence கீழ் closed-loop prepaid card issue செய்யுங்கள். Bank partner-ன் BIN கீழ் உங்கள் brand card issue. PPI licence: ₹25Cr net worth, ₹5Cr capital.</span></p>
+    <div class="csl-tags"><span class="tag tag-ok">Proven model</span><span class="tag tag-cost">₹5Cr–₹30Cr</span><span class="tag tag-req">PPI licence required</span></div>
+  </div>
+  <div class="csl-card">
+    <div class="csl-icon">🏢</div>
+    <h4 class="csl-title">Path C — Vertical card network (B2B)</h4>
+    <p class="csl-desc"><span class="en">Build a purpose-specific network: fleet cards (trucking industry), agricultural input cards (farmer credit), healthcare expense cards (hospital chains). A vertical closed-loop scheme can operate under existing RBI frameworks without a full card network authorization. Examples globally: WEX (fleet), Voyager (fuel), Comdisco (healthcare). In India: <a href="https://www.rapipay.com" target="_blank" rel="noopener" class="ext-link">RapiPay</a>, <a href="https://www.eko.co.in" target="_blank" rel="noopener" class="ext-link">Eko</a> in BC/micro-payment space.</span><span class="ta">Fleet cards, agricultural cards, healthcare expense cards போன்ற vertical network கட்டுங்கள். Full card network authorization இல்லாமல் RBI frameworks கீழ் operate செய்யலாம்.</span></p>
+    <div class="csl-tags"><span class="tag tag-ok">No full authorization needed</span><span class="tag tag-cost">₹10Cr–₹50Cr</span><span class="tag tag-time">1–3 years</span></div>
+  </div>
+  <div class="csl-card">
+    <div class="csl-icon">🌐</div>
+    <h4 class="csl-title">Path D — Full domestic network (long-term)</h4>
+    <p class="csl-desc"><span class="en">The RuPay model. Requires: PSS Act RBI authorization → ₹300Cr+ capital → 10+ bank members → ISO 8583 switch → EMV certification → marketing at scale. Timeline: 5–10 years minimum. Best positioned: a consortium of NBFCs/new age banks backed by a state government, or a tech giant (Reliance, Tata) with an existing merchant ecosystem. The RBI sandbox program can provide a shorter-path testing environment before full authorization.</span><span class="ta">RuPay model. PSS Act RBI authorization → ₹300Cr+ → 10+ bank members → ISO 8583 switch. Timeline: 5–10 years. RBI sandbox program shorter-path testing வழங்கலாம்.</span></p>
+    <div class="csl-tags"><span class="tag tag-warn">Ultra long-term</span><span class="tag tag-cost">₹500Cr–₹1,500Cr</span><span class="tag tag-time">5–10 years</span></div>
+  </div>
+</div>
+
+<div class="callout-pe" data-reveal style="margin-top:2rem">
+  <div class="pe-label">💡 In plain English</div>
+  <span class="en">You cannot "build a Visa" overnight — or even in 5 years as a startup. But you don't have to. Paytm built a ₹1.5L Cr GMV payment empire on top of NPCI's rails without owning a single BIN or operating a single authorization switch. The smartest play: build your merchant/consumer network on UPI or PPI, then — once you have scale and regulatory goodwill — approach RBI for an expanded authorization. RuPay's lesson: the network is only as powerful as the government mandate behind it.</span>
+  <span class="ta">ஒரு startup-க்கு "Visa கட்டுவது" 5 ஆண்டுகளில் சாத்தியமில்லை. ஆனால் தேவையில்லை. Paytm ஒரே ஒரு BIN அல்லது authorization switch இல்லாமல் ₹1.5L Cr GMV empire கட்டியது — NPCI rails-ல்.</span>
 </div>`
 }
 
