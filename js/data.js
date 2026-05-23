@@ -7,7 +7,8 @@ window.CHAPTERS = [
   { id:'ecosystem', emoji:'📐', label:{en:'Ecosystem',  ta:'சுற்றுச்சூழல்'}, sections:['distinction','resellers','pyramid','greyzone','shadow'] },
   { id:'company',   emoji:'🏛️', label:{en:'Company',    ta:'நிறுவனம்'},       sections:['company','costs'] },
   { id:'licensing', emoji:'📋', label:{en:'Licensing',  ta:'உரிமம்'},         sections:['license','payout'] },
-  { id:'technical', emoji:'⚙️', label:{en:'Technical',  ta:'தொழில்நுட்பம்'}, sections:['wallet','bankapi'] }
+  { id:'technical', emoji:'⚙️', label:{en:'Technical',  ta:'தொழில்நுட்பம்'}, sections:['wallet','bankapi'] },
+  { id:'cardswipe', emoji:'💳', label:{en:'Card Swipe', ta:'கார்டு ஸ்வைப்'},  sections:['cardswipe'] }
 ];
 
 window.SECTIONS = [
@@ -452,64 +453,64 @@ window.SECTIONS = [
   <li class="vt-item">
     <div class="vt-circle" style="background:linear-gradient(135deg,#3b82f6,#60a5fa)">01</div>
     <div class="vt-card">
-      <div class="vt-h">DSC — Digital Signature Certificate</div>
-      <p class="vt-p"><span class="en">Each proposed director needs a Class-3 DSC. Apply via MCA-empanelled agencies (e.DigiLocker, eMudhra, Sify). Requires Aadhaar OTP + PAN + video verification.</span><span class="ta">ஒவ்வொரு இயக்குனருக்கும் Class-3 DSC தேவை.</span></p>
+      <div class="vt-h">🔐 DSC — Digital Signature Certificate</div>
+      <p class="vt-p"><span class="en">Each proposed director needs a Class-3 DSC. Apply via MCA-empanelled agencies: <a href="https://www.emudhra.com" target="_blank" rel="noopener" class="ext-link">eMudhra</a>, <a href="https://www.sifast.com" target="_blank" rel="noopener" class="ext-link">Sify</a>, or <a href="https://www.nsdl.co.in" target="_blank" rel="noopener" class="ext-link">NSDL e-Gov</a>. Requires Aadhaar OTP + PAN + video verification. 2-year validity.</span><span class="ta">ஒவ்வொரு இயக்குனருக்கும் Class-3 DSC தேவை. <a href="https://www.emudhra.com" target="_blank" rel="noopener" class="ext-link">eMudhra</a>, <a href="https://www.sifast.com" target="_blank" rel="noopener" class="ext-link">Sify</a>, அல்லது <a href="https://www.nsdl.co.in" target="_blank" rel="noopener" class="ext-link">NSDL</a> மூலம் விண்ணப்பிக்கவும்.</span></p>
       <div class="vt-meta"><span class="tag tag-cost">₹2,500 – ₹4,000</span><span class="tag tag-time">1 – 2 days</span></div>
     </div>
   </li>
   <li class="vt-item">
     <div class="vt-circle" style="background:linear-gradient(135deg,#9333ea,#c084fc)">02</div>
     <div class="vt-card">
-      <div class="vt-h">DIN — Director Identification Number</div>
-      <p class="vt-p"><span class="en">Apply for DIN via SPICe+ form (automatically allotted on incorporation) or standalone DIR-3. DIN is lifelong — one per person. Foreign nationals need apostilled documents.</span><span class="ta">SPICe+ படிவம் வழியாக DIN-க்கு விண்ணப்பிக்கவும்.</span></p>
+      <div class="vt-h">🪪 DIN — Director Identification Number</div>
+      <p class="vt-p"><span class="en">Apply for DIN via <a href="https://www.mca.gov.in/MinistryV2/din.html" target="_blank" rel="noopener" class="ext-link">MCA SPICe+ form</a> (automatically allotted on incorporation) or standalone DIR-3 on <a href="https://www.mca.gov.in" target="_blank" rel="noopener" class="ext-link">mca.gov.in</a>. DIN is lifelong — one per person. Foreign nationals need apostilled documents.</span><span class="ta"><a href="https://www.mca.gov.in" target="_blank" rel="noopener" class="ext-link">MCA SPICe+</a> படிவம் வழியாக DIN-க்கு விண்ணப்பிக்கவும். DIN வாழ்நாள் முழுவதும் செல்லுபடியாகும்.</span></p>
       <div class="vt-meta"><span class="tag tag-cost">₹500 gov fee</span><span class="tag tag-time">Same day if SPICe+</span></div>
     </div>
   </li>
   <li class="vt-item">
     <div class="vt-circle" style="background:linear-gradient(135deg,#f97316,#fb923c)">03</div>
     <div class="vt-card">
-      <div class="vt-h">Name Reservation — RUN / SPICe+</div>
-      <p class="vt-p"><span class="en">Reserve up to 2 names via MCA RUN (Reserve Unique Name) service. Names must not resemble existing companies or trademarks. Avoid "Bank", "Insurance", "Pay" without RBI/IRDAI clearance.</span><span class="ta">MCA RUN சேவை வழியாக 2 பெயர்கள் வரை ஒதுக்கவும்.</span></p>
+      <div class="vt-h">🏷️ Name Reservation — RUN / SPICe+</div>
+      <p class="vt-p"><span class="en">Reserve up to 2 names via <a href="https://www.mca.gov.in/MinistryV2/runform.html" target="_blank" rel="noopener" class="ext-link">MCA RUN</a> (Reserve Unique Name) or within SPICe+. Check name availability on <a href="https://www.mca.gov.in/MinistryV2/companyname.html" target="_blank" rel="noopener" class="ext-link">MCA Company Search</a>. Avoid "Bank", "Insurance", "Pay" without RBI/IRDAI clearance. Check trademarks on <a href="https://ipindiaonline.gov.in" target="_blank" rel="noopener" class="ext-link">IP India</a>.</span><span class="ta"><a href="https://www.mca.gov.in/MinistryV2/runform.html" target="_blank" rel="noopener" class="ext-link">MCA RUN</a> சேவை வழியாக 2 பெயர்கள் வரை ஒதுக்கவும். <a href="https://ipindiaonline.gov.in" target="_blank" rel="noopener" class="ext-link">IP India</a>-ல் trademark சரிபார்க்கவும்.</span></p>
       <div class="vt-meta"><span class="tag tag-cost">₹1,000 gov fee</span><span class="tag tag-time">1 – 3 days</span><span class="tag tag-warn">Avoid "Pay" without RBI NOC</span></div>
     </div>
   </li>
   <li class="vt-item">
     <div class="vt-circle" style="background:linear-gradient(135deg,#22c55e,#4ade80)">04</div>
     <div class="vt-card">
-      <div class="vt-h">Draft MoA &amp; AoA</div>
-      <p class="vt-p"><span class="en">Memorandum of Association defines objects clause — must explicitly include "payment processing", "financial technology services", and "software development". AoA governs internal management. Use a CA/CS for fintech-specific clauses.</span><span class="ta">MoA இன் objects clause — "payment processing", "financial technology services"-ஐ வெளிப்படையாக சேர்க்க வேண்டும்.</span></p>
+      <div class="vt-h">📄 Draft MoA &amp; AoA</div>
+      <p class="vt-p"><span class="en">Memorandum of Association defines objects clause — must explicitly include "payment processing", "financial technology services", and "software development". AoA governs internal management. Hire a <a href="https://www.icsi.edu/membership/find-a-member/" target="_blank" rel="noopener" class="ext-link">Company Secretary (ICSI)</a> or <a href="https://www.icai.org/find-a-ca.html" target="_blank" rel="noopener" class="ext-link">CA (ICAI)</a> for fintech-specific clauses.</span><span class="ta">MoA இன் objects clause — "payment processing", "financial technology services"-ஐ வெளிப்படையாக சேர்க்க வேண்டும். <a href="https://www.icsi.edu" target="_blank" rel="noopener" class="ext-link">ICSI</a> அல்லது <a href="https://www.icai.org" target="_blank" rel="noopener" class="ext-link">ICAI</a> நிபுணரின் உதவி பெறவும்.</span></p>
       <div class="vt-meta"><span class="tag tag-cost">₹8,000 – ₹15,000 professional fee</span><span class="tag tag-time">2 – 4 days</span></div>
     </div>
   </li>
   <li class="vt-item">
     <div class="vt-circle" style="background:linear-gradient(135deg,#ef4444,#f87171)">05</div>
     <div class="vt-card">
-      <div class="vt-h">SPICe+ e-Form (MCA)</div>
-      <p class="vt-p"><span class="en">Integrated incorporation form covering DIN allotment, name approval, PAN, TAN, EPFO, ESIC, and GST registration in one submission. Requires DSCs of all directors + subscriber sheet.</span><span class="ta">ஒரே சமர்ப்பிப்பில் DIN, பெயர் அனுமதி, PAN, TAN, EPFO, ESIC, மற்றும் GST பதிவை உள்ளடக்கிய ஒருங்கிணைந்த படிவம்.</span></p>
+      <div class="vt-h">📝 SPICe+ e-Form (MCA)</div>
+      <p class="vt-p"><span class="en">File the integrated incorporation form on <a href="https://www.mca.gov.in/MinistryV2/spicemoa.html" target="_blank" rel="noopener" class="ext-link">MCA SPICe+</a> covering DIN allotment, name approval, PAN, TAN, EPFO, ESIC, and GST registration in one submission. Requires DSCs of all directors + subscriber sheet. Government fee based on authorised capital: up to ₹1L capital = ₹2,000; above ₹5L = scales up.</span><span class="ta"><a href="https://www.mca.gov.in/MinistryV2/spicemoa.html" target="_blank" rel="noopener" class="ext-link">MCA SPICe+</a>-ல் ஒரே சமர்ப்பிப்பில் DIN, பெயர் அனுமதி, PAN, TAN, EPFO, ESIC, மற்றும் GST பதிவை உள்ளடக்கிய ஒருங்கிணைந்த படிவம்.</span></p>
       <div class="vt-meta"><span class="tag tag-cost">₹2,000 – ₹12,000 gov fee (capital-based)</span><span class="tag tag-time">3 – 7 days</span></div>
     </div>
   </li>
   <li class="vt-item">
     <div class="vt-circle" style="background:linear-gradient(135deg,#eab308,#facc15)">06</div>
     <div class="vt-card">
-      <div class="vt-h">Certificate of Incorporation (CoI)</div>
-      <p class="vt-p"><span class="en">ROC (Registrar of Companies) issues CoI with CIN. This is your company's birth certificate. CIN format: U[NIC Code][State][Year][PVT][Number]. Keep the original safe — needed for every licence application.</span><span class="ta">ROC CoI-ஐ CIN உடன் வழங்குகிறது. ஒவ்வொரு உரிமம் விண்ணப்பத்திற்கும் இது தேவை.</span></p>
+      <div class="vt-h">🏛️ Certificate of Incorporation (CoI)</div>
+      <p class="vt-p"><span class="en">ROC (Registrar of Companies) issues CoI with CIN via <a href="https://www.mca.gov.in" target="_blank" rel="noopener" class="ext-link">MCA portal</a>. Download digitally from your MCA account — this is your company's birth certificate. CIN format: U[NIC Code][State][Year][PVT][6-digit Number]. Keep certified copies for every licence application. Verify on <a href="https://www.mca.gov.in/MinistryV2/companysearch.html" target="_blank" rel="noopener" class="ext-link">MCA company search</a>.</span><span class="ta"><a href="https://www.mca.gov.in" target="_blank" rel="noopener" class="ext-link">MCA portal</a> வழியாக ROC CoI-ஐ CIN உடன் வழங்குகிறது. ஒவ்வொரு உரிமம் விண்ணப்பத்திற்கும் இது தேவை.</span></p>
       <div class="vt-meta"><span class="tag tag-ok">Issued within SPICe+ timeline</span></div>
     </div>
   </li>
   <li class="vt-item">
     <div class="vt-circle" style="background:linear-gradient(135deg,#14b8a6,#2dd4bf)">07</div>
     <div class="vt-card">
-      <div class="vt-h">Current Account Opening</div>
-      <p class="vt-p"><span class="en">Open a current account in the company name. For fintech: prefer banks with API banking (ICICI iMobile Biz, Kotak, Yes Bank, Axis) for future nodal/escrow account setup. Requires CoI, MoA/AoA, PAN, address proof.</span><span class="ta">நிறுவன பெயரில் நடப்பு கணக்கை திறக்கவும். Fintech-க்காக API வங்கியுடன் வங்கிகளை விரும்புங்கள்.</span></p>
+      <div class="vt-h">🏦 Current Account Opening</div>
+      <p class="vt-p"><span class="en">Open a current account in the company name. For fintech, prefer banks with strong API banking: <a href="https://www.icicibank.com/business/current-account" target="_blank" rel="noopener" class="ext-link">ICICI Business</a>, <a href="https://www.yesbank.in/business-banking" target="_blank" rel="noopener" class="ext-link">Yes Bank</a>, <a href="https://www.kotak.com/en/business-banking/current-account.html" target="_blank" rel="noopener" class="ext-link">Kotak</a>, or <a href="https://www.axisbank.com/business-banking" target="_blank" rel="noopener" class="ext-link">Axis Bank</a> for future nodal/escrow setup. Requires CoI, MoA/AoA, PAN, address proof.</span><span class="ta">நிறுவன பெயரில் நடப்பு கணக்கை திறக்கவும். <a href="https://www.icicibank.com" target="_blank" rel="noopener" class="ext-link">ICICI</a>, <a href="https://www.yesbank.in" target="_blank" rel="noopener" class="ext-link">Yes Bank</a>, <a href="https://www.kotak.com" target="_blank" rel="noopener" class="ext-link">Kotak</a>, <a href="https://www.axisbank.com" target="_blank" rel="noopener" class="ext-link">Axis</a> போன்ற API வங்கிகளை விரும்புங்கள்.</span></p>
       <div class="vt-meta"><span class="tag tag-time">3 – 7 days</span><span class="tag tag-cost">₹10,000 – ₹25,000 min balance</span></div>
     </div>
   </li>
   <li class="vt-item">
     <div class="vt-circle" style="background:linear-gradient(135deg,#ec4899,#f472b6)">08</div>
     <div class="vt-card">
-      <div class="vt-h">GST Registration</div>
-      <p class="vt-p"><span class="en">GST is mandatory for fintech services before first invoice. Apply on GST portal with CIN, PAN, bank statement, and director Aadhaar. ARN issued within 3 working days; GSTIN within 7.</span><span class="ta">முதல் invoice-க்கு முன் fintech சேவைகளுக்கு GST கட்டாயம்.</span></p>
+      <div class="vt-h">🧾 GST Registration</div>
+      <p class="vt-p"><span class="en">GST is mandatory for fintech services before first invoice. Apply on <a href="https://www.gst.gov.in/registration/new-registration" target="_blank" rel="noopener" class="ext-link">GST Portal</a> with CIN, PAN, bank statement, and director Aadhaar. ARN issued within 3 working days; GSTIN within 7. 18% GST applies to payment processing fees. File GSTR-1 and GSTR-3B monthly. Fintech TDS compliance: <a href="https://www.incometax.gov.in" target="_blank" rel="noopener" class="ext-link">incometax.gov.in</a> for TDS on commissions (section 194H).</span><span class="ta">முதல் invoice-க்கு முன் fintech சேவைகளுக்கு GST கட்டாயம். <a href="https://www.gst.gov.in" target="_blank" rel="noopener" class="ext-link">GST Portal</a>-ல் விண்ணப்பிக்கவும்.</span></p>
       <div class="vt-meta"><span class="tag tag-cost">No fee</span><span class="tag tag-time">5 – 10 days</span><span class="tag tag-ok">Auto-filed via SPICe+ often</span></div>
     </div>
   </li>
@@ -798,6 +799,250 @@ window.SECTIONS = [
   <strong><span class="en">Choosing the right rail</span><span class="ta">சரியான rail தேர்வு</span></strong>
   <span class="en"> — Use UPI for ≤ ₹1L consumer transactions (zero MDR, fastest UX). Use IMPS for ₹1L–₹5L payouts needing instant settlement. Use NEFT for payroll and large-batch disbursements. Use RTGS only for ≥ ₹2L single-leg settlements where finality matters most.</span>
   <span class="ta"> — ₹1L வரையான consumer பரிவர்த்தனைகளுக்கு UPI பயன்படுத்தவும். ₹1L–₹5L payouts-க்கு IMPS. Payroll-க்கு NEFT. ₹2L+ single-leg settlements-க்கு RTGS.</span>
+</div>`
+},
+
+/* ── 11 CARD SWIPE BUSINESS ─────────────────────────────────────── */
+{
+  id:'cardswipe', chapter:'cardswipe', theme:'dark',
+  nav:{ en:'Card Swipe Biz', ta:'கார்டு ஸ்வைப்' },
+  html:`
+<div class="s-label" data-reveal>
+  <span class="s-label-num">11 — Card Swipe</span>
+  <span class="s-label-line"></span>
+</div>
+<h2 class="s-title" data-reveal>💳 Card swiping business — <em>legal, grey & illegal</em></h2>
+<p class="s-desc" data-reveal>
+  <span class="en">In India, "card swiping" means very different things depending on context — from a legitimate POS deployment business to a criminal cash-advance operation. This chapter covers the full spectrum: the card ecosystem, who earns what, legal business models, and exactly why the illegal version carries prison time.</span>
+  <span class="ta">இந்தியாவில் "கார்டு ஸ்வைப்" என்பது சூழ்நிலையைப் பொறுத்து மிகவும் வேறுபட்டது — சட்டப்பூர்வமான POS deployment வணிகத்தில் இருந்து குற்றவியல் cash-advance நடவடிக்கை வரை.</span>
+</p>
+
+<!-- Card ecosystem hierarchy -->
+<h3 class="s-sub-title" data-reveal>🏗️ <span class="en">The card ecosystem — who sits where</span><span class="ta">கார்டு சுற்றுச்சூழல் — யார் எங்கே உள்ளனர்</span></h3>
+<div class="cs-pyramid" data-reveal>
+  <div class="csp-tier csp-t1"><span class="csp-icon">🌐</span><span class="csp-label">Card Scheme</span><span class="csp-eg">Visa · Mastercard · RuPay · Amex</span><span class="csp-role">Sets rules, owns the network, earns scheme fees</span></div>
+  <div class="csp-tier csp-t2"><span class="csp-icon">🏦</span><span class="csp-label">Issuing Bank</span><span class="csp-eg">HDFC · ICICI · SBI · Axis</span><span class="csp-role">Issues cards to cardholders · earns interchange fee</span></div>
+  <div class="csp-tier csp-t3"><span class="csp-icon">🏧</span><span class="csp-label">Acquiring Bank + Processor</span><span class="csp-eg">ICICI Merchant Services · Razorpay · Pine Labs</span><span class="csp-role">Onboards merchants · provides POS · earns acquiring fee</span></div>
+  <div class="csp-tier csp-t4"><span class="csp-icon">🏪</span><span class="csp-label">Merchant (Card Acceptor)</span><span class="csp-eg">Retail stores · e-commerce sites · service providers</span><span class="csp-role">Pays MDR · receives net settlement T+2</span></div>
+</div>
+
+<!-- Animated transaction flow -->
+<h3 class="s-sub-title" data-reveal>⚡ <span class="en">How a card transaction flows — real-time</span><span class="ta">கார்டு பரிவர்த்தனை எவ்வாறு நடக்கிறது</span></h3>
+<div class="txn-flow-wrap" data-reveal>
+  <div class="txn-flow">
+    <div class="txn-node tn-customer">
+      <div class="tn-icon">👤</div>
+      <div class="tn-label">Cardholder</div>
+      <div class="tn-sub">Taps / dips / swipes</div>
+    </div>
+    <div class="txn-arrow ta-animated"><span class="ta-line"></span><span class="ta-dot"></span><span class="ta-label">Auth Request</span></div>
+    <div class="txn-node tn-pos">
+      <div class="tn-icon">🖥️</div>
+      <div class="tn-label">POS Terminal</div>
+      <div class="tn-sub">Encrypts card data</div>
+    </div>
+    <div class="txn-arrow ta-animated"><span class="ta-line"></span><span class="ta-dot"></span><span class="ta-label">ISO 8583</span></div>
+    <div class="txn-node tn-acquirer">
+      <div class="tn-icon">🏧</div>
+      <div class="tn-label">Acquirer</div>
+      <div class="tn-sub">Routes to scheme</div>
+    </div>
+    <div class="txn-arrow ta-animated"><span class="ta-line"></span><span class="ta-dot"></span><span class="ta-label">Auth Forward</span></div>
+    <div class="txn-node tn-scheme">
+      <div class="tn-icon">🌐</div>
+      <div class="tn-label">Card Scheme</div>
+      <div class="tn-sub">Routes to issuer</div>
+    </div>
+    <div class="txn-arrow ta-animated"><span class="ta-line"></span><span class="ta-dot"></span><span class="ta-label">Auth Request</span></div>
+    <div class="txn-node tn-issuer">
+      <div class="tn-icon">🏦</div>
+      <div class="tn-label">Issuing Bank</div>
+      <div class="tn-sub">Approves or declines</div>
+    </div>
+  </div>
+  <div class="txn-response">
+    <div class="txr-arrow">↩ Auth Response travels back same path in &lt;2 seconds</div>
+  </div>
+  <div class="txn-timeline">
+    <div class="tmt-item"><span class="tmt-badge">T+0</span><span>Authorization (~1.5 sec) — Issuer approves, card debited</span></div>
+    <div class="tmt-item"><span class="tmt-badge">T+1</span><span>Clearing — Acquirer submits batch of day's transactions to scheme</span></div>
+    <div class="tmt-item"><span class="tmt-badge tmt-ok">T+2</span><span>Settlement — Merchant account credited (net of MDR)</span></div>
+  </div>
+</div>
+
+<!-- MDR breakdown -->
+<h3 class="s-sub-title" data-reveal>💰 <span class="en">MDR breakdown — who earns what from ₹100</span><span class="ta">MDR பகுப்பு — ₹100-ல் யார் என்ன சம்பாதிக்கிறார்கள்</span></h3>
+<div class="mdr-breakdown" data-reveal>
+  <div class="mdr-total"><span class="mdr-num">₹100</span><span class="mdr-lbl">Merchant charges customer</span></div>
+  <div class="mdr-split">
+    <div class="mdr-bar">
+      <div class="mdr-seg mseg-interchange" style="width:58%">
+        <span class="mseg-label">Interchange<br><strong>1.2–1.8%</strong></span>
+        <span class="mseg-who">→ Issuing Bank</span>
+      </div>
+      <div class="mdr-seg mseg-scheme" style="width:7%">
+        <span class="mseg-label">Scheme<br><strong>0.05%</strong></span>
+      </div>
+      <div class="mdr-seg mseg-acq" style="width:18%">
+        <span class="mseg-label">Acquirer<br><strong>0.3–0.5%</strong></span>
+        <span class="mseg-who">→ Acquiring Bank</span>
+      </div>
+      <div class="mdr-seg mseg-pg" style="width:17%">
+        <span class="mseg-label">PG/Processor<br><strong>0.2–0.3%</strong></span>
+        <span class="mseg-who">→ Gateway</span>
+      </div>
+    </div>
+    <div class="mdr-merchant">Merchant receives: <strong>₹98.0 – ₹97.0</strong> (after ~2% total MDR)</div>
+  </div>
+</div>
+
+<!-- Legal models -->
+<h3 class="s-sub-title" data-reveal>✅ <span class="en">Legal card business models in India</span><span class="ta">இந்தியாவில் சட்டப்பூர்வ கார்டு வணிக மாதிரிகள்</span></h3>
+<div class="cs-legal-grid" data-stagger>
+  <div class="csl-card">
+    <div class="csl-icon">🏧</div>
+    <h4 class="csl-title">POS Terminal DSA</h4>
+    <p class="csl-desc"><span class="en">Become a Direct Sales Agent for an acquiring bank (HDFC, ICICI, Axis). Deploy POS terminals at merchant locations. Earn ₹300–₹800 per terminal/month activation fee + residual MDR share (0.05–0.1%). No RBI licence needed — you're working under the bank's acquiring licence.</span><span class="ta">Acquiring bank-க்காக DSA ஆகுங்கள். POS terminals deploy செய்யுங்கள். மாதம் ₹300–₹800 + MDR பங்கு சம்பாதியுங்கள்.</span></p>
+    <div class="csl-tags"><span class="tag tag-ok">Legal</span><span class="tag tag-cost">~₹50K setup</span><span class="tag tag-req">Bank DSA agreement</span></div>
+    <div class="csl-links"><a href="https://www.hdfcbank.com/content/api/contentstream-id/723fb80a-2dde-42a3-9793-7ae1be57c87f/7f7d9dca-9f05-4bf2-90b2-a38aad22e5d0" target="_blank" rel="noopener" class="ext-link">HDFC Merchant Services</a> · <a href="https://www.icicibank.com/business/merchant-acquiring" target="_blank" rel="noopener" class="ext-link">ICICI Merchant</a></div>
+  </div>
+  <div class="csl-card">
+    <div class="csl-icon">📲</div>
+    <h4 class="csl-title">mPOS / Softpos Reseller</h4>
+    <p class="csl-desc"><span class="en">Resell mobile POS solutions from <a href="https://www.mswipe.com" target="_blank" rel="noopener" class="ext-link">MSwipe</a>, <a href="https://pinelabs.com" target="_blank" rel="noopener" class="ext-link">Pine Labs</a>, or <a href="https://paytm.com/business" target="_blank" rel="noopener" class="ext-link">Paytm Business</a>. They provide the terminal; you bring merchants. Commission: ₹200–₹500/device/month + MDR residual. Works under their RBI/acquiring licence.</span><span class="ta">MSwipe, Pine Labs-இன் mobile POS solutions-ஐ மறுவிற்பனை செய்யுங்கள். அவர்கள் terminal வழங்குகிறார்கள்; நீங்கள் merchants கொண்டு வருகிறீர்கள்.</span></p>
+    <div class="csl-tags"><span class="tag tag-ok">Legal</span><span class="tag tag-cost">~₹20K setup</span><span class="tag tag-req">Reseller agreement</span></div>
+  </div>
+  <div class="csl-card">
+    <div class="csl-icon">💻</div>
+    <h4 class="csl-title">Payment Gateway Integration</h4>
+    <p class="csl-desc"><span class="en">Build card acceptance software on top of a licensed PA (Razorpay, Cashfree). You provide the checkout UX; the PA handles card tokenisation, PCI-DSS, and settlement. This is the white-label model (reseller Model 02). No PA licence required. Revenue: MDR spread.</span><span class="ta">Razorpay, Cashfree போன்ற licensed PA மேல் card acceptance software கட்டுங்கள். PA card tokenization, PCI-DSS, settlement handle செய்கிறது.</span></p>
+    <div class="csl-tags"><span class="tag tag-ok">Legal</span><span class="tag tag-cost">₹2L+ build</span><span class="tag tag-req">TSP/PA agreement</span></div>
+  </div>
+  <div class="csl-card">
+    <div class="csl-icon">🔌</div>
+    <h4 class="csl-title">Card Network ISA / ISO Program</h4>
+    <p class="csl-desc"><span class="en">Become an Independent Sales Agent (ISA) or Merchant Service Provider (MSP) under Visa/Mastercard's certified acquirer in India. The acquiring bank sponsors you. You onboard and manage merchants, handle first-line support. Requires strong track record + bank sponsorship.</span><span class="ta">Visa/Mastercard-ன் certified acquirer கீழ் ISA/MSP ஆகுங்கள். Bank உங்களை sponsor செய்கிறது. நீங்கள் merchants onboard செய்கிறீர்கள்.</span></p>
+    <div class="csl-tags"><span class="tag tag-ok">Legal</span><span class="tag tag-cost">₹5L+ setup</span><span class="tag tag-warn">Bank sponsorship required</span></div>
+  </div>
+</div>
+
+<!-- The illegal "cash against card" operation -->
+<h3 class="s-sub-title" data-reveal>⛔ <span class="en">The illegal "cash against card" operation</span><span class="ta">சட்டவிரோதமான "கார்டு மூலம் பணம்" நடவடிக்கை</span></h3>
+<div style="background:linear-gradient(135deg,#1a0a0a,#2d0e0e);border:1px solid rgba(239,68,68,0.3);border-radius:var(--radius);padding:2rem;margin-bottom:2rem;" data-reveal>
+  <p style="color:rgba(255,255,255,0.8);font-size:0.93rem;line-height:1.75;margin-bottom:1.5rem;">
+    <span class="en">A cardholder approaches a merchant with a POS terminal. They want ₹20,000 cash. The merchant runs a <strong>fake transaction</strong> on the card for ₹20,000 + ₹600 fee (3%). The customer gets ₹20,000 cash; the merchant swipes ₹20,600. There is no actual goods or service exchanged. The merchant submits a bogus purchase entry and pockets the fee. This is called <em>cash advance via merchant POS</em> and is a <strong>multi-statute crime</strong> in India.</span>
+    <span class="ta">ஒரு கார்டு வைத்திருப்பவர் POS terminal கொண்ட merchant-ஐ அணுகுகிறார். அவர்கள் ₹20,000 பணம் விரும்புகிறார்கள். Merchant கார்டில் போலி பரிவர்த்தனை இயக்குகிறார். இது இந்தியாவில் பல சட்டங்களை மீறுகிறது.</span>
+  </p>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+    <div style="background:rgba(255,255,255,0.05);border-radius:10px;padding:1.25rem;">
+      <div style="font-size:0.7rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,100,100,0.9);margin-bottom:0.75rem;">How it works</div>
+      <ul style="list-style:none;font-size:0.85rem;color:rgba(255,255,255,0.75);display:flex;flex-direction:column;gap:6px;">
+        <li>💳 Customer wants cash against credit limit</li>
+        <li>🏪 Merchant runs fake "purchase" on POS</li>
+        <li>💵 Merchant gives cash (minus 2–4% fee)</li>
+        <li>🧾 Merchant logs a fake SKU (e.g., "hardware")</li>
+        <li>🔄 Merchant gets bank settlement T+2</li>
+        <li>📦 No actual goods/service involved</li>
+      </ul>
+    </div>
+    <div style="background:rgba(255,255,255,0.05);border-radius:10px;padding:1.25rem;">
+      <div style="font-size:0.7rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,100,100,0.9);margin-bottom:0.75rem;">Why it's detected</div>
+      <ul style="list-style:none;font-size:0.85rem;color:rgba(255,255,255,0.75);display:flex;flex-direction:column;gap:6px;">
+        <li>🔍 Card scheme velocity rules flag round-number amounts</li>
+        <li>📊 Acquiring bank ML models detect MCC mismatch</li>
+        <li>🏦 Bank SAR (Suspicious Activity Report) triggered by AML</li>
+        <li>🧠 No chargeback evidence (no receipt, no delivery)</li>
+        <li>📱 FIU-IND tracks cash flow patterns across STRs</li>
+        <li>🚨 Visa/MC fraud network cross-referencing</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- Where it falls legally -->
+<h3 class="s-sub-title" data-reveal>⚖️ <span class="en">Legal framework — where it falls</span><span class="ta">சட்ட கட்டமைப்பு — இது எங்கு வருகிறது</span></h3>
+<div class="risk-grid" data-stagger>
+  <div class="risk-card">
+    <h4>🏛️ IPC / BNS Section 420 / 318</h4>
+    <p><span class="en"><strong>Cheating and dishonestly inducing delivery of property.</strong> A fake POS swipe is a fraudulent misrepresentation to the bank and card network. Punishment: imprisonment up to <strong>7 years + fine</strong>. Applies to both the merchant and the cardholder who knowingly participated.</span><span class="ta">போலி POS swipe என்பது வங்கி மற்றும் கார்டு நெட்வொர்க்கிற்கு மோசடியான தவறான சித்தரிப்பு. தண்டனை: 7 ஆண்டுகள் சிறை + அபராதம்.</span></p>
+  </div>
+  <div class="risk-card">
+    <h4>💻 IT Act 2000 — Section 66C &amp; 66D</h4>
+    <p><span class="en"><strong>Identity theft &amp; cheating by personation using computer resource.</strong> Using someone's card data in a POS for a purpose not intended by the cardholder (cash advance) = identity misuse via electronic means. Punishment: up to <strong>3 years + ₹1 lakh fine</strong>. Cognizable, non-bailable offence.</span><span class="ta">Section 66C: அடையாள திருட்டு. Section 66D: கணினி வளம் மூலம் மோசடி. தண்டனை: 3 ஆண்டுகள் + ₹1 லட்சம்.</span></p>
+  </div>
+  <div class="risk-card">
+    <h4>💰 PMLA 2002 — Money Laundering</h4>
+    <p><span class="en"><strong>Proceeds of crime laundering.</strong> The cash from fake card swipes is "proceeds of a scheduled offence". PMLA enables ED (Enforcement Directorate) to attach all property — including the merchant's shop, house, and bank accounts. Punishment: <strong>3–7 years rigorous imprisonment + property attachment.</strong></span><span class="ta">போலி swipes-ல் இருந்து பணம் "scheduled offence-ன் வருமானம்". ED சொத்துக்களை இணைக்கலாம். 3–7 ஆண்டுகள் கடுமையான சிறை + சொத்து இணைப்பு.</span></p>
+  </div>
+  <div class="risk-card">
+    <h4>🏦 PSS Act 2007 + RBI Directions</h4>
+    <p><span class="en"><strong>Unauthorized payment system operation.</strong> Running a de-facto cash advance system via POS = operating a payment system without authorisation. RBI can direct the bank to <strong>immediately terminate merchant account</strong> and blacklist the merchant across all acquiring banks in India via the Merchant Risk List (MRL).</span><span class="ta">PSS Act-ன் கீழ் அங்கீகாரமற்ற payment system இயக்குவது. RBI merchant கணக்கை உடனடியாக நிறுத்தும். Merchant Risk List (MRL)-ல் சேர்க்கப்படும்.</span></p>
+  </div>
+</div>
+
+<!-- Penalty grid -->
+<h3 class="s-sub-title" data-reveal>⚠️ <span class="en">Penalty grid — what you face</span><span class="ta">அபராத அட்டவணை</span></h3>
+<div class="penalty-grid" data-stagger>
+  <div class="pen-card">
+    <div class="pen-icon">🏛️</div>
+    <div class="pen-act">IPC 420 / BNS 318</div>
+    <div class="pen-charge">Cheating</div>
+    <div class="pen-punish">Up to <strong>7 years</strong> imprisonment + unlimited fine</div>
+    <div class="pen-who">Merchant + Cardholder</div>
+  </div>
+  <div class="pen-card">
+    <div class="pen-icon">💻</div>
+    <div class="pen-act">IT Act §66C/66D</div>
+    <div class="pen-charge">Identity misuse / electronic cheating</div>
+    <div class="pen-punish">Up to <strong>3 years</strong> + ₹1 lakh fine</div>
+    <div class="pen-who">Merchant (primary)</div>
+  </div>
+  <div class="pen-card">
+    <div class="pen-icon">💰</div>
+    <div class="pen-act">PMLA 2002</div>
+    <div class="pen-charge">Money laundering</div>
+    <div class="pen-punish"><strong>3–7 years</strong> rigorous imprisonment + property attachment</div>
+    <div class="pen-who">Merchant + any co-conspirators</div>
+  </div>
+  <div class="pen-card">
+    <div class="pen-icon">🏦</div>
+    <div class="pen-act">PSS Act 2007</div>
+    <div class="pen-charge">Unauthorized payment system</div>
+    <div class="pen-punish">₹10L fine per violation + ₹10K/day + <strong>10 years</strong> imprisonment (fraud)</div>
+    <div class="pen-who">Operator + directors</div>
+  </div>
+  <div class="pen-card">
+    <div class="pen-icon">🌐</div>
+    <div class="pen-act">Card Scheme Rules</div>
+    <div class="pen-charge">Merchant rules violation</div>
+    <div class="pen-punish">Terminal termination + <strong>permanent MRL blacklist</strong> across all Indian banks + chargeback liability</div>
+    <div class="pen-who">Merchant (permanent ban)</div>
+  </div>
+  <div class="pen-card">
+    <div class="pen-icon">🏧</div>
+    <div class="pen-act">Banking Regulation Act</div>
+    <div class="pen-charge">Misuse of banking facility</div>
+    <div class="pen-punish">Account freeze · all associated accounts in network blacklisted · CIBIL score destroyed</div>
+    <div class="pen-who">Merchant + all directors</div>
+  </div>
+</div>
+
+<div class="callout-pe" data-reveal>
+  <div class="pe-label">💡 In plain English</div>
+  <span class="en">If you walk into a jewelry shop and say "swipe my credit card and give me cash" — both you <em>and</em> the shopkeeper are committing multiple crimes simultaneously. The shopkeeper faces potential IPC cheating, IT Act identity misuse, PMLA money laundering, and permanent blacklisting from ever accepting cards again anywhere in India. The bank sees a round-number POS transaction with no inventory movement and files a SAR automatically. You don't get a warning — you get a CBI or ED notice.</span>
+  <span class="ta">நீங்கள் ஒரு நகைக்கடையில் சென்று "என் கிரெடிட் கார்டை swipe செய்து பணம் கொடுங்கள்" என்று சொன்னால் — நீங்களும் கடைக்காரனும் ஒரே நேரத்தில் பல குற்றங்கள் செய்கிறீர்கள்.</span>
+</div>
+
+<div class="alert-box" data-reveal style="margin-top:2rem">
+  <strong>🔍 <span class="en">How authorities detect card swiping shops</span><span class="ta">அதிகாரிகள் எவ்வாறு கண்டுபிடிக்கிறார்கள்</span></strong>
+  <p><span class="en">Detection is now automated. Banks use real-time ML fraud detection — pattern recognition triggers within minutes:</span><span class="ta">கண்டறிதல் தானியங்கியாக உள்ளது:</span></p>
+  <ul>
+    <li><span class="en">Multiple large round-number transactions at the same terminal in one day</span><span class="ta">ஒரே terminal-ல் ஒரே நாளில் பல பெரிய round-number பரிவர்த்தனைகள்</span></li>
+    <li><span class="en">MCC code mismatch (hardware store with jewelry-level transaction values)</span><span class="ta">MCC குறியீட்டு பொருத்தமின்மை</span></li>
+    <li><span class="en">High chargeback ratio triggers acquirer review</span><span class="ta">அதிக chargeback விகிதம் acquirer மதிப்பாய்வை தூண்டுகிறது</span></li>
+    <li><span class="en">Customer STR filed by issuing bank's AML system (FIU-IND receives)</span><span class="ta">Issuing bank-ன் AML system-ஆல் STR பதிவு செய்யப்படுகிறது</span></li>
+    <li><span class="en">Visa/Mastercard Global Security network alerts acquiring bank directly</span><span class="ta">Visa/Mastercard நேரடியாக acquiring bank-ஐ எச்சரிக்கிறது</span></li>
+  </ul>
 </div>`
 }
 

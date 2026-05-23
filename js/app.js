@@ -285,6 +285,24 @@
     document.querySelectorAll('[data-count-to]').forEach(function (el) { obs.observe(el); });
   }
 
+  /* ── Floating rupee symbols ──────────────────────────────────── */
+  function initRupeeFloat() {
+    var count = 14;
+    for (var i = 0; i < count; i++) {
+      var el = document.createElement('span');
+      el.className = 'rupee-float';
+      el.textContent = '₹';
+      el.setAttribute('aria-hidden', 'true');
+      el.style.left = (Math.random() * 100) + 'vw';
+      el.style.top = (Math.random() * 100) + 'vh';
+      el.style.fontSize = (2 + Math.random() * 5) + 'rem';
+      el.style.animationDuration = (18 + Math.random() * 30) + 's';
+      el.style.animationDelay = '-' + (Math.random() * 50) + 's';
+      el.style.setProperty('--r-op', (0.022 + Math.random() * 0.028).toFixed(3));
+      document.body.appendChild(el);
+    }
+  }
+
   /* ── Init ────────────────────────────────────────────────────── */
   function init() {
     buildNav();
@@ -299,6 +317,7 @@
     }, 60);
     initCanvas();
     initContextMenu();
+    initRupeeFloat();
   }
 
   if (document.readyState === 'loading') {
