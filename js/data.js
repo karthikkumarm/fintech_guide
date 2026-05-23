@@ -9,7 +9,7 @@ window.CHAPTERS = [
   { id:'licensing', emoji:'📋', label:{en:'Licensing',  ta:'உரிமம்'},         sections:['license','other-licenses','payout'] },
   { id:'technical', emoji:'⚙️', label:{en:'Technical',  ta:'தொழில்நுட்பம்'}, sections:['wallet','bankapi'] },
   { id:'cardswipe', emoji:'💳', label:{en:'Card Swipe', ta:'கார்டு ஸ்வைப்'},  sections:['cardswipe'] },
-  { id:'cards',     emoji:'💎', label:{en:'Cards & Payments', ta:'கார்டுகள் & பேமென்ட்'}, sections:['card-types','preauth','card-network','card-advanced'] }
+  { id:'cards',     emoji:'💎', label:{en:'Cards & Payments', ta:'கார்டுகள் & பேமென்ட்'}, sections:['card-types','preauth','card-network','card-advanced','card-fraud'] }
 ];
 
 window.SECTIONS = [
@@ -1264,6 +1264,117 @@ window.SECTIONS = [
   <span class="ta">Semi-closed wallet என்பது பலவிடங்களில் செலவழிக்கக்கூடிய prepaid card போன்றது, ஆனால் வங்கியில் திரும்பப் பெற முடியாது. Nodal account என்பது அரசாங்கம் கண்காணிக்கும் சிறப்பு வங்கி கணக்கு — wallet balance அங்கு பாதுகாக்கப்படுகிறது.</span>
 </div>
 
+<!-- ── WALLET TYPES ────────────────────────────────────────────── -->
+<h3 class="s-sub-title" data-reveal>🗂️ <span class="en">Six wallet types — and how they differ</span><span class="ta">ஆறு wallet வகைகள் — வித்தியாசங்கள் என்ன?</span></h3>
+<p style="font-size:0.82rem;color:var(--d-ink2);margin-bottom:1rem" data-reveal><span class="en">RBI classifies PPIs into four types; the market has spawned two more variants (transit NCMC and corporate expense). Each has different KYC requirements, withdrawal rules, and interoperability. The wrong wallet type for your product = licensing violation.</span><span class="ta">RBI நான்கு PPI வகைகளை வகைப்படுத்துகிறது; market இரண்டு மேலும் variants உருவாக்கியது. ஒவ்வொன்றிலும் வேறு KYC, withdrawal rules, interoperability. தவறான wallet type = licensing violation.</span></p>
+<div class="wtype-wrap" data-stagger>
+<div class="wtype-grid">
+
+  <div class="wtype-card">
+    <div class="wtype-card-stripe wtype-card-stripe--open"></div>
+    <div class="wtype-card-body">
+      <div class="wtype-icon">🟢</div>
+      <div class="wtype-title"><span class="en">Open-loop PPI (Semi-open)</span><span class="ta">Open-loop PPI</span></div>
+      <div class="wtype-sub">RBI PPI Master Direction § 5(ii)</div>
+      <div class="wtype-desc"><span class="en">Accepted at <strong>any</strong> merchant on the PA network — online and in-store. Can receive inward transfers (salary, refunds). Full KYC required. Only licensed Payment Banks or full banks can issue. Visa/RuPay badge — usable anywhere those networks are accepted.</span><span class="ta">PA network-ல் எந்த merchant-லும் accept. Inward transfers receive செய்யலாம். Full KYC mandatory. Licensed Payment Bank / full bank மட்டுமே issue செய்யலாம்.</span></div>
+      <div class="wtype-eg"><strong>🇮🇳 TN Examples:</strong><span class="en"> Paytm Payments Bank wallet — Meenakshi pays ₹380 at Saravana Bhavan, T. Nagar, Chennai. PhonePe wallet — Murugan pays auto fare in Coimbatore. Airtel Payments Bank — TANGEDCO EB bill via BBPS.</span><span class="ta"> Paytm — Meenakshi, T. Nagar Saravana Bhavan ₹380. PhonePe — Murugan, Coimbatore auto fare. Airtel Payments Bank — TANGEDCO BBPS.</span></div>
+      <div class="wtype-rules">
+        <span class="wtype-rule wtype-rule--y">✓ Anywhere Visa/RuPay</span>
+        <span class="wtype-rule wtype-rule--y">✓ Cash withdrawal</span>
+        <span class="wtype-rule wtype-rule--y">✓ Bank transfer</span>
+        <span class="wtype-rule wtype-rule--n">✗ Full KYC needed</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="wtype-card">
+    <div class="wtype-card-stripe wtype-card-stripe--semi"></div>
+    <div class="wtype-card-body">
+      <div class="wtype-icon">🔵</div>
+      <div class="wtype-title"><span class="en">Semi-closed PPI</span><span class="ta">Semi-closed PPI</span></div>
+      <div class="wtype-sub">RBI PPI Master Direction § 5(iii)</div>
+      <div class="wtype-desc"><span class="en">Accepted at a <strong>specific merchant list</strong> enrolled by the issuer — no cash withdrawal, no bank transfer. Minimum KYC (mobile OTP) allowed up to ₹10K balance. Most consumer fintech wallets fall here. Issuer maintains a whitelist and can add merchants dynamically.</span><span class="ta">Issuer-ன் specific merchant list மட்டுமே. Cash withdrawal / bank transfer இல்லை. Mobile OTP → ₹10K limit. பெரும்பாலான consumer fintech wallets இந்த category.</span></div>
+      <div class="wtype-eg"><strong>🇮🇳 TN Examples:</strong><span class="en"> Amazon Pay (Amazon + partners only). Sodexo Meal Pass — Vignesh uses his Sodexo card at the canteen in Tidel Park, Chennai; can't use at a clothing store. Swiggy Money — only within Swiggy.</span><span class="ta"> Amazon Pay (Amazon + partners). Sodexo Meal Pass — Vignesh, Tidel Park Chennai canteen; clothing store-ல் decline. Swiggy Money — Swiggy மட்டுமே.</span></div>
+      <div class="wtype-rules">
+        <span class="wtype-rule wtype-rule--y">✓ Enrolled merchants</span>
+        <span class="wtype-rule wtype-rule--n">✗ No cash withdrawal</span>
+        <span class="wtype-rule wtype-rule--n">✗ No bank transfer</span>
+        <span class="wtype-rule wtype-rule--y">✓ Min KYC ₹10K</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="wtype-card">
+    <div class="wtype-card-stripe wtype-card-stripe--closed"></div>
+    <div class="wtype-card-body">
+      <div class="wtype-icon">🟠</div>
+      <div class="wtype-title"><span class="en">Closed-loop PPI (Gift Card)</span><span class="ta">Closed-loop PPI (Gift Card)</span></div>
+      <div class="wtype-sub">RBI PPI Master Direction § 5(iv)</div>
+      <div class="wtype-desc"><span class="en">Usable <strong>only at one brand</strong>. No KYC required (up to ₹10K). Cannot be refunded to bank. Cannot be used anywhere else — not even partner sites. Common for corporate gifting and festival vouchers. India's gift card market is ₹6,000+ crore annually.</span><span class="ta">ஒரே brand மட்டுமே. KYC தேவையில்லை (₹10K வரை). Bank refund இல்லை. Partner sites-லும் use முடியாது. Corporate gifting, festival vouchers. India: ₹6,000+ crore/year.</span></div>
+      <div class="wtype-eg"><strong>🇮🇳 TN Examples:</strong><span class="en"> Saravana Stores (T. Nagar Chennai) gift card — Meenakshi's family uses it for Diwali shopping. A2B (Adyar Ananda Bhavan) restaurant voucher — only at A2B branches. Nilgiris Supermarket gift card — valid at Nilgiris stores across TN (Coimbatore, Trichy, Madurai).</span><span class="ta"> Saravana Stores T. Nagar gift card — Meenakshi family Deepavali. A2B voucher — A2B branches மட்டுமே. Nilgiris gift card — TN stores (Coimbatore, Trichy, Madurai).</span></div>
+      <div class="wtype-rules">
+        <span class="wtype-rule wtype-rule--y">✓ One brand only</span>
+        <span class="wtype-rule wtype-rule--n">✗ No KYC (≤₹10K)</span>
+        <span class="wtype-rule wtype-rule--n">✗ No bank refund</span>
+        <span class="wtype-rule wtype-rule--n">✗ No partners</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="wtype-card">
+    <div class="wtype-card-stripe wtype-card-stripe--transit"></div>
+    <div class="wtype-card-body">
+      <div class="wtype-icon">🚇</div>
+      <div class="wtype-title"><span class="en">Transit Wallet (NCMC)</span><span class="ta">Transit Wallet (NCMC)</span></div>
+      <div class="wtype-sub">RBI + MoHUA NCMC Framework 2019</div>
+      <div class="wtype-desc"><span class="en">Stored value on a <strong>chip</strong> — works fully <strong>offline</strong>. No network needed at the gate. Tap → chip debit in 200ms. RuPay + EMV contactless base. Reloadable via UPI or station counters. Works across any NCMC-compliant system in India — metro, bus, suburban rail, parking, toll.</span><span class="ta">Chip-ல் stored value — gate-ல் fully offline. Network தேவையில்லை. Tap → 200ms chip debit. UPI / counter reload. India-ல் எந்த NCMC system-லும் — metro, bus, rail, parking, toll.</span></div>
+      <div class="wtype-eg"><strong>🇮🇳 TN Examples:</strong><span class="en"> Chennai Metro Smart Card (CMRL) — Blue Line (Airport–Wimco Nagar) + Purple Line. Meenakshi taps at Nandanam station. MTC bus NCMC — same card on city buses. FASTag — Karthi's car debited at Vanagaram toll plaza, NH48 Chennai–Bengaluru highway.</span><span class="ta"> Chennai Metro Smart Card (CMRL) Blue + Purple Line. Meenakshi Nandanam station tap. MTC bus same card. FASTag — Karthi Vanagaram toll NH48 Chennai–Bengaluru.</span></div>
+      <div class="wtype-rules">
+        <span class="wtype-rule wtype-rule--y">✓ Offline tap</span>
+        <span class="wtype-rule wtype-rule--y">✓ Any NCMC transit</span>
+        <span class="wtype-rule wtype-rule--n">✗ No online shopping</span>
+        <span class="wtype-rule wtype-rule--n">✗ No bank transfer</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="wtype-card">
+    <div class="wtype-card-stripe wtype-card-stripe--corp"></div>
+    <div class="wtype-card-body">
+      <div class="wtype-icon">🟣</div>
+      <div class="wtype-title"><span class="en">Corporate Expense Wallet</span><span class="ta">Corporate Expense Wallet</span></div>
+      <div class="wtype-sub">Semi-closed PPI · FEMA AD-II for forex</div>
+      <div class="wtype-desc"><span class="en">Pre-loaded wallets for employees with MCC restrictions — travel, meals, fuel, office supplies. Admin portal for HR to freeze/reload instantly. Auto-reconciliation to Tally/SAP. Unused balance returns to company pool at month-end. Often combined with virtual cards for online vendors.</span><span class="ta">Employees-க்கு MCC restrictions உடன் — travel, meals, fuel, office supplies. HR instant freeze/reload admin portal. Tally/SAP auto-reconciliation. Month-end unused balance company pool return.</span></div>
+      <div class="wtype-eg"><strong>🇮🇳 TN Examples:</strong><span class="en"> Zaggle — Karthi issues ₹5,000/month to Robosynaptix Chennai team for office supplies. Happay travel card — Murugan gets ₹12,000 for Madurai → Chennai client visit (flight + hotel). Ola Money for Business — Vignesh uses it for cab expense across Coimbatore tech park.</span><span class="ta"> Zaggle — Karthi, Robosynaptix Chennai ₹5,000/month office supplies. Happay — Murugan, Madurai → Chennai ₹12,000. Ola Money Business — Vignesh, Coimbatore tech park cabs.</span></div>
+      <div class="wtype-rules">
+        <span class="wtype-rule wtype-rule--y">✓ MCC controlled</span>
+        <span class="wtype-rule wtype-rule--y">✓ Admin portal</span>
+        <span class="wtype-rule wtype-rule--n">✗ No personal use</span>
+        <span class="wtype-rule wtype-rule--n">✗ No ATM</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="wtype-card">
+    <div class="wtype-card-stripe wtype-card-stripe--govt"></div>
+    <div class="wtype-card-body">
+      <div class="wtype-icon">🏛️</div>
+      <div class="wtype-title"><span class="en">Government Benefit Wallet (DBT)</span><span class="ta">Government Benefit Wallet (DBT)</span></div>
+      <div class="wtype-sub">DBT Mission · RBI PPI + Jan Dhan</div>
+      <div class="wtype-desc"><span class="en">Aadhaar-seeded RuPay debit card on a Jan Dhan / PM Jan Dhan account. DBT credits (LPG subsidy, MGNREGS wages, scholarships) land automatically via NPCI mapper. Spend restricted to approved MCCs — PDS ration shops, hospitals, fertilizer depots, LPG dealers. Merchant must be a Business Correspondent (BC). No e-commerce. ATM withdrawal allowed.</span><span class="ta">Aadhaar-linked RuPay debit + Jan Dhan account. DBT credits NPCI mapper வழியாக automatically. PDS, hospitals, fertilizer, LPG MCCs மட்டுமே. BC agent merchant. No e-commerce. ATM withdrawal OK.</span></div>
+      <div class="wtype-eg"><strong>🇮🇳 TN Examples:</strong><span class="en"> PM-KISAN ₹2,000 installment into Thanjavur district farmer's Jan Dhan account. CMCHIS health card — Meenakshi's mother uses it at Kovai Medical Center, Coimbatore for cashless inpatient treatment. PM Ujjwala LPG subsidy credited to women beneficiaries in Madurai and Trichy districts.</span><span class="ta"> PM-KISAN ₹2,000 → Thanjavur district farmer Jan Dhan. CMCHIS — Meenakshi-ன் அம்மா, Kovai Medical Center Coimbatore cashless. PM Ujjwala LPG subsidy → Madurai, Trichy district women.</span></div>
+      <div class="wtype-rules">
+        <span class="wtype-rule wtype-rule--y">✓ ATM withdrawal</span>
+        <span class="wtype-rule wtype-rule--n">✗ Approved MCCs only</span>
+        <span class="wtype-rule wtype-rule--n">✗ No e-commerce</span>
+        <span class="wtype-rule wtype-rule--n">✗ BC agent only</span>
+      </div>
+    </div>
+  </div>
+
+</div>
+</div>
+
 <div class="eng-box" data-reveal>
   <div class="eng-box-header">
     <span class="eng-box-tag">⚙️ Engineer Note</span>
@@ -2389,6 +2500,87 @@ const res = await axios.post('https://payout-api.cashfree.com/payout/v1/requestB
   <span class="en">🔑 <strong>Developer note:</strong> Two separate API calls required: <code>POST /payments/authorize</code> (holds funds) and <code>POST /payments/capture</code> (charges actual amount). Razorpay, PayU, and CCAvenue all support pre-auth on their card APIs. Capture must happen within the issuer's hold window — typically <strong>7 days for domestic Visa/MC, up to 30 days for Amex.</strong> After that, auth expires and you must re-authorise.</span>
   <span class="ta">🔑 <strong>Developer குறிப்பு:</strong> இரண்டு தனி API calls தேவை: <code>POST /payments/authorize</code> (நிதி hold) மற்றும் <code>POST /payments/capture</code> (உண்மையான தொகை). Issuer-இன் hold window-க்குள் capture செய்ய வேண்டும் — domestic Visa/MC-க்கு பொதுவாக <strong>7 நாட்கள்</strong>.</span>
 </div>
+
+<!-- ── APPROVAL CODE ANATOMY ─────────────────────────────────── -->
+<h3 class="s-sub-title" data-reveal>🔐 <span class="en">Approval Code — anatomy of a 6-character secret</span><span class="ta">Approval Code — 6 எழுத்து auth code என்றால் என்ன?</span></h3>
+<div class="appr-code-wrap" data-reveal>
+  <p style="font-size:0.82rem;color:var(--ink2)"><span class="en">When the issuing bank approves a pre-auth, it returns a 6-character alphanumeric <strong>approval code</strong> (also called auth code). This code is the contract between issuer and acquirer. It is <strong>single-use</strong> — bound to exactly one transaction, one merchant, one amount ceiling, and one time window. It cannot be reused for a second transaction or a different PAN.</span><span class="ta">Issuer bank pre-auth ஒப்புதல் கொடுக்கும்போது, 6-character அல்ஃபா-நியூமெரிக் <strong>approval code</strong> வழங்கும். இது issuer-க்கும் acquirer-க்கும் இடையே ஒரு ஒப்பந்தம். <strong>Single-use</strong> — ஒரே transaction, ஒரே merchant, ஒரே தொகை ceiling, ஒரே time window மட்டுமே.</span></p>
+  <div class="appr-code-display">
+    <div class="appr-code-char">4<span>Pos 1</span></div>
+    <div class="appr-code-char">8<span>Pos 2</span></div>
+    <div class="appr-code-char">3<span>Pos 3</span></div>
+    <div class="appr-code-char">G<span>Pos 4</span></div>
+    <div class="appr-code-char">2<span>Pos 5</span></div>
+    <div class="appr-code-char">Z<span>Pos 6</span></div>
+  </div>
+  <div style="text-align:center"><span class="appr-single-use-badge">⛔ Single-use · Transaction-bound · Non-transferable</span></div>
+  <div class="appr-code-meta" data-stagger>
+    <div class="appr-code-field">
+      <div class="appr-code-field-k">Issuer Reference</div>
+      <div class="appr-code-field-v">Internal auth log ID — links back to the cardholder credit limit block</div>
+    </div>
+    <div class="appr-code-field">
+      <div class="appr-code-field-k">Amount Ceiling</div>
+      <div class="appr-code-field-v">Capture cannot exceed authorised amount (exception: tip adjustment ±20% — Visa rule)</div>
+    </div>
+    <div class="appr-code-field">
+      <div class="appr-code-field-k">Time-to-Live (TTL)</div>
+      <div class="appr-code-field-v">7 days Visa/MC domestic · 30 days Amex · After TTL funds are released</div>
+    </div>
+    <div class="appr-code-field">
+      <div class="appr-code-field-k">Merchant Binding</div>
+      <div class="appr-code-field-v">MID + TID stamp — a different terminal cannot use another terminal's auth code</div>
+    </div>
+    <div class="appr-code-field">
+      <div class="appr-code-field-k">Single-use Flag</div>
+      <div class="appr-code-field-v">Once captured or voided, code is dead. Second capture attempt = decline 57</div>
+    </div>
+    <div class="appr-code-field">
+      <div class="appr-code-field-k">Card PAN Binding</div>
+      <div class="appr-code-field-v">Code valid only for the PAN that generated the auth. Token swap = reject</div>
+    </div>
+  </div>
+</div>
+
+<!-- ── CHARGING VARIANTS ──────────────────────────────────────── -->
+<h3 class="s-sub-title" data-reveal>💸 <span class="en">Six ways a pre-auth can be charged</span><span class="ta">Pre-auth charge செய்யும் ஆறு வழிகள்</span></h3>
+<p style="font-size:0.82rem;color:var(--ink2);margin-bottom:1rem" data-reveal><span class="en">Not all pre-auths resolve the same way. The charging method depends on the merchant category and the payment network rules. Missing this detail is a common source of settlement reconciliation bugs.</span><span class="ta">எல்லா pre-auths ஒரே மாதிரி முடிவடைவதில்லை. Merchant category-ம் network rules-உம் charging method-ஐ தீர்மானிக்கின்றன.</span></p>
+<div class="charge-grid" data-stagger>
+  <div class="charge-card charge-card--standard">
+    <div class="charge-title">1 · Standard Capture <span class="charge-tag charge-tag--ok">Most common</span></div>
+    <div class="charge-eg">Auth ₹2,499 → Capture ₹2,499</div>
+    <div class="charge-body"><span class="en">Capture equals the authorised amount exactly. Used by e-commerce, SaaS, and most card-not-present flows. Karthi orders ₹2,499 of groceries on Swiggy Instamart — held amount and captured amount are identical.</span><span class="ta">Auth amount = capture amount. E-commerce, SaaS-க்கு பயன்படுகிறது. Karthi Swiggy Instamart-ல் ₹2,499 order — hold அதே amount, capture அதே amount.</span></div>
+  </div>
+  <div class="charge-card charge-card--partial">
+    <div class="charge-title">2 · Partial Capture <span class="charge-tag charge-tag--info">Hotels / Car rental</span></div>
+    <div class="charge-eg">Auth ₹18,000 → Capture ₹11,500 (₹6,500 released)</div>
+    <div class="charge-body"><span class="en">Capture is <em>less than</em> the authorised amount. The unused portion is released to the cardholder in 3–5 days. Meenakshi checks into GRT Grand, Chennai — hotel pre-auths ₹18,000 for 3 nights. She checks out after 2 nights. Capture ₹11,500, ₹6,500 released.</span><span class="ta">Capture &lt; auth amount. மீதி cardholder-க்கு திரும்பும். Meenakshi GRT Grand Chennai-ல் 3 நாட்களுக்கு ₹18,000 pre-auth; 2 நாட்கள் stay → ₹11,500 capture, ₹6,500 release.</span></div>
+  </div>
+  <div class="charge-card charge-card--incremental">
+    <div class="charge-title">3 · Incremental Authorization <span class="charge-tag charge-tag--warn">Extended stay</span></div>
+    <div class="charge-eg">Auth ₹12,000 → +Auth ₹6,000 → Capture ₹17,200</div>
+    <div class="charge-body"><span class="en">Additional hold added on top of an existing auth without voiding it. Visa/MC support via the incremental auth flag. Karthi books Taj Coimbatore for 2 nights. On Day 2 he extends — hotel sends incremental auth for ₹6,000 more. Same approval code lineage, TTL resets. <strong>RuPay does not support this</strong> — must void + re-authorise.</span><span class="ta">Existing auth-ஐ void செய்யாமல் additional hold சேர்ப்பது. Karthi Taj Coimbatore-ல் 2 நாட்கள் → Day 2 extend → ₹6,000 incremental auth. TTL reset. RuPay support இல்லை — void + re-authorise வேண்டும்.</span></div>
+  </div>
+  <div class="charge-card charge-card--tip">
+    <div class="charge-title">4 · Tip Adjustment <span class="charge-tag charge-tag--warn">Restaurants</span></div>
+    <div class="charge-eg">Auth ₹850 → Capture ₹977 (14.9% tip, within ±20%)</div>
+    <div class="charge-body"><span class="en">Customer writes a tip on the signed slip. Merchant may capture up to 20% above the original auth under Visa/MC tip-adjustment rules — no additional auth needed within this window. Murugan dines at Ponnusamy Hotel, Chennai. Bill ₹850. He adds ₹127 tip on the slip → capture ₹977. Within the 20% margin — valid.</span><span class="ta">Customer slip-ல் tip எழுதுகிறார். Visa/MC rules-ல் original auth-ஐ விட max 20% அதிகமாக capture செய்யலாம். Murugan Ponnusamy Hotel Chennai — ₹850 bill + ₹127 tip → ₹977 capture. 20% window-க்குள் — valid.</span></div>
+  </div>
+  <div class="charge-card charge-card--split">
+    <div class="charge-title">5 · Split Capture <span class="charge-tag charge-tag--info">Airlines</span></div>
+    <div class="charge-eg">Auth ₹9,800 → Capture ₹7,200 + Capture ₹2,600</div>
+    <div class="charge-body"><span class="en">One authorisation, multiple partial captures. Airlines bill base fare + ancillaries (seat, baggage) as separate captures from one pre-auth. IndiGo: Karthi books Chennai–Coimbatore ₹7,200 base + ₹2,600 baggage — two captures from a single ₹9,800 auth. Requires acquirer + network support.</span><span class="ta">ஒரே auth-ல் இருந்து பல partial captures. IndiGo: Karthi Chennai–Coimbatore ₹7,200 + ₹2,600 baggage — ₹9,800 single auth-ல் இருந்து 2 captures. Acquirer + network support தேவை.</span></div>
+  </div>
+  <div class="charge-card charge-card--noshow">
+    <div class="charge-title">6 · No-show Capture <span class="charge-tag charge-tag--warn">Penalty charge</span></div>
+    <div class="charge-eg">Auth ₹15,000 → Service not rendered → Capture ₹1,500 penalty</div>
+    <div class="charge-body"><span class="en">Merchant captures a penalty even though service was never delivered — valid only if cardholder signed no-show terms at booking. Zoomcar pre-auths ₹15,000. Customer never picks up the car. Zoomcar captures ₹1,500 no-show fee. Dispute risk: issuer will challenge if no signed policy exists — store booking T&amp;Cs, IP, and timestamp as evidence.</span><span class="ta">No-show terms signed இருந்தால் service இல்லாமலும் penalty capture செய்யலாம். Zoomcar ₹15,000 pre-auth → customer வரவில்லை → ₹1,500 penalty capture. T&amp;Cs, IP, timestamp evidence வைக்க வேண்டும்.</span></div>
+  </div>
+</div>
+<div class="alert-box" data-reveal>
+  <strong>⚠️ <span class="en">Incremental auth is Visa/MC only — RuPay does not support it</span><span class="ta">Incremental auth Visa/MC மட்டுமே — RuPay support இல்லை</span></strong>
+  <p><span class="en">If you build a hotel or car-rental flow with incremental auth, card-type detection at checkout is mandatory. For RuPay cards, void the original auth and re-authorise for the higher amount. Also: Amex requires a separate ISO 8583 field for incremental auth — different from Visa/MC flag handling.</span><span class="ta">Hotel / car-rental flow-ல் incremental auth பயன்படுத்தினால், checkout-ல் card type detection கட்டாயம். RuPay-க்கு original auth void செய்து re-authorise செய்ய வேண்டும். Amex ISO 8583 field handling Visa/MC-ல் இருந்து வேறாக இருக்கும்.</span></p>
+</div>
 `
 },
 
@@ -2557,7 +2749,7 @@ const res = await axios.post('https://payout-api.cashfree.com/payout/v1/requestB
       <li><span class="en">Apple Pay / Google Pay / Samsung Pay = same NFC tech, but PAN is tokenized.</span><span class="ta">Apple Pay / Google Pay / Samsung Pay = அதே NFC தொழில்நுட்பம், PAN tokenized.</span></li>
       <li><span class="en">Same auth/clear/settle flow as chip-and-PIN, just faster (no dip required).</span><span class="ta">அதே auth/clear/settle flow, வேகமானது.</span></li>
     </ul>
-    <div class="rl-example"><span class="rl-icon">🚇</span><div><strong><span class="en">Real-life: Mumbai Metro</span><span class="ta">நிஜ உதாரணம்: Mumbai Metro</span></strong><span class="en">Tap your Axis Flipkart Credit Card at the gate. No phone needed. ₹30 metro fare deducted in 0.8 seconds. The gate is a contactless POS connected to Visa payWave network.</span><span class="ta">Axis Flipkart Credit Card-ஐ gate-ல் tap செய்யவும். Phone தேவையில்லை. 0.8 விநாடியில் ₹30 metro fare கழிக்கப்படுகிறது.</span></div></div>
+    <div class="rl-example"><span class="rl-icon">🚇</span><div><strong><span class="en">Real-life: Chennai Metro (CMRL)</span><span class="ta">நிஜ உதாரணம்: Chennai Metro (CMRL)</span></strong><span class="en">Tap your RuPay contactless card or NCMC Smart Card at the CMRL gate. No phone needed. ₹30 metro fare deducted in 0.8 seconds. The gate is a contactless POS connected to the NCMC/RuPay payWave network. Works on both the Blue Line (Airport–Wimco Nagar) and the Purple Line.</span><span class="ta">RuPay contactless card அல்லது NCMC Smart Card-ஐ CMRL gate-ல் tap செய்யவும். Phone தேவையில்லை. 0.8 விநாடியில் ₹30 metro fare கழிக்கப்படுகிறது. Blue Line மற்றும் Purple Line இரண்டிலும் works.</span></div></div>
   </div>
 
 </div>
@@ -2654,6 +2846,175 @@ const res = await axios.post('https://payout-api.cashfree.com/payout/v1/requestB
 <div class="alert-box" data-reveal style="margin-top:1.5rem;">
   <span class="en">🔑 <strong>Refund vs Chargeback:</strong> A <strong>refund</strong> is merchant-initiated, voluntary, costs nothing, takes 1–7 days. A <strong>chargeback</strong> is cardholder-initiated, forced, costs ₹500–₹2,000 in fees, takes 30–90 days. <em>Always encourage customers to request a refund first</em> — a chargeback costs you more in every way.</span>
   <span class="ta">🔑 <strong>Refund vs Chargeback:</strong> <strong>Refund</strong> = merchant தன்னிச்சையாக, இலவசம், 1–7 நாட்கள். <strong>Chargeback</strong> = cardholder கட்டாயப்படுத்துகிறார், ₹500–₹2,000 fee, 30–90 நாட்கள். வாடிக்கையாளர்களை முதலில் refund கேட்கச் சொல்லுங்கள்.</span>
+</div>
+`
+}
+
+,
+
+/* ── CARD FRAUD & SPECIAL CARDS ─────────────────────────── */
+{
+  id:'card-fraud', chapter:'cards', theme:'dark',
+  nav:{ en:'Card Fraud & Special Cards', ta:'கார்டு மோசடி & சிறப்பு கார்டுகள்' },
+  html:`
+<div class="s-label" data-reveal>
+  <span class="s-label-num">Section 16 — Cards &amp; Payments</span>
+  <span class="s-label-line"></span>
+</div>
+<h2 class="s-title" data-reveal>Special cards &amp; <em>fraud loopholes</em></h2>
+<p class="s-desc" data-reveal>
+  <span class="en">Beyond standard debit/credit cards, banks and fintechs issue purpose-built cards — virtual, fleet, corporate, transit, and government benefit cards — each with tight spending controls. Fraudsters, meanwhile, exploit structural gaps in pre-auth windows, 3DS flows, and card-number generation to steal money before the system catches on.</span>
+  <span class="ta">Standard debit/credit cards-க்கு அப்பால், banks மற்றும் fintechs குறிப்பிட்ட நோக்கங்களுக்காக கார்டுகள் வழங்குகின்றன — virtual, fleet, corporate, transit, government benefit cards. Fraudsters pre-auth windows, 3DS flows, card number generation-ல் உள்ள structural gaps-ஐ exploit செய்கின்றனர்.</span>
+</p>
+
+<!-- ── SPECIAL CARD TYPES ─────────────────────────────────────── -->
+<h3 class="s-sub-title" data-reveal>💎 <span class="en">Six special card types banks actually issue</span><span class="ta">Banks வழங்கும் ஆறு சிறப்பு card வகைகள்</span></h3>
+<div class="sc-types-grid" data-stagger>
+
+  <div class="sc-card">
+    <div class="sc-card-stripe sc-card-stripe--virtual"></div>
+    <div class="sc-card-body">
+      <div class="sc-card-icon">🔮</div>
+      <div class="sc-card-title"><span class="en">Virtual Single-use Card</span><span class="ta">Virtual Single-use Card</span></div>
+      <div class="sc-card-desc"><span class="en">A freshly generated PAN + expiry + CVV for <strong>one transaction only</strong>. After use (or after 24 hours), the virtual card number dies. Your real card number never leaves your bank. Used by fintechs for B2B expense management and high-risk online merchants.</span><span class="ta">ஒரே transaction-க்காக மட்டும் generate ஆகும் PAN + expiry + CVV. பயன்படுத்திய பிறகு அல்லது 24 மணி நேரத்தில் expired. உண்மையான card number எந்த merchant-க்கும் போகாது. B2B expense management-ல் பயன்படுகிறது.</span></div>
+      <div class="sc-card-eg"><span class="en">🇮🇳 Examples: Kotak 811 OTM (One Time Money), SBI Virtual Card, Volopay / Karbon for startups — Karthi's Robosynaptix uses Karbon virtual cards for vendor payments, each card pre-loaded with exact invoice amount.</span><span class="ta">🇮🇳 உதாரணங்கள்: Kotak 811 OTM, SBI Virtual Card, Volopay / Karbon — Karthi-ன் Robosynaptix, vendor payments-க்கு Karbon virtual cards பயன்படுத்துகிறது; ஒவ்வொரு card-ம் exact invoice amount-ல் மட்டுமே loaded.</span></div>
+    </div>
+  </div>
+
+  <div class="sc-card">
+    <div class="sc-card-stripe sc-card-stripe--fleet"></div>
+    <div class="sc-card-body">
+      <div class="sc-card-icon">⛽</div>
+      <div class="sc-card-title"><span class="en">Fleet Card (Fuel-only)</span><span class="ta">Fleet Card (Fuel-only)</span></div>
+      <div class="sc-card-desc"><span class="en">MCC-restricted to fuel merchants only (MCC 5541 = gas stations, 5542 = automated fuel dispensers). Cannot be used at restaurants, ATMs, or grocery stores. Limits are per-day, per-litre, and per-vehicle. Some issuers add GPS cross-check — swipe at a fuel station must match vehicle's last GPS ping.</span><span class="ta">Fuel merchants மட்டுமே (MCC 5541/5542). Restaurant, ATM, grocery-ல் decline. Per-day, per-litre, per-vehicle limits. GPS cross-check: swipe location = vehicle GPS ping வேண்டும்.</span></div>
+      <div class="sc-card-eg"><span class="en">🇮🇳 Examples: IndianOil XTRAPOWER Fleet Card, HPCL FleetOne, BPCL SmartFleet — Logistics companies in Coimbatore use these for trucks on the Coimbatore–Trichy–Madurai NH route.</span><span class="ta">🇮🇳 IndianOil XTRAPOWER, HPCL FleetOne, BPCL SmartFleet — Coimbatore-ல் logistics companies, Coimbatore–Trichy–Madurai NH route-ல் trucks-க்கு பயன்படுத்துகின்றன.</span></div>
+    </div>
+  </div>
+
+  <div class="sc-card">
+    <div class="sc-card-stripe sc-card-stripe--corp"></div>
+    <div class="sc-card-body">
+      <div class="sc-card-icon">🏢</div>
+      <div class="sc-card-title"><span class="en">Corporate / Commercial Card</span><span class="ta">Corporate / Commercial Card</span></div>
+      <div class="sc-card-desc"><span class="en">Issued to employees for specific spend categories — travel, office supplies, or client entertainment. MCC whitelist enforced at issuer side. Transactions outside allowed MCCs hard-decline. Monthly spend limits per employee with auto-reconciliation to company's ERP. HR can freeze card instantly via admin portal.</span><span class="ta">Employees-க்கு specific categories-க்கு மட்டும் — travel, office supplies, client entertainment. MCC whitelist enforced. Allowed MCCs-க்கு வெளியே hard-decline. Monthly limits, ERP reconciliation, HR instant freeze.</span></div>
+      <div class="sc-card-eg"><span class="en">🇮🇳 Examples: Zaggle corporate card, Happay travel card, HDFC BizFirst — Karthi issues Zaggle cards to the Robosynaptix Chennai team capped at ₹5,000/month for office supplies.</span><span class="ta">🇮🇳 Zaggle corporate card, Happay travel card, HDFC BizFirst — Karthi, Robosynaptix Chennai team-க்கு Zaggle cards வழங்குகிறார்; office supplies-க்கு ₹5,000/month cap.</span></div>
+    </div>
+  </div>
+
+  <div class="sc-card">
+    <div class="sc-card-stripe sc-card-stripe--transit"></div>
+    <div class="sc-card-body">
+      <div class="sc-card-icon">🚇</div>
+      <div class="sc-card-title"><span class="en">NCMC Transit Card</span><span class="ta">NCMC Transit Card</span></div>
+      <div class="sc-card-desc"><span class="en">National Common Mobility Card — a RuPay-based prepaid card that works <strong>offline</strong>. The chip stores value locally; no network needed at the gate. Tap → debit instantly. Works on metro, bus, parking, and toll. One card can be used on any NCMC-compliant transit system across India. Reload at station counters or via NCMC/UPI app.</span><span class="ta">RuPay-based prepaid card. Chip-ல் value stored — gate-ல் network தேவையில்லை. Tap → instant debit. Metro, bus, parking, toll எல்லாமே ஒரே card. India-ல் எந்த NCMC system-லும் பயன்படுத்தலாம். Station counter / app reload.</span></div>
+      <div class="sc-card-eg"><span class="en">🇮🇳 Examples: Chennai Metro Smart Card (CMRL Blue + Purple line), Kochi Metro NCMC, Bengaluru BMTC NCMC — Meenakshi taps her Chennai Metro card at Alandur station, commuting from Guindy to Chennai Airport on the Blue Line.</span><span class="ta">🇮🇳 Chennai Metro Smart Card (CMRL Blue + Purple line), Kochi Metro NCMC, Bengaluru BMTC NCMC — Meenakshi, Alandur station-ல் tap செய்கிறார்; Guindy → Chennai Airport, Blue Line.</span></div>
+    </div>
+  </div>
+
+  <div class="sc-card">
+    <div class="sc-card-stripe sc-card-stripe--govt"></div>
+    <div class="sc-card-body">
+      <div class="sc-card-icon">🏛️</div>
+      <div class="sc-card-title"><span class="en">Government Benefit Card (DBT)</span><span class="ta">Government Benefit Card (DBT)</span></div>
+      <div class="sc-card-desc"><span class="en">RuPay debit card linked to an Aadhaar-seeded bank account. Direct Benefit Transfer (DBT) credits land here automatically. Spend restricted to government-approved merchant categories — food ration shops (PDS), healthcare, LPG, fertilizer. Cannot be used for jewellery or electronics. Withdrawal allowed at BC agents.</span><span class="ta">Aadhaar-linked RuPay debit card. DBT credits automatically arrive. PDS shops, healthcare, LPG, fertilizer-க்கு மட்டுமே. Jewellery/electronics decline. BC agent-ல் withdrawal allowed.</span></div>
+      <div class="sc-card-eg"><span class="en">🇮🇳 Examples: PM-KISAN RuPay card (farmers in Tamil Nadu, Thanjavur delta), CMCHIS health card (Tamil Nadu state health scheme), PDS ration shop RuPay card used at Tamil Nadu civil supply shops.</span><span class="ta">🇮🇳 PM-KISAN RuPay card (Thanjavur delta TN farmers), CMCHIS health card (Tamil Nadu), PDS ration RuPay card (Tamil Nadu civil supply shops).</span></div>
+    </div>
+  </div>
+
+  <div class="sc-card">
+    <div class="sc-card-stripe sc-card-stripe--campus"></div>
+    <div class="sc-card-body">
+      <div class="sc-card-icon">🎓</div>
+      <div class="sc-card-title"><span class="en">Campus Card (Student PPI)</span><span class="ta">Campus Card (Student PPI)</span></div>
+      <div class="sc-card-desc"><span class="en">Student ID card with an embedded PPI (semi-closed). Works offline at campus canteen, photocopy centre, library, and sports facility. No cash withdrawal. Balance loaded by parents via UPI/NEFT. <strong>Closed to external merchants</strong> — cannot be swiped at an off-campus shop. Issuer = the college, acting as a PPI sub-agent under a licensed PPI issuer.</span><span class="ta">Student ID + embedded PPI (semi-closed). Campus canteen, photocopy, library, sports-ல் offline works. Cash withdrawal இல்லை. Parents UPI-யில் load செய்கிறார்கள். Campus-க்கு வெளியே use செய்ய முடியாது.</span></div>
+      <div class="sc-card-eg"><span class="en">🇮🇳 Examples: PSG Tech Coimbatore campus card, Anna University Chennai campus wallet, NIT Trichy student ID PPI — Murugan uses his PSG Tech campus card to pay for lunch at the college canteen in Peelamedu, Coimbatore.</span><span class="ta">🇮🇳 PSG Tech Coimbatore campus card, Anna University Chennai campus wallet, NIT Trichy student ID PPI — Murugan, PSG Tech Peelamedu canteen-ல் campus card-ல் lunch pay செய்கிறார்.</span></div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ── FRAUD LOOPHOLES ─────────────────────────────────────────── -->
+<h3 class="s-sub-title" data-reveal>🕵️ <span class="en">Payment fraud loopholes — how fraudsters actually do it</span><span class="ta">Payment fraud loopholes — fraudsters எப்படி exploit செய்கின்றனர்?</span></h3>
+<p style="font-size:0.82rem;color:var(--d-ink2);margin-bottom:1rem" data-reveal><span class="en">These are documented fraud techniques, not hypotheticals. Understanding the mechanic is the first step to building defences. Each entry shows the attack, a real-world analogue, and the detection signal your system should watch for.</span><span class="ta">இவை documented fraud techniques. Mechanic புரிந்தால் மட்டுமே defences build செய்ய முடியும். ஒவ்வொன்றிலும் attack, real-world analogue, detection signal காட்டப்பட்டுள்ளது.</span></p>
+<div class="fraud-grid" data-stagger>
+
+  <div class="fraud-card fraud-card--crit">
+    <div class="fraud-card-left">
+      <div class="fraud-card-title">⚡ Card Testing (Carding) Attack</div>
+      <div class="fraud-card-desc"><span class="en">Fraudster obtains a batch of stolen card numbers from a data breach or dark-web market. Before using them for large purchases, bots fire ₹1–₹10 authorisation requests across multiple merchants to check which cards are alive ("live"). A successful ₹1 auth confirms the card is valid, not expired, and not blocked. Hundreds of transactions per second from a single IP or botnet.</span><span class="ta">Data breach / dark web-ல் இருந்து stolen cards பெற்று, ₹1–₹10 auth requests அனுப்பி எந்த card live என்று சோதிக்கின்றனர். ₹1 auth success = card valid, not expired, not blocked. Botnet: per second hundreds of transactions.</span></div>
+      <div class="fraud-card-detect">🔍 Detection: Auth velocity &gt;5/min from same IP · Low-amount authorisation spike · BIN clustering on same merchant</div>
+    </div>
+    <span class="fraud-level fraud-level--crit">CRITICAL</span>
+  </div>
+
+  <div class="fraud-card fraud-card--crit">
+    <div class="fraud-card-left">
+      <div class="fraud-card-title">🔢 BIN Enumeration Attack</div>
+      <div class="fraud-card-desc"><span class="en">Given a valid BIN (first 6–8 digits of a card number), a fraudster uses the Luhn algorithm to generate all mathematically valid 16-digit PANs in that range, then brute-forces expiry (60 combinations) and CVV (000–999). The attacker systematically submits these generated cards to a payment form. Some issuers have weak rate-limiting on their authorisation systems, allowing thousands of guesses. A single compromised BIN range can expose hundreds of valid cards.</span><span class="ta">Valid BIN (first 6–8 digits) கொண்டு Luhn algorithm-ல் valid 16-digit PANs generate செய்கின்றனர், பிறகு expiry + CVV brute-force. Rate-limiting இல்லாத issuers-இல் thousands of guesses. ஒரே BIN range-ல் hundreds of valid cards கண்டுபிடிக்க முடியும்.</span></div>
+      <div class="fraud-card-detect">🔍 Detection: Sequential PAN pattern in declined auths · Same BIN + different suffix velocity · CVV failure spike on single BIN</div>
+    </div>
+    <span class="fraud-level fraud-level--crit">CRITICAL</span>
+  </div>
+
+  <div class="fraud-card fraud-card--high">
+    <div class="fraud-card-left">
+      <div class="fraud-card-title">🎭 Friendly Fraud (Chargeback Abuse)</div>
+      <div class="fraud-card-desc"><span class="en">A legitimate cardholder purchases goods or services, receives them, then disputes the charge with their bank claiming "item not received" or "unauthorised transaction." The issuer reverses the payment. Merchant loses the goods, the money, and pays a chargeback fee (₹500–₹2,000). Estimated 25–30% of all chargebacks in India are friendly fraud. Common in digital goods (OTT subscriptions, game credits) where delivery proof is hard to produce.</span><span class="ta">Legitimate customer item பெற்ற பிறகு bank-ல் "item not received" எனக் கூறி chargeback file செய்கிறார். Merchant: goods போயிற்று + money போயிற்று + chargeback fee ₹500–₹2,000. India-ல் 25–30% chargebacks friendly fraud. Digital goods (OTT, game credits)-ல் delivery proof கஷ்டம்.</span></div>
+      <div class="fraud-card-detect">🔍 Detection: Same customer multiple chargebacks · High-value digital goods + new account · IP + device fingerprint matches previous successful orders</div>
+    </div>
+    <span class="fraud-level fraud-level--high">HIGH</span>
+  </div>
+
+  <div class="fraud-card fraud-card--high">
+    <div class="fraud-card-left">
+      <div class="fraud-card-title">📵 3DS Bypass via SIM Swap</div>
+      <div class="fraud-card-desc"><span class="en">Fraudster collects victim's Aadhaar/PAN details via phishing or data broker. Visits a telecom store with forged ID, ports the victim's mobile number to a new SIM (SIM swap). Now OTPs (3DS authentication) land on the fraudster's device. The fraudster uses the victim's card details + stolen OTP to complete high-value transactions. The victim discovers the fraud only after their SIM stops working. India has seen SIM swap fraud spike in Tier-2 cities where KYC at telecom shops is weak.</span><span class="ta">Victim-ன் Aadhaar/PAN phishing மூலம் பெற்று, SIM swap request submit செய்கின்றனர். OTPs fraudster-ன் device-க்கு வருகிறது. Victim-ன் card + stolen OTP → high-value transactions. Tier-2 cities-ல் telecom shop KYC weak — SIM swap spike.</span></div>
+      <div class="fraud-card-detect">🔍 Detection: Transaction from new device immediately after SIM change · Telecom-reported SIM swap event API (TRAI) · Velocity on account post-SIM change</div>
+    </div>
+    <span class="fraud-level fraud-level--high">HIGH</span>
+  </div>
+
+  <div class="fraud-card fraud-card--high">
+    <div class="fraud-card-left">
+      <div class="fraud-card-title">🏨 Pre-auth Ghost Ride (Hold &amp; Flee)</div>
+      <div class="fraud-card-desc"><span class="en">Fraudster checks into a hotel using a stolen card. The hotel pre-authorises ₹15,000–₹50,000 on the card. The fraudster consumes the room, minibar, and services for 1–2 nights. Checkout time comes — the fraudster leaves without checking out. The hotel captures the amount on the stolen card, but by then the real cardholder has already reported the card stolen, triggering a chargeback. The hotel loses the room revenue and faces a chargeback penalty. The T+1/T+2 settlement window is the structural gap exploited.</span><span class="ta">Stolen card-ல் hotel check-in செய்கிறார். ₹15,000–₹50,000 pre-auth. Services consume செய்கிறார். Checkout இல்லாமல் கிளம்பிவிடுகிறார். Hotel capture செய்யும்போது real cardholder card stolen report பண்ணிவிட்டார் — chargeback. T+1/T+2 settlement window-ல் உள்ள gap exploit ஆகிறது.</span></div>
+      <div class="fraud-card-detect">🔍 Detection: Card reported stolen within 24h of pre-auth · Match stolen-card reports against open pre-auth holds · Require physical card + chip PIN at check-in</div>
+    </div>
+    <span class="fraud-level fraud-level--high">HIGH</span>
+  </div>
+
+  <div class="fraud-card fraud-card--med">
+    <div class="fraud-card-left">
+      <div class="fraud-card-title">📡 NFC Relay Attack</div>
+      <div class="fraud-card-desc"><span class="en">Two devices collude: Device A is near the victim's contactless card (in pocket/wallet); Device B is at the merchant terminal. Device A reads the NFC field and relays it in real-time over the internet to Device B, which emulates the card at the terminal. The terminal "sees" the card within 4 cm. Transaction completes without the victim knowing. Practical range of attack is 1–2 metres. Rare in India but documented in Europe. Mitigation: Faraday-sleeve wallets, contactless limits (RBI's ₹5,000 PIN-free cap).</span><span class="ta">Device A victim-ன் card-க்கு அருகில் — NFC signal read செய்து internet வழியாக Device B-க்கு relay. Device B merchant terminal-ல் card emulate. 4 cm range-க்குள் terminal "card" பார்க்கிறது. India-ல் rare, Europe-ல் documented. Faraday sleeve wallet, RBI ₹5,000 contactless cap — mitigation.</span></div>
+      <div class="fraud-card-detect">🔍 Detection: Transaction location mismatch with cardholder GPS · Unusual latency in NFC authorisation response · Double-tap anomaly on terminal</div>
+    </div>
+    <span class="fraud-level fraud-level--med">MEDIUM</span>
+  </div>
+
+  <div class="fraud-card fraud-card--med">
+    <div class="fraud-card-left">
+      <div class="fraud-card-title">💻 Formjacking (JS Skimmer)</div>
+      <div class="fraud-card-desc"><span class="en">Attacker injects malicious JavaScript into a merchant's checkout page (via supply-chain compromise of a third-party analytics or chat widget). The script silently harvests PAN, expiry, CVV, name as the customer types — and exfiltrates to attacker's server — before the legitimate payment form submits. The merchant's own server never sees the attack. Magecart group famously compromised 800+ e-commerce sites this way. In India, several SME e-commerce portals running outdated CMS plugins have been affected.</span><span class="ta">Attacker merchant-ன் checkout page-ல் malicious JS inject செய்கிறார் (third-party widget supply-chain attack). PAN, CVV, name customer type செய்யும்போதே harvested. Merchant server-க்கு attack தெரியாது. India-ல் outdated CMS plugins உள்ள SME e-commerce portals affected.</span></div>
+      <div class="fraud-card-detect">🔍 Detection: CSP (Content-Security-Policy) header · Subresource Integrity (SRI) on all third-party scripts · Regular third-party dependency audit</div>
+    </div>
+    <span class="fraud-level fraud-level--med">MEDIUM</span>
+  </div>
+
+  <div class="fraud-card fraud-card--med">
+    <div class="fraud-card-left">
+      <div class="fraud-card-title">🔄 EMV Fallback Fraud</div>
+      <div class="fraud-card-desc"><span class="en">A chip-capable card should always transact via the chip. Some older POS terminals allow "fallback" to magnetic stripe if the chip fails to read (e.g. scratched chip). Fraudsters use counterfeit cards that have a broken/blanked chip — forcing the terminal into fallback mode — while the magnetic stripe contains cloned track data from a skimming device. The terminal processes a valid-looking mag-stripe transaction without chip verification. RBI mandated chip + PIN by 2019, but legacy terminals at small merchants remain a risk.</span><span class="ta">Chip card-ல் chip read fail ஆனால் சில POS terminals magnetic stripe fallback allow செய்கின்றன. Fraudsters chip damaged counterfeit card + cloned magnetic stripe use — terminal fallback mode-ல் swipe. RBI 2019-ல் chip+PIN mandate செய்தது; legacy terminals at small merchants risk இருக்கிறது.</span></div>
+      <div class="fraud-card-detect">🔍 Detection: Flag all fallback transactions for manual review · Require PIN on fallback · Decline online fallback for high-value transactions</div>
+    </div>
+    <span class="fraud-level fraud-level--med">MEDIUM</span>
+  </div>
+
+</div>
+
+<div class="alert-box" data-reveal style="background:rgba(239,68,68,0.06);border-color:rgba(239,68,68,0.2)">
+  <strong>🛡️ <span class="en">Merchant minimum defences — PCI DSS checklist</span><span class="ta">Merchant minimum defences — PCI DSS checklist</span></strong>
+  <p><span class="en">Store no PAN/CVV after auth (PCI DSS Req 3.2) · Enforce 3DS 2.x for CNP transactions &gt;₹2,000 (RBI mandate) · Rate-limit auth attempts per IP/session (max 5/min) · Use CSP headers + SRI on all checkout pages · Monitor chargebacks weekly — &gt;1% of volume triggers Visa/MC high-risk programme · Subscribe to Visa Risk Manager / MC Risk Analytics for real-time BIN abuse alerts.</span><span class="ta">Auth பிறகு PAN/CVV store செய்யாதீர்கள் (PCI DSS Req 3.2) · ₹2,000+ CNP-க்கு 3DS 2.x (RBI mandate) · Per IP/session auth rate-limit max 5/min · CSP + SRI headers · Weekly chargeback monitoring — 1% above = Visa/MC high-risk programme · Visa Risk Manager / MC Risk Analytics subscribe.</span></p>
 </div>
 `
 }
