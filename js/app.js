@@ -57,14 +57,16 @@
 
     var body = document.getElementById('sn-body');
 
-    // Group sections under each chapter
+    // Group sections under each module
+    var modIdx = 0;
     (window.CHAPTERS || []).forEach(function (ch) {
       var chSections = (window.SECTIONS || []).filter(function (s) { return s.chapter === ch.id; });
       if (!chSections.length) return;
+      modIdx++;
 
       var lbl = document.createElement('div');
       lbl.className = 'sn-ch-label';
-      lbl.innerHTML = ch.emoji + ' <span class="en">' + ch.label.en + '</span><span class="ta">' + ch.label.ta + '</span>';
+      lbl.innerHTML = '<span class="sn-mod-n">M' + modIdx + '</span>' + ch.emoji + ' <span class="en">' + ch.label.en + '</span><span class="ta">' + ch.label.ta + '</span>';
       body.appendChild(lbl);
 
       chSections.forEach(function (sec) {

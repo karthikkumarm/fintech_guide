@@ -6,7 +6,7 @@
 window.CHAPTERS = [
   { id:'ecosystem', emoji:'📐', label:{en:'Ecosystem',  ta:'சுற்றுச்சூழல்'}, sections:['distinction','resellers','pyramid','greyzone','shadow'] },
   { id:'company',   emoji:'🏛️', label:{en:'Company',    ta:'நிறுவனம்'},       sections:['company','costs'] },
-  { id:'licensing', emoji:'📋', label:{en:'Licensing',  ta:'உரிமம்'},         sections:['license','payout'] },
+  { id:'licensing', emoji:'📋', label:{en:'Licensing',  ta:'உரிமம்'},         sections:['license','other-licenses','payout'] },
   { id:'technical', emoji:'⚙️', label:{en:'Technical',  ta:'தொழில்நுட்பம்'}, sections:['wallet','bankapi'] },
   { id:'cardswipe', emoji:'💳', label:{en:'Card Swipe', ta:'கார்டு ஸ்வைப்'},  sections:['cardswipe'] },
   { id:'cards',     emoji:'💎', label:{en:'Cards & Payments', ta:'கார்டுகள் & பேமென்ட்'}, sections:['card-types','preauth','card-network','card-advanced'] }
@@ -20,7 +20,7 @@ window.SECTIONS = [
   nav:{ en:'PG vs PA', ta:'PG vs PA' },
   html:`
 <div class="s-label" data-reveal>
-  <span class="s-label-num">01 — Ecosystem</span>
+  <span class="s-label-num">Section 01 — Ecosystem</span>
   <span class="s-label-line"></span>
 </div>
 <h2 class="s-title" data-reveal>The crucial <em>distinction</em></h2>
@@ -143,6 +143,102 @@ window.SECTIONS = [
     <div class="mp-footnote"><strong><span class="en">Key point:</span><span class="ta">முக்கிய புள்ளி:</span></strong> <span class="en">The PA (Razorpay, PayU) actually receives ₹1,000 in a regulated nodal account and holds it before settling ₹982 to the merchant. This holding — even for one day — is exactly why the ₹25 Cr net worth and RBI licence are non-negotiable.</span><span class="ta">PA (Razorpay, PayU) உண்மையில் ₹1,000 nodal account-ல் பெற்று வைத்திருக்கிறது. ஒரு நாள் கூட வைத்திருப்பது — இதுவே ₹25 கோடி நிகர மதிப்பும் RBI உரிமும் கட்டாயமாகிறது.</span></div>
   </div>
 
+</div>
+
+<h3 class="s-title" style="font-size:1.45rem;margin:2.5rem 0 1rem;" data-reveal>
+  <span class="en">India Payments Ecosystem — who sits where</span>
+  <span class="ta">India Payments சூழலமைப்பு — யார் எங்கே நிற்கிறார்கள்</span>
+</h3>
+<div class="pecos-wrap" data-reveal>
+  <div class="pecos-title"><span class="en">Regulatory & Infrastructure Stack — Top to Bottom</span><span class="ta">ஒழுங்குமுறை & Infrastructure Stack — மேலிருந்து கீழ் வரை</span></div>
+  <div class="pecos-layer-grid">
+    <div class="pecos-layer pecos-layer--regulator">
+      <div class="pecos-layer-label"><span class="en">🏛️ Regulator</span><span class="ta">🏛️ ஒழுங்குமுறை</span></div>
+      <div class="pecos-layer-nodes">
+        <span class="pecos-node">RBI — PSS Act 2007</span>
+        <span class="pecos-node">SEBI (markets)</span>
+        <span class="pecos-node">IRDAI (insurance)</span>
+        <span class="pecos-node">DPIIT (ONDC)</span>
+        <span class="pecos-node">FIU-IND (AML)</span>
+      </div>
+    </div>
+    <div class="pecos-arrows-row">↕ mandates, circulars, PSS Act authorisations</div>
+    <div class="pecos-layer pecos-layer--network">
+      <div class="pecos-layer-label"><span class="en">🌐 Network / Rail</span><span class="ta">🌐 Network / Rail</span></div>
+      <div class="pecos-layer-nodes">
+        <span class="pecos-node">NPCI → UPI, RuPay, IMPS, FASTag</span>
+        <span class="pecos-node">Visa</span>
+        <span class="pecos-node">Mastercard</span>
+        <span class="pecos-node">SWIFT (cross-border)</span>
+        <span class="pecos-node">RBI → RTGS, NEFT</span>
+      </div>
+    </div>
+    <div class="pecos-arrows-row">↕ BIN sponsorship, interchange, clearing rules</div>
+    <div class="pecos-layer pecos-layer--bank">
+      <div class="pecos-layer-label"><span class="en">🏦 Issuer / Acquirer Banks</span><span class="ta">🏦 Issuer / Acquirer</span></div>
+      <div class="pecos-layer-nodes">
+        <span class="pecos-node">SBI / HDFC / ICICI (big issuers)</span>
+        <span class="pecos-node">Yes Bank / Axis / Kotak (acquirers)</span>
+        <span class="pecos-node">Small Finance Banks</span>
+        <span class="pecos-node">Nodal account holders</span>
+      </div>
+    </div>
+    <div class="pecos-arrows-row">↕ APIs, merchant acquiring contracts, nodal accounts</div>
+    <div class="pecos-layer pecos-layer--pa">
+      <div class="pecos-layer-label"><span class="en">⚙️ Licensed PA / PPI / AA</span><span class="ta">⚙️ PA / PPI / AA</span></div>
+      <div class="pecos-layer-nodes">
+        <span class="pecos-node">Razorpay (PA)</span>
+        <span class="pecos-node">PayU (PA)</span>
+        <span class="pecos-node">Cashfree (PA)</span>
+        <span class="pecos-node">Paytm (PA + PPI)</span>
+        <span class="pecos-node">PhonePe (PA + UPI)</span>
+        <span class="pecos-node">Setu / Perfios (AA)</span>
+        <span class="pecos-node">BharatPe (PA)</span>
+      </div>
+    </div>
+    <div class="pecos-arrows-row">↕ sub-merchant agreements, reseller contracts, tech APIs</div>
+    <div class="pecos-layer pecos-layer--merchant">
+      <div class="pecos-layer-label"><span class="en">🏪 Merchants / Resellers</span><span class="ta">🏪 வணிகர் / மறுவிற்பனை</span></div>
+      <div class="pecos-layer-nodes">
+        <span class="pecos-node">Karthi's startup (direct merchant)</span>
+        <span class="pecos-node">RunPaisa (B2B reseller)</span>
+        <span class="pecos-node">Swiggy / Zomato (marketplace)</span>
+        <span class="pecos-node">BBPS billers</span>
+        <span class="pecos-node">Kirana POS</span>
+      </div>
+    </div>
+    <div class="pecos-arrows-row">↕ payment buttons, QR codes, POS terminals</div>
+    <div class="pecos-layer pecos-layer--customer">
+      <div class="pecos-layer-label"><span class="en">👤 End User</span><span class="ta">👤 இறுதி பயனர்</span></div>
+      <div class="pecos-layer-nodes">
+        <span class="pecos-node">Karthi pays via UPI</span>
+        <span class="pecos-node">Meenakshi taps her RuPay card</span>
+        <span class="pecos-node">Murugan does NEFT transfer</span>
+        <span class="pecos-node">Vignesh uses credit card EMI</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="eng-box" data-reveal>
+  <div class="eng-box-header">
+    <span class="eng-box-tag">⚙️ Engineer Note</span>
+    <span class="eng-box-title"><span class="en">Integrating a PA — what actually happens in code</span><span class="ta">PA integrate செய்வது — code-ல் என்ன நடக்கிறது</span></span>
+  </div>
+  <p><span class="en">When Karthi's checkout page calls <code>Razorpay.open(options)</code>, here's the exact sequence under the hood:</span><span class="ta">Karthi-ன் checkout page <code>Razorpay.open(options)</code> call செய்யும்போது, இந்த sequence நடக்கிறது:</span></p>
+  <pre>1. POST /v1/orders  →  { amount, currency, receipt }  →  returns order_id
+2. Client opens Razorpay modal with order_id
+3. Customer pays → Razorpay returns payment_id + signature
+4. Server: HMAC-SHA256(order_id|payment_id, key_secret) == signature ✓
+5. Webhook: payment.captured → mark order PAID in your DB
+6. Razorpay settles to your nodal → T+1/T+2 to your bank</pre>
+  <div class="eng-box-grid">
+    <div class="eng-box-kv"><div class="eng-box-kv-k">Signature algo</div><div class="eng-box-kv-v">HMAC-SHA256</div></div>
+    <div class="eng-box-kv"><div class="eng-box-kv-k">Webhook retry</div><div class="eng-box-kv-v">Razorpay retries 5× (1s, 5s, 30s, 2m, 10m)</div></div>
+    <div class="eng-box-kv"><div class="eng-box-kv-k">Idempotency</div><div class="eng-box-kv-v">Use <code>receipt</code> field as idempotency key</div></div>
+    <div class="eng-box-kv"><div class="eng-box-kv-k">Test creds</div><div class="eng-box-kv-v"><code>rzp_test_*</code> prefix, card 4111111111111111</div></div>
+  </div>
+  <p style="margin-top:0.75rem"><span class="en">⚠️ Never trust only the client-side callback. Always verify the webhook signature on your server. Client-side payment_id can be forged.</span><span class="ta">⚠️ Client-side callback மட்டும் நம்பாதீர்கள். Server-ல் webhook signature verify கட்டாயம்.</span></p>
 </div>`
 },
 
@@ -152,7 +248,7 @@ window.SECTIONS = [
   nav:{ en:'Reseller Models', ta:'மறுவிற்பனை மாதிரி' },
   html:`
 <div class="s-label" data-reveal>
-  <span class="s-label-num">02 — Ecosystem</span>
+  <span class="s-label-num">Section 02 — Ecosystem</span>
   <span class="s-label-line"></span>
 </div>
 <h2 class="s-title" data-reveal>How to operate <em>without a PA licence</em></h2>
@@ -304,7 +400,7 @@ window.SECTIONS = [
   nav:{ en:'The Pyramid', ta:'படிநிலை' },
   html:`
 <div class="s-label" data-reveal>
-  <span class="s-label-num">03 — Ecosystem</span>
+  <span class="s-label-num">Section 03 — Ecosystem</span>
   <span class="s-label-line"></span>
 </div>
 <h2 class="s-title" data-reveal>India's payment <em>hierarchy</em></h2>
@@ -361,7 +457,7 @@ window.SECTIONS = [
   nav:{ en:'Grey Zone', ta:'சாம்பல் மண்டலம்' },
   html:`
 <div class="s-label" data-reveal>
-  <span class="s-label-num">04 — Ecosystem</span>
+  <span class="s-label-num">Section 04 — Ecosystem</span>
   <span class="s-label-line"></span>
 </div>
 <h2 class="s-title" data-reveal>The grey area & <em>the real risk</em></h2>
@@ -412,6 +508,50 @@ window.SECTIONS = [
   <strong>📌 <span class="en">Bottom line:</span><span class="ta">முடிவு:</span></strong>
   <span class="en"> Companies like RunPaisa, GetEPay, and RechargeKit operate legally because they are B2B infrastructure layers — distributors and tech providers sitting on top of licensed entities. They don't need a PA license as long as they don't pool end-consumer funds. The moment any of them starts collecting, holding, and settling consumer money — they enter regulated territory and need the license.</span>
   <span class="ta"> RunPaisa, GetEPay, RechargeKit போன்ற நிறுவனங்கள் சட்டப்பூர்வமாக செயல்படுகின்றன ஏனென்றால் அவை B2B infrastructure layers — உரிமம் பெற்ற நிறுவனங்களுக்கு மேல் உள்ள தொழில்நுட்ப வழங்குநர்கள். நுகர்வோர் நிதிகளை திரட்டாத வரை PA உரிமம் தேவையில்லை.</span>
+</div>
+
+<h3 class="s-title" style="font-size:1.45rem;margin:2.5rem 0 1rem;" data-reveal>
+  <span class="en">The compliance spectrum — where does your business sit?</span>
+  <span class="ta">இணக்க நிலவரம் — உங்கள் வணிகம் எங்கே நிற்கிறது?</span>
+</h3>
+<div class="gz-spectrum-wrap" data-reveal>
+  <div class="gz-spectrum-labels">
+    <span class="gz-zone-lbl--safe"><span class="en">✅ FULLY LEGAL</span><span class="ta">✅ முழு சட்டம்</span></span>
+    <span class="gz-zone-lbl--grey"><span class="en">⚠️ GREY ZONE</span><span class="ta">⚠️ சாம்பல் மண்டலம்</span></span>
+    <span class="gz-zone-lbl--danger"><span class="en">🚫 ILLEGAL</span><span class="ta">🚫 சட்டவிரோதம்</span></span>
+  </div>
+  <div class="gz-spectrum-bar"></div>
+  <div class="gz-ruler-marks">
+    <span>0%</span><span>10%</span><span>20%</span><span>30%</span><span>40%</span>
+    <span>50%</span><span>60%</span><span>70%</span><span>80%</span><span>90%</span><span>100%</span>
+  </div>
+  <div class="gz-entities-row" style="margin-top:1.5rem;">
+    <div class="gz-entity gz-entity--safe">
+      <div class="gz-entity-name">🏦 Licensed PA (Razorpay / PayU)</div>
+      <div class="gz-entity-why"><span class="en">Full RBI authorisation. Nodal account at scheduled bank. AML + KYC compliant. PSS Act certified.</span><span class="ta">முழு RBI அங்கீகாரம். Nodal கணக்கு. AML + KYC.</span></div>
+      <span class="gz-entity-tag gz-entity-tag--safe"><span class="en">SAFE — No action risk</span><span class="ta">பாதுகாப்பானது</span></span>
+    </div>
+    <div class="gz-entity gz-entity--safe">
+      <div class="gz-entity-name">🔌 Pure Tech PG (PayFast)</div>
+      <div class="gz-entity-why"><span class="en">Only provides API / SDK. Does not hold or touch funds. Routes transactions to licensed PA above. Zero fund pooling.</span><span class="ta">API மட்டும். நிதி தொடாது. Licensed PA-வின் கீழ் செயல்படுகிறது.</span></div>
+      <span class="gz-entity-tag gz-entity-tag--safe"><span class="en">SAFE — Tech provider only</span><span class="ta">பாதுகாப்பானது</span></span>
+    </div>
+    <div class="gz-entity gz-entity--amber">
+      <div class="gz-entity-name">🏪 B2B Reseller (Karthi's co.)</div>
+      <div class="gz-entity-why"><span class="en">Collects prepaid float from B2B distributors only. Settlement flows through licensed OU above. No consumer fund pooling — but must maintain strict documentation.</span><span class="ta">B2B distributor-இடம் மட்டும் prepaid float சேகரிக்கிறது. Licensed OU மூலம் settlement.</span></div>
+      <span class="gz-entity-tag gz-entity-tag--amber"><span class="en">WATCH — Requires clean B2B docs</span><span class="ta">கவனிக்கவும்</span></span>
+    </div>
+    <div class="gz-entity gz-entity--orange">
+      <div class="gz-entity-name">⚡ White-label App (no PA above)</div>
+      <div class="gz-entity-why"><span class="en">Branded payments app. Claims tech-only. But actually delays merchant settlement by 5–7 days, pocketing the float. No clear licensed entity above it.</span><span class="ta">Branded payments app. ஆனால் merchant settlement 5-7 நாள் தாமதம். Float pocket செய்கிறது.</span></div>
+      <span class="gz-entity-tag gz-entity-tag--orange"><span class="en">RISKY — De facto PA behaviour</span><span class="ta">ஆபத்தானது</span></span>
+    </div>
+    <div class="gz-entity gz-entity--red">
+      <div class="gz-entity-name">💀 Unlicensed PA Clone</div>
+      <div class="gz-entity-why"><span class="en">Onboards merchants. Collects consumer funds in a private current account. Settles manually. No nodal. No KYC. No AML. PSS Act Section 25 violation.</span><span class="ta">Consumer funds private கணக்கில். Nodal இல்லை. KYC இல்லை. PSS Act பிரிவு 25 மீறல்.</span></div>
+      <span class="gz-entity-tag gz-entity-tag--red"><span class="en">ILLEGAL — ₹10L fine + 10yr jail</span><span class="ta">சட்டவிரோதம்</span></span>
+    </div>
+  </div>
 </div>`
 },
 
@@ -421,7 +561,7 @@ window.SECTIONS = [
   nav:{ en:'Shadow Zone', ta:'நிழல் மண்டலம்' },
   html:`
 <div class="s-label" data-reveal>
-  <span class="s-label-num">05 — Ecosystem</span>
+  <span class="s-label-num">Section 05 — Ecosystem</span>
   <span class="s-label-line"></span>
 </div>
 <h2 class="s-title" data-reveal>The <em>shadow zone</em> — what operators actually do</h2>
@@ -580,7 +720,7 @@ window.SECTIONS = [
   nav:{ en:'Registration', ta:'பதிவு' },
   html:`
 <div class="s-label" data-reveal>
-  <span class="s-label-num">06 — Company</span>
+  <span class="s-label-num">Section 06 — Company</span>
   <span class="s-label-line"></span>
 </div>
 <h2 class="s-title" data-reveal>Company <em>registration</em> steps</h2>
@@ -676,7 +816,7 @@ window.SECTIONS = [
   nav:{ en:'Costs', ta:'செலவுகள்' },
   html:`
 <div class="s-label" data-reveal>
-  <span class="s-label-num">06 — Company</span>
+  <span class="s-label-num">Section 06 — Company</span>
   <span class="s-label-line"></span>
 </div>
 <h2 class="s-title" data-reveal>What it actually <em>costs</em></h2>
@@ -725,7 +865,7 @@ window.SECTIONS = [
   nav:{ en:'RBI Licence', ta:'RBI உரிமம்' },
   html:`
 <div class="s-label" data-reveal>
-  <span class="s-label-num">07 — Licensing</span>
+  <span class="s-label-num">Section 07 — Licensing</span>
   <span class="s-label-line"></span>
 </div>
 <h2 class="s-title" data-reveal>The PA licence <em>journey</em></h2>
@@ -811,13 +951,155 @@ window.SECTIONS = [
 </div>`
 },
 
+/* ── 07b OTHER RBI LICENCES ─────────────────────────────────────── */
+{
+  id:'other-licenses', chapter:'licensing', theme:'light',
+  nav:{ en:'Other RBI Licences', ta:'மற்ற RBI உரிமங்கள்' },
+  html:`
+<div class="s-label" data-reveal>
+  <span class="s-label-num">Section 07b — Licensing</span>
+  <span class="s-label-line"></span>
+</div>
+<h2 class="s-title" data-reveal>Other RBI licences <em>for payments & cards</em></h2>
+<p class="s-desc" data-reveal>
+  <span class="en">Beyond the PA licence, India's payments stack has five more RBI-issued authorisations that a growing fintech may need. Know which one applies to your product before you build.</span>
+  <span class="ta">PA உரிமத்திற்கு அப்பால், India-ன் payments stack-ல் ஐந்து மேலும் RBI-வழங்கும் அங்கீகாரங்கள் உள்ளன. உங்கள் product-க்கு எது பொருந்தும் என்று உருவாக்கும் முன்பே தெரிந்துகொள்ளுங்கள்.</span>
+</p>
+
+<div class="olic-grid" data-stagger>
+
+  <div class="olic-card">
+    <div class="olic-badge olic-badge--ppi"></div>
+    <div class="olic-card-head">
+      <div class="olic-icon">💳</div>
+      <div class="olic-head-right">
+        <div class="olic-title"><span class="en">Prepaid Payment Instrument (PPI)</span><span class="ta">முன்கூட்டி செலுத்தும் கருவி (PPI)</span></div>
+        <div class="olic-abbr">RBI PPI Master Directions 2021</div>
+      </div>
+    </div>
+    <div class="olic-card-body">
+      <div class="olic-row"><span class="olic-row-key"><span class="en">What it lets you do</span><span class="ta">என்ன செய்யலாம்</span></span><span class="olic-row-val"><span class="en">Issue digital wallets, gift cards, meal vouchers, closed/semi-closed prepaid cards</span><span class="ta">Digital wallets, gift cards issue செய்யலாம்</span></span></div>
+      <div class="olic-row"><span class="olic-row-key"><span class="en">Net worth required</span><span class="ta">நிகர மதிப்பு</span></span><span class="olic-row-val">₹25 Cr (Cat III open-loop)</span></div>
+      <div class="olic-row"><span class="olic-row-key"><span class="en">Min capital</span><span class="ta">குறைந்தபட்ச மூலதனம்</span></span><span class="olic-row-val">₹5 Cr paid-up</span></div>
+      <div class="olic-row"><span class="olic-row-key"><span class="en">Balance limit</span><span class="ta">Balance வரம்பு</span></span><span class="olic-row-val"><span class="en">₹10K (min KYC) · ₹2L (full KYC)</span><span class="ta">₹10K / ₹2L</span></span></div>
+      <div class="olic-row"><span class="olic-row-key"><span class="en">Timeline</span><span class="ta">காலம்</span></span><span class="olic-row-val">12–18 months</span></div>
+      <div class="olic-row"><span class="olic-row-key"><span class="en">Examples</span><span class="ta">எடுத்துக்காட்டுகள்</span></span><span class="olic-row-val">Paytm Wallet, Amazon Pay, MobiKwik</span></div>
+      <div class="olic-tags"><span class="tag tag-cost">₹5Cr capital</span><span class="tag tag-time">12–18 months</span><span class="tag tag-ok">Wallet + Cards</span></div>
+    </div>
+  </div>
+
+  <div class="olic-card">
+    <div class="olic-badge olic-badge--aa"></div>
+    <div class="olic-card-head">
+      <div class="olic-icon">🔗</div>
+      <div class="olic-head-right">
+        <div class="olic-title"><span class="en">NBFC — Account Aggregator (AA)</span><span class="ta">NBFC — Account Aggregator (AA)</span></div>
+        <div class="olic-abbr">RBI AA Master Directions 2016 + 2021 amendment</div>
+      </div>
+    </div>
+    <div class="olic-card-body">
+      <div class="olic-row"><span class="olic-row-key"><span class="en">What it lets you do</span><span class="ta">என்ன செய்யலாம்</span></span><span class="olic-row-val"><span class="en">Aggregate consented financial data across banks, insurers, MF — enables embedded lending, credit scoring</span><span class="ta">வங்கிகளிடையே நிதி data aggregate செய்யலாம்</span></span></div>
+      <div class="olic-row"><span class="olic-row-key"><span class="en">Net worth required</span><span class="ta">நிகர மதிப்பு</span></span><span class="olic-row-val">₹2 Cr (NBFC registration)</span></div>
+      <div class="olic-row"><span class="olic-row-key"><span class="en">Key rule</span><span class="ta">முக்கிய விதி</span></span><span class="olic-row-val"><span class="en">Cannot store or use data — only pass-through consent layer</span><span class="ta">Data store செய்ய முடியாது</span></span></div>
+      <div class="olic-row"><span class="olic-row-key"><span class="en">Timeline</span><span class="ta">காலம்</span></span><span class="olic-row-val">9–15 months</span></div>
+      <div class="olic-row"><span class="olic-row-key"><span class="en">Examples</span><span class="ta">எடுத்துக்காட்டுகள்</span></span><span class="olic-row-val">Setu, Perfios, PhonePe AA, Finvu</span></div>
+      <div class="olic-tags"><span class="tag tag-ok">Open Finance enabler</span><span class="tag tag-time">9–15 months</span></div>
+    </div>
+  </div>
+
+  <div class="olic-card">
+    <div class="olic-badge olic-badge--adii"></div>
+    <div class="olic-card-head">
+      <div class="olic-icon">🌍</div>
+      <div class="olic-head-right">
+        <div class="olic-title"><span class="en">Authorised Dealer Cat II (AD-II)</span><span class="ta">அங்கீகரிக்கப்பட்ட வர்த்தகர் Cat II</span></div>
+        <div class="olic-abbr">FEMA 1999 · RBI AD-II licence</div>
+      </div>
+    </div>
+    <div class="olic-card-body">
+      <div class="olic-row"><span class="olic-row-key"><span class="en">What it lets you do</span><span class="ta">என்ன செய்யலாம்</span></span><span class="olic-row-val"><span class="en">Full-fledged money changing, outward remittance up to LRS $250K, sell forex to travellers</span><span class="ta">Forex மாற்றம், outward remittance $250K வரை</span></span></div>
+      <div class="olic-row"><span class="olic-row-key"><span class="en">Net worth required</span><span class="ta">நிகர மதிப்பு</span></span><span class="olic-row-val">₹10 Cr (FFMC)</span></div>
+      <div class="olic-row"><span class="olic-row-key"><span class="en">Key rule</span><span class="ta">முக்கிய விதி</span></span><span class="olic-row-val"><span class="en">Must be an NBFC or registered company — not a partnership</span><span class="ta">NBFC அல்லது பதிவான நிறுவனமாக இருக்க வேண்டும்</span></span></div>
+      <div class="olic-row"><span class="olic-row-key"><span class="en">Examples</span><span class="ta">எடுத்துக்காட்டுகள்</span></span><span class="olic-row-val">BookMyForex, Niyo, Wise India, EbixCash</span></div>
+      <div class="olic-tags"><span class="tag tag-cost">₹10Cr net worth</span><span class="tag tag-warn">FEMA compliance</span></div>
+    </div>
+  </div>
+
+  <div class="olic-card">
+    <div class="olic-badge olic-badge--p2p"></div>
+    <div class="olic-card-head">
+      <div class="olic-icon">🤝</div>
+      <div class="olic-head-right">
+        <div class="olic-title"><span class="en">NBFC — Peer-to-Peer (P2P) Lending</span><span class="ta">NBFC — Peer-to-Peer (P2P) கடன்</span></div>
+        <div class="olic-abbr">RBI NBFC-P2P Master Directions 2017</div>
+      </div>
+    </div>
+    <div class="olic-card-body">
+      <div class="olic-row"><span class="olic-row-key"><span class="en">What it lets you do</span><span class="ta">என்ன செய்யலாம்</span></span><span class="olic-row-val"><span class="en">Match lenders with borrowers digitally. Escrow funds through a scheduled bank trustee</span><span class="ta">Lenders-borrowers இணைக்கலாம். Escrow மூலம் funds flow.</span></span></div>
+      <div class="olic-row"><span class="olic-row-key"><span class="en">Net worth required</span><span class="ta">நிகர மதிப்பு</span></span><span class="olic-row-val">₹2 Cr (NBFC)</span></div>
+      <div class="olic-row"><span class="olic-row-key"><span class="en">Lender exposure cap</span><span class="ta">Lender வரம்பு</span></span><span class="olic-row-val"><span class="en">₹50L across all P2P platforms</span><span class="ta">அனைத்து P2P-ல் ₹50L</span></span></div>
+      <div class="olic-row"><span class="olic-row-key"><span class="en">Cannot do</span><span class="ta">செய்ய முடியாது</span></span><span class="olic-row-val"><span class="en">Guarantee returns or provide credit enhancement</span><span class="ta">Returns guarantee செய்ய முடியாது</span></span></div>
+      <div class="olic-row"><span class="olic-row-key"><span class="en">Examples</span><span class="ta">எடுத்துக்காட்டுகள்</span></span><span class="olic-row-val">Faircent, LenDenClub, LiquiLoans</span></div>
+      <div class="olic-tags"><span class="tag tag-ok">Lending + Payments</span><span class="tag tag-warn">Strict caps</span></div>
+    </div>
+  </div>
+
+  <div class="olic-card">
+    <div class="olic-badge olic-badge--cbpa"></div>
+    <div class="olic-card-head">
+      <div class="olic-icon">✈️</div>
+      <div class="olic-head-right">
+        <div class="olic-title"><span class="en">Cross-border PA (Online Import)</span><span class="ta">Cross-border PA (Online Import)</span></div>
+        <div class="olic-abbr">RBI PA-CB Circular 2023</div>
+      </div>
+    </div>
+    <div class="olic-card-body">
+      <div class="olic-row"><span class="olic-row-key"><span class="en">What it lets you do</span><span class="ta">என்ன செய்யலாம்</span></span><span class="olic-row-val"><span class="en">Process cross-border payments for Indian importers buying from foreign merchants online (e.g. SaaS subscriptions, global e-commerce)</span><span class="ta">Indian importers-க்காக foreign merchants-இடம் payment செய்யலாம்</span></span></div>
+      <div class="olic-row"><span class="olic-row-key"><span class="en">Net worth required</span><span class="ta">நிகர மதிப்பு</span></span><span class="olic-row-val">₹15 Cr</span></div>
+      <div class="olic-row"><span class="olic-row-key"><span class="en">Key rule</span><span class="ta">முக்கிய விதி</span></span><span class="olic-row-val"><span class="en">Must also hold domestic PA licence if operating both legs</span><span class="ta">Domestic PA உரிமம் கூட வேண்டும்</span></span></div>
+      <div class="olic-row"><span class="olic-row-key"><span class="en">Examples</span><span class="ta">எடுத்துக்காட்டுகள்</span></span><span class="olic-row-val">PayU, Razorpay (international), CCAvenue</span></div>
+      <div class="olic-tags"><span class="tag tag-cost">₹15Cr net worth</span><span class="tag tag-time">FEMA + PA approval</span></div>
+    </div>
+  </div>
+
+</div>
+
+<div class="olic-compare-wrap" data-reveal>
+  <h3 class="s-sub-title" style="margin-bottom:1rem;"><span class="en">Quick comparison — which licence for which product?</span><span class="ta">விரைவு ஒப்பீடு — எந்த product-க்கு எந்த உரிமம்?</span></h3>
+  <table class="olic-compare-table">
+    <thead>
+      <tr>
+        <th><span class="en">If you want to…</span><span class="ta">நீங்கள் விரும்பினால்…</span></th>
+        <th><span class="en">Licence needed</span><span class="ta">தேவையான உரிமம்</span></th>
+        <th><span class="en">Capital ballpark</span><span class="ta">மூலதனம்</span></th>
+        <th><span class="en">Fastest path</span><span class="ta">விரைவான வழி</span></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td><span class="en">Accept payments from Indian customers online</span><span class="ta">Indian customers-இடம் online பணம் பெறுதல்</span></td><td><strong>PA Licence</strong></td><td>₹15–25 Cr</td><td><span class="en">18–30 months direct or partner with Razorpay</span><span class="ta">18-30 மாதம் நேரடி; அல்லது Razorpay partner</span></td></tr>
+      <tr><td><span class="en">Issue a digital wallet for your app users</span><span class="ta">App users-க்கு digital wallet கொடுக்கல்</span></td><td><strong>PPI Licence</strong></td><td>₹5–25 Cr</td><td><span class="en">18 months or embed Paytm/MobiKwik wallet via API</span><span class="ta">18 மாதம்; அல்லது Paytm wallet API</span></td></tr>
+      <tr><td><span class="en">Sell forex / send money abroad (LRS)</span><span class="ta">Forex விற்பனை / LRS remittance</span></td><td><strong>AD-II / FFMC</strong></td><td>₹10 Cr</td><td><span class="en">12–18 months — requires FEMA compliance + RBI regional office approval</span><span class="ta">12-18 மாதம் — FEMA + RBI regional approval</span></td></tr>
+      <tr><td><span class="en">Let users share bank data for credit scoring</span><span class="ta">Credit scoring-க்காக bank data share</span></td><td><strong>AA Licence</strong></td><td>₹2 Cr</td><td><span class="en">9–15 months. Can white-label Setu or Perfios if not building infrastructure</span><span class="ta">9-15 மாதம்; Setu/Perfios white-label</span></td></tr>
+      <tr><td><span class="en">Build a P2P lending marketplace</span><span class="ta">P2P lending marketplace கட்டல்</span></td><td><strong>NBFC-P2P</strong></td><td>₹2 Cr</td><td><span class="en">12–18 months. Requires RBI NBFC registration + P2P specific approval</span><span class="ta">12-18 மாதம். NBFC + P2P approval</span></td></tr>
+      <tr><td><span class="en">Process cross-border payments (import side)</span><span class="ta">Cross-border payments process (import)</span></td><td><strong>PA-CB Licence</strong></td><td>₹15 Cr</td><td><span class="en">Integrate with existing PA-CB licensees (PayU, Razorpay) under sub-merchant model</span><span class="ta">PayU/Razorpay sub-merchant model</span></td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="callout" data-reveal style="margin-top:2rem;border-left-color:var(--accent2);">
+  <strong>💡 <span class="en">Karthi's take:</span><span class="ta">Karthi-ன் கருத்து:</span></strong>
+  <span class="en"> If you're building a payments product, start by listing every money movement your product will make. Then map each movement to a licence category above. If every flow is covered by a licensed entity above you (via sub-merchant or API contract), you're fine. If any flow requires you to hold or pool customer money — stop building and get the appropriate licence first. The cost of the licence is always less than the cost of an RBI action.</span>
+  <span class="ta"> உங்கள் product-ல் நடக்கும் ஒவ்வொரு பண நகர்வையும் பட்டியலிடுங்கள். ஒவ்வொரு நகர்வையும் மேலே உள்ள உரிம வகையுடன் இணைங்கள். எந்த flow-ம் உரிமம் பெற்ற entity மூலம் cover ஆகவில்லை என்றால் — உரிமம் முதலில் பெறுங்கள்.</span>
+</div>`
+},
+
 /* ── 08 PAYOUT ACCOUNT ──────────────────────────────────────────── */
 {
   id:'payout', chapter:'licensing', theme:'light',
   nav:{ en:'Payout Account', ta:'Payout கணக்கு' },
   html:`
 <div class="s-label" data-reveal>
-  <span class="s-label-num">08 — Licensing</span>
+  <span class="s-label-num">Section 08 — Licensing</span>
   <span class="s-label-line"></span>
 </div>
 <h2 class="s-title" data-reveal>Payout &amp; <em>settlement accounts</em></h2>
@@ -940,7 +1222,7 @@ window.SECTIONS = [
   nav:{ en:'Wallet Architecture', ta:'வாலட் கட்டமைப்பு' },
   html:`
 <div class="s-label" data-reveal>
-  <span class="s-label-num">09 — Technical</span>
+  <span class="s-label-num">Section 09 — Technical</span>
   <span class="s-label-line"></span>
 </div>
 <h2 class="s-title" data-reveal>Wallet &amp; prepaid <em>architecture</em></h2>
@@ -980,6 +1262,24 @@ window.SECTIONS = [
   <div class="pe-label">💡 In plain English</div>
   <span class="en">A <strong>Semi-closed wallet</strong> is like a prepaid debit card you can spend at multiple shops but can't withdraw to your bank. A <strong>Closed wallet</strong> is like a Starbucks gift card — only usable at that one brand. The <strong>nodal account</strong> is a special government-watched bank account where everyone's wallet balance is kept safe — no one (not even the wallet company) can spend it freely. KYC tier = how much the government trusts you based on the ID you provided.</span>
   <span class="ta">Semi-closed wallet என்பது பலவிடங்களில் செலவழிக்கக்கூடிய prepaid card போன்றது, ஆனால் வங்கியில் திரும்பப் பெற முடியாது. Nodal account என்பது அரசாங்கம் கண்காணிக்கும் சிறப்பு வங்கி கணக்கு — wallet balance அங்கு பாதுகாக்கப்படுகிறது.</span>
+</div>
+
+<div class="eng-box" data-reveal>
+  <div class="eng-box-header">
+    <span class="eng-box-tag">⚙️ Engineer Note</span>
+    <span class="eng-box-title"><span class="en">PPI Wallet — API flows and KYC tier enforcement</span><span class="ta">PPI Wallet — API flows மற்றும் KYC tier</span></span>
+  </div>
+  <p><span class="en">If embedding a PPI wallet (e.g. Paytm, MobiKwik white-label), the three critical flows are:</span><span class="ta">PPI wallet embed செய்தால் (Paytm, MobiKwik white-label), இந்த மூன்று flows முக்கியம்:</span></p>
+  <pre>Load:  POST /wallet/load   { amount, user_id, source: "UPI" }
+Spend: POST /wallet/debit  { amount, merchant_id, txn_ref }
+Check: GET  /wallet/balance → { balance, kyc_tier, expiry }</pre>
+  <div class="eng-box-grid">
+    <div class="eng-box-kv"><div class="eng-box-kv-k">Min-KYC balance cap</div><div class="eng-box-kv-v">₹10,000 — block load if exceeded</div></div>
+    <div class="eng-box-kv"><div class="eng-box-kv-k">Full-KYC balance cap</div><div class="eng-box-kv-v">₹2,00,000</div></div>
+    <div class="eng-box-kv"><div class="eng-box-kv-k">KYC upgrade trigger</div><div class="eng-box-kv-v">When cumulative loads exceed ₹10K in a year</div></div>
+    <div class="eng-box-kv"><div class="eng-box-kv-k">Expiry rule</div><div class="eng-box-kv-v">Unused min-KYC wallet expires in 1 year (RBI mandate)</div></div>
+  </div>
+  <p style="margin-top:0.75rem"><span class="en">⚠️ The wallet provider's nodal account holds all balances — your app never touches that money directly. Reconcile daily: sum of all user balances must equal the nodal account balance. Discrepancy = compliance risk.</span><span class="ta">⚠️ Wallet provider-ன் nodal account-ல் அனைத்து balances இருக்கும். தினசரி reconcile: அனைத்து user balances தொகை = nodal account balance.</span></p>
 </div>`
 },
 
@@ -989,7 +1289,7 @@ window.SECTIONS = [
   nav:{ en:'Bank APIs', ta:'வங்கி APIs' },
   html:`
 <div class="s-label" data-reveal>
-  <span class="s-label-num">10 — Technical</span>
+  <span class="s-label-num">Section 10 — Technical</span>
   <span class="s-label-line"></span>
 </div>
 <h2 class="s-title" data-reveal>Payment APIs — <em>PayIn, PayOut &amp; the full stack</em></h2>
@@ -1160,7 +1460,7 @@ X-Payout-Idempotency: &lt;uuid&gt;
     <div class="pd-arrow">↓</div>
     <div class="pd-step"><div class="pd-num">3</div><div class="pd-body"><strong>₹1 sent via IMPS</strong> to the account — bank processes the credit and returns the beneficiary name in the IMPS acknowledgement</div></div>
     <div class="pd-arrow">↓</div>
-    <div class="pd-step pd-step--ok"><div class="pd-num pd-num--ok">4</div><div class="pd-body"><strong>Name match returned</strong> — compare with user-submitted name. API returns: <code>{ "account_holder": "Ramesh Kumar", "verified": true }</code>. ₹1 may be returned or kept (₹0.50–₹2 cost).</div></div>
+    <div class="pd-step pd-step--ok"><div class="pd-num pd-num--ok">4</div><div class="pd-body"><strong>Name match returned</strong> — compare with user-submitted name. API returns: <code>{ "account_holder": "Karthi Kumar", "verified": true }</code>. ₹1 may be returned or kept (₹0.50–₹2 cost).</div></div>
   </div>
   <div class="pd-usecases">
     <div class="pd-uc-title">Where it's used</div>
@@ -1300,6 +1600,31 @@ const { event, payload } = req.body;</pre>
   <strong><span class="en">Quick decision guide</span><span class="ta">விரைவு முடிவு வழிகாட்டி</span></strong>
   <span class="en"> — PayIn from customers? Use UPI intent/QR (zero MDR, instant). Paying out freelancers? Use IMPS or UPI (instant, ≤₹5L). Monthly payroll? NEFT batch. Large B2B settlement ≥₹2L? RTGS. Verifying a new bank account? Penny drop first.</span>
   <span class="ta"> — Customer-இடமிருந்து PayIn? UPI QR. Freelancer payout? IMPS/UPI. Monthly payroll? NEFT. ₹2L+ B2B? RTGS. New account verify? Penny drop.</span>
+</div>
+
+<div class="eng-box" data-reveal>
+  <div class="eng-box-header">
+    <span class="eng-box-tag">⚙️ Engineer Note</span>
+    <span class="eng-box-title"><span class="en">Bank API cheat-sheet — right tool for each job</span><span class="ta">Bank API cheat-sheet — எந்த வேலைக்கு எது?</span></span>
+  </div>
+  <div class="eng-box-grid">
+    <div class="eng-box-kv"><div class="eng-box-kv-k">Penny drop (verify)</div><div class="eng-box-kv-v">Setu / Razorpay Route — POST /verification/bank-account · returns <code>name_at_bank</code></div></div>
+    <div class="eng-box-kv"><div class="eng-box-kv-k">UPI collect</div><div class="eng-box-kv-v">Razorpay QR API or NPCI UPI deeplink: <code>upi://pay?pa=...&am=...&tn=...</code></div></div>
+    <div class="eng-box-kv"><div class="eng-box-kv-k">IMPS payout</div><div class="eng-box-kv-v">POST /payouts { account_number, ifsc, amount, mode:"IMPS" } — settles in &lt;60s, 24×7</div></div>
+    <div class="eng-box-kv"><div class="eng-box-kv-k">NEFT batch</div><div class="eng-box-kv-v">POST /payouts { mode:"NEFT" } — batched every 30 min, 8am–7pm</div></div>
+    <div class="eng-box-kv"><div class="eng-box-kv-k">RTGS</div><div class="eng-box-kv-v">min ₹2L, POST /payouts { mode:"RTGS" } — settles in 30 min, 9am–4:30pm</div></div>
+    <div class="eng-box-kv"><div class="eng-box-kv-k">Webhook events</div><div class="eng-box-kv-v"><code>payout.processed</code>, <code>payout.reversed</code>, <code>payout.failed</code> — always build reversal logic</div></div>
+  </div>
+  <pre>// Cashfree Payouts — bulk payout example (Node.js)
+const res = await axios.post('https://payout-api.cashfree.com/payout/v1/requestBatchTransfer', {
+  batchTransferId: 'batch_' + Date.now(),
+  batchFormat: 'BANK_ACCOUNT',
+  batch: [
+    { transferId: 'karthi_may_salary', amount: 85000, phone: '9876543210',
+      name: 'Karthi Kumar', bankAccount: '123456789', ifsc: 'HDFC0001234' }
+  ]
+}, { headers: { Authorization: 'Bearer ' + token } })</pre>
+  <p><span class="en">⚠️ Always handle <code>payout.reversed</code> webhook — NEFT/IMPS can reverse 24–48 hrs after "processed" due to invalid IFSC or frozen account. Keep ₹ in suspense until reversal window closes.</span><span class="ta">⚠️ <code>payout.reversed</code> webhook handle கட்டாயம் — NEFT/IMPS "processed" ஆனாலும் 24-48 மணி நேரத்தில் reverse ஆகலாம்.</span></p>
 </div>`
 },
 
@@ -1309,7 +1634,7 @@ const { event, payload } = req.body;</pre>
   nav:{ en:'Card Swipe Biz', ta:'கார்டு ஸ்வைப்' },
   html:`
 <div class="s-label" data-reveal>
-  <span class="s-label-num">11 — Card Swipe</span>
+  <span class="s-label-num">Section 11 — Card Swipe</span>
   <span class="s-label-line"></span>
 </div>
 <h2 class="s-title" data-reveal>💳 Card swiping business — <em>legal, grey & illegal</em></h2>
@@ -1814,7 +2139,7 @@ const { event, payload } = req.body;</pre>
   nav:{ en:'Card Types', ta:'கார்டு வகைகள்' },
   html:`
 <div class="s-label" data-reveal>
-  <span class="s-label-num">12 — Cards & Payments</span>
+  <span class="s-label-num">Section 12 — Cards & Payments</span>
   <span class="s-label-line"></span>
 </div>
 <h2 class="s-title" data-reveal>Every card type — <em>what it is, how it works, real examples</em></h2>
@@ -1839,8 +2164,8 @@ const { event, payload } = req.body;</pre>
     </ul>
     <div class="ctype-eg">
       <strong><span class="en">Real-life example</span><span class="ta">நிஜ உதாரணம்</span></strong>
-      <span class="en">Priya uses her SBI RuPay debit card at a grocery store. ₹850 is instantly debited from her SB account. The merchant's POS routes via RuPay → SBI (issuer). Priya pays zero fee; the merchant pays ₹0–₹3.4 MDR.</span>
-      <span class="ta">Priya ஒரு மளிகை கடையில் SBI RuPay டெபிட் கார்டு பயன்படுத்துகிறார். ₹850 உடனே அவரது SB கணக்கிலிருந்து டெபிட் ஆகிறது.</span>
+      <span class="en">Meenakshi uses her SBI RuPay debit card at a grocery store. ₹850 is instantly debited from her SB account. The merchant's POS routes via RuPay → SBI (issuer). Meenakshi pays zero fee; the merchant pays ₹0–₹3.4 MDR.</span>
+      <span class="ta">Meenakshi ஒரு மளிகை கடையில் SBI RuPay டெபிட் கார்டு பயன்படுத்துகிறார். ₹850 உடனே அவரது SB கணக்கிலிருந்து டெபிட் ஆகிறது.</span>
     </div>
   </div>
 
@@ -1858,8 +2183,8 @@ const { event, payload } = req.body;</pre>
     </ul>
     <div class="ctype-eg">
       <strong><span class="en">Real-life example</span><span class="ta">நிஜ உதாரணம்</span></strong>
-      <span class="en">Rahul buys a ₹42,000 laptop on Flipkart using HDFC Regalia. HDFC authorises against his ₹1L limit. Flipkart settles T+2. Rahul gets statement on the 5th, due on 25th — 50-day free credit. He earns 2 reward points per ₹150 spend.</span>
-      <span class="ta">Rahul HDFC Regalia கார்டில் Flipkart-ல் ₹42,000 laptop வாங்குகிறார். 50 நாள் வட்டி இல்லாத கடன் கிடைக்கிறது.</span>
+      <span class="en">Murugan buys a ₹42,000 laptop on Flipkart using HDFC Regalia. HDFC authorises against his ₹1L limit. Flipkart settles T+2. Murugan gets statement on the 5th, due on 25th — 50-day free credit. He earns 2 reward points per ₹150 spend.</span>
+      <span class="ta">Murugan HDFC Regalia கார்டில் Flipkart-ல் ₹42,000 laptop வாங்குகிறார். 50 நாள் வட்டி இல்லாத கடன் கிடைக்கிறது.</span>
     </div>
   </div>
 
@@ -1950,7 +2275,7 @@ const { event, payload } = req.body;</pre>
   nav:{ en:'Pre-Auth', ta:'முன் அங்கீகாரம்' },
   html:`
 <div class="s-label" data-reveal>
-  <span class="s-label-num">13 — Cards & Payments</span>
+  <span class="s-label-num">Section 13 — Cards & Payments</span>
   <span class="s-label-line"></span>
 </div>
 <h2 class="s-title" data-reveal>Pre-Authorisation — <em>hold now, charge later</em></h2>
@@ -2073,7 +2398,7 @@ const { event, payload } = req.body;</pre>
   nav:{ en:'Card Network', ta:'கார்டு நெட்வொர்க்' },
   html:`
 <div class="s-label" data-reveal>
-  <span class="s-label-num">14 — Cards & Payments</span>
+  <span class="s-label-num">Section 14 — Cards & Payments</span>
   <span class="s-label-line"></span>
 </div>
 <h2 class="s-title" data-reveal>How a card transaction works — <em>5 parties, 1.5 seconds</em></h2>
@@ -2088,7 +2413,7 @@ const { event, payload } = req.body;</pre>
     <div class="cn-actor">
       <div class="cn-actor-box cn-actor-box--customer">👤</div>
       <div class="cn-actor-name"><span class="en">Cardholder</span><span class="ta">கார்டுதாரர்</span></div>
-      <div class="cn-actor-sub"><span class="en">You (Priya, Rahul…)</span><span class="ta">நீங்கள்</span></div>
+      <div class="cn-actor-sub"><span class="en">You (Karthi, Murugan…)</span><span class="ta">நீங்கள்</span></div>
     </div>
     <div class="cn-connector"><div class="cn-line"><div class="cn-dot"></div></div><div class="cn-lbl"><span class="en">Tap/Swipe<br>PAN+OTP online</span><span class="ta">Tap/Swipe</span></div></div>
     <div class="cn-actor">
@@ -2198,7 +2523,7 @@ const { event, payload } = req.body;</pre>
   nav:{ en:'EMI & 3DS', ta:'EMI & 3DS' },
   html:`
 <div class="s-label" data-reveal>
-  <span class="s-label-num">15 — Cards & Payments</span>
+  <span class="s-label-num">Section 15 — Cards & Payments</span>
   <span class="s-label-line"></span>
 </div>
 <h2 class="s-title" data-reveal>EMI, 3D Secure, Contactless &amp; Chargebacks — <em>the complete picture</em></h2>
@@ -2280,7 +2605,7 @@ const { event, payload } = req.body;</pre>
     <div class="chbk-num chbk-num--dispute">1</div>
     <div class="chbk-body">
       <div class="chbk-h"><span class="en">🙋 Cardholder files dispute with issuer</span><span class="ta">🙋 Cardholder issuer-இடம் dispute பதிவு செய்கிறார்</span></div>
-      <div class="chbk-p"><span class="en">Priya calls HDFC: "I never ordered this ₹4,500 item." HDFC has <code>120 days</code> from transaction date to raise chargeback (Visa rules). Common reasons: fraud, item not received, item not as described, duplicate charge.</span><span class="ta">Priya HDFC-ஐ அழைக்கிறார்: "நான் இந்த ₹4,500 item order செய்யவில்லை." <code>120 நாட்கள்</code> chargeback raise செய்ய இருக்கின்றன.</span></div>
+      <div class="chbk-p"><span class="en">Meenakshi calls HDFC: "I never ordered this ₹4,500 item." HDFC has <code>120 days</code> from transaction date to raise chargeback (Visa rules). Common reasons: fraud, item not received, item not as described, duplicate charge.</span><span class="ta">Meenakshi HDFC-ஐ அழைக்கிறார்: "நான் இந்த ₹4,500 item order செய்யவில்லை." <code>120 நாட்கள்</code> chargeback raise செய்ய இருக்கின்றன.</span></div>
     </div>
   </div>
   <div class="chbk-step">
@@ -2321,8 +2646,8 @@ const { event, payload } = req.body;</pre>
   <span class="rl-icon">💡</span>
   <div>
     <strong><span class="en">Real-life: Myntra returns fraud</span><span class="ta">நிஜ உதாரணம்: Myntra returns fraud</span></strong>
-    <span class="en">A fraudster buys ₹8,000 worth of clothes from Myntra. Returns empty boxes. Initiates chargeback claiming "item not received." Myntra submits delivery partner's photo proof of package delivered + customer's confirmed address + Razorpay 3DS auth log. Chargeback rejected. Myntra wins. Fraud pattern flagged in their risk system → customer blacklisted.</span>
-    <span class="ta">ஒரு fraudster Myntra-ல் ₹8,000 clothes வாங்குகிறார். காலி boxes திரும்பி அனுப்புகிறார். "item not received" என்று chargeback initiates செய்கிறார். Myntra delivery partner photo proof + 3DS auth log சமர்ப்பிக்கிறது. Chargeback rejected. Myntra வெற்றி.</span>
+    <span class="en">Vignesh (fraudster) buys ₹8,000 worth of clothes from Myntra. Returns empty boxes. Initiates chargeback claiming "item not received." Myntra submits delivery partner's photo proof of package delivered + customer's confirmed address + Razorpay 3DS auth log. Chargeback rejected. Myntra wins. Fraud pattern flagged in their risk system → customer blacklisted.</span>
+    <span class="ta">Vignesh (fraudster) Myntra-ல் ₹8,000 clothes வாங்குகிறார். காலி boxes திரும்பி அனுப்புகிறார். "item not received" என்று chargeback initiates செய்கிறார். Myntra delivery partner photo proof + 3DS auth log சமர்ப்பிக்கிறது. Chargeback rejected. Myntra வெற்றி.</span>
   </div>
 </div>
 
